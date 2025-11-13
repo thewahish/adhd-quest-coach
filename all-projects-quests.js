@@ -243,6 +243,55 @@ const allProjectQuests = [
     // HIGH PRIORITY - DO THIS MONTH
     // =====================================================
     {
+        name: "Rakan's Song Project - Finish Production",
+        category: "work",
+        priority: "high",
+        status: "active",
+        xpValue: 100,
+        icon: "🎵",
+        notes: "High priority music project - finish production",
+        project: "audio-work",
+        subtasks: [
+            { title: "Complete recording", completed: false },
+            { title: "Mix", completed: false },
+            { title: "Master", completed: false },
+            { title: "Deliver to client", completed: false }
+        ]
+    },
+    {
+        name: "Tamim and Tasnim Song 7",
+        category: "work",
+        priority: "high",
+        status: "awaiting_client",
+        xpValue: 100,
+        icon: "👥",
+        notes: "25% complete - Recording done, awaiting client for animation & mixing",
+        project: "audio-work",
+        subtasks: [
+            { title: "Recording", completed: true },
+            { title: "Animation", completed: false },
+            { title: "Mixing", completed: false },
+            { title: "Deliver to client", completed: false }
+        ]
+    },
+    {
+        name: "Facebook Ad Campaigns - Studio Client Acquisition",
+        category: "work",
+        priority: "high",
+        status: "active",
+        xpValue: 150,
+        icon: "📱",
+        notes: "Set up ad campaigns to acquire studio clients",
+        project: "marketing",
+        subtasks: [
+            { title: "Define target audience", completed: false },
+            { title: "Create ad creatives", completed: false },
+            { title: "Set up Facebook Business Manager", completed: false },
+            { title: "Launch campaigns", completed: false },
+            { title: "Monitor and optimize", completed: false }
+        ]
+    },
+    {
         name: "ADHD Quest Coach - Backend API & Cloud Sync",
         category: "health",
         priority: "high",

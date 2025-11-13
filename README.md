@@ -18,6 +18,7 @@ Quest Coach is a gamified life management system designed specifically for peopl
 - **Non-Overwhelming Layout**: Clean, spacious design with clear sections
 - **Flexible Pacing**: No pressure - complete quests at your own pace
 - **Brain Dump Feature**: Capture racing thoughts before they escape
+- **Voice Input**: Speak your thoughts instead of typing - perfect for when you're overwhelmed
 
 ### 📊 Tracking & Reflection
 - **Mood Check-In**: Track emotional state daily
@@ -33,7 +34,19 @@ Quest Coach is a gamified life management system designed specifically for peopl
 4. **Complete Quests**: Check off tasks as you finish them to earn XP
 5. **Add New Quests**: Click "Add New Quest" when you have new tasks
 6. **Brain Dump**: Use this feature when thoughts are racing
+   - **Type** or **Click the microphone button** to speak
+   - The mic button turns red and pulses when recording
+   - Click again to stop recording
+   - Your speech is automatically converted to text
 7. **Daily Reflection**: End your day with reflection and planning
+
+### Voice Input Tips
+
+- **Works best in**: Chrome, Edge, Safari (desktop and mobile)
+- **When to use it**: When you're too overwhelmed to type, when thoughts are coming fast, or when you're doing something else
+- **Pro tip**: You can mix typing and speaking - just click the mic when you want to speak
+- **Recording is continuous**: Keep talking and it keeps transcribing
+- **Privacy**: All processing happens in your browser - nothing is sent to external servers
 
 ## Quest Categories
 

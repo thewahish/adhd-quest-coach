@@ -6,11 +6,13 @@ const notionProjects = [
         name: "Order webcam and speakers for client",
         category: "urgent",
         priority: "urgent",
-        status: "active",
+        status: "completed",
         xpValue: 50,
         icon: "🚨",
-        notes: "Installation tomorrow - URGENT!",
-        subtasks: []
+        notes: "✅ COMPLETED Nov 13! Ordered from Amazon",
+        subtasks: [
+            { title: "Order from Amazon", completed: true }
+        ]
     },
     {
         name: "Finish Rakan's Song project",

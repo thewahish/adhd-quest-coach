@@ -1,0 +1,339 @@
+{
+  "export_date": "2025-11-13",
+  "total_quests": 23,
+  "total_xp_available": 2425,
+  "xp_earned": 50,
+  "quests": [
+    {
+      "id": 1,
+      "name": "Order webcam and speakers for client",
+      "icon": "🚨",
+      "category": "urgent",
+      "priority": "URGENT",
+      "status": "completed",
+      "xp_value": 50,
+      "notes": "✅ COMPLETED Nov 13! Ordered from Amazon",
+      "subtasks": [
+        {"title": "Order from Amazon", "completed": true}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ministry of Media Syria - Proposal",
+      "icon": "📄",
+      "category": "urgent",
+      "priority": "URGENT",
+      "status": "active",
+      "xp_value": 150,
+      "notes": "Present to minister - HIGH PRIORITY",
+      "subtasks": [
+        {"title": "Research ministry needs", "completed": false},
+        {"title": "Draft proposal document", "completed": false},
+        {"title": "Create presentation slides", "completed": false},
+        {"title": "Schedule meeting with minister", "completed": false}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Finish Rakan's Song project",
+      "icon": "🎵",
+      "category": "work",
+      "priority": "high",
+      "status": "active",
+      "xp_value": 100,
+      "notes": "High priority music project",
+      "subtasks": []
+    },
+    {
+      "id": 4,
+      "name": "Ministry of Child Affairs Syria - Proposal",
+      "icon": "👶",
+      "category": "work",
+      "priority": "medium",
+      "status": "planning",
+      "xp_value": 100,
+      "notes": "Not urgent but needs attention",
+      "subtasks": [
+        {"title": "Understand project scope", "completed": false},
+        {"title": "Draft initial proposal", "completed": false}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Syria's Tale Song",
+      "icon": "🎵",
+      "category": "work",
+      "priority": "low",
+      "status": "awaiting_client",
+      "xp_value": 75,
+      "notes": "Project with Rima - awaiting client feedback",
+      "subtasks": []
+    },
+    {
+      "id": 6,
+      "name": "Reels from Syria Lecture",
+      "icon": "📹",
+      "category": "work",
+      "priority": "medium",
+      "status": "active",
+      "xp_value": 50,
+      "notes": "Create social media content from lecture",
+      "subtasks": [
+        {"title": "Review lecture footage", "completed": false},
+        {"title": "Select best clips", "completed": false},
+        {"title": "Edit reels", "completed": false},
+        {"title": "Post to social media", "completed": false}
+      ]
+    },
+    {
+      "id": 7,
+      "name": "'I Can Do This' Song & Video Clip",
+      "icon": "🎬",
+      "category": "work",
+      "priority": "high",
+      "status": "awaiting_client",
+      "xp_value": 100,
+      "notes": "Project with Rima - 33% complete",
+      "subtasks": [
+        {"title": "Music production", "completed": true},
+        {"title": "Mixing", "completed": false},
+        {"title": "Video production", "completed": false}
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Quest Coach System Development",
+      "icon": "🎮",
+      "category": "work",
+      "priority": "high",
+      "status": "active",
+      "xp_value": 200,
+      "notes": "Building this gamified ADHD coaching system - ongoing maintenance",
+      "subtasks": [
+        {"title": "Basic MVP", "completed": true},
+        {"title": "Voice input feature", "completed": true},
+        {"title": "Notion import", "completed": false},
+        {"title": "Sub-tasks support", "completed": false},
+        {"title": "Mobile optimization", "completed": false},
+        {"title": "Backend/sync", "completed": false}
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Follow up with CPA for K1s (Tax Returns)",
+      "icon": "📋",
+      "category": "urgent",
+      "priority": "URGENT",
+      "status": "active",
+      "xp_value": 75,
+      "notes": "2 years of tax returns to file",
+      "subtasks": []
+    },
+    {
+      "id": 10,
+      "name": "Ministry of Dakhiliyah (Internal Affairs) - PA System",
+      "icon": "🔊",
+      "category": "urgent",
+      "priority": "high",
+      "status": "active",
+      "xp_value": 150,
+      "notes": "Sound system project - 20% complete",
+      "subtasks": [
+        {"title": "Equipment study", "completed": true},
+        {"title": "Awaiting client approval", "completed": false},
+        {"title": "Installation logistics", "completed": false},
+        {"title": "Go live", "completed": false},
+        {"title": "Research vendors and prices", "completed": false}
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Follow up with Washington DC Networking Contacts",
+      "icon": "🤝",
+      "category": "work",
+      "priority": "medium",
+      "status": "active",
+      "xp_value": 50,
+      "notes": "Met Syria president - follow up with business cards",
+      "subtasks": []
+    },
+    {
+      "id": 12,
+      "name": "Umayyad Mosque Acoustic Project",
+      "icon": "🕌",
+      "category": "work",
+      "priority": "medium",
+      "status": "planning",
+      "xp_value": 100,
+      "notes": "Reviving older project",
+      "subtasks": [
+        {"title": "Contact project stakeholders", "completed": false},
+        {"title": "Check current status", "completed": false},
+        {"title": "Assess next steps", "completed": false}
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Update Personal Website",
+      "icon": "🌐",
+      "category": "work",
+      "priority": "high",
+      "status": "active",
+      "xp_value": 75,
+      "notes": "Modernize and add call-to-action elements",
+      "subtasks": [
+        {"title": "Audit current site", "completed": false},
+        {"title": "Design new layout", "completed": false},
+        {"title": "Add CTAs", "completed": false},
+        {"title": "Update portfolio", "completed": false},
+        {"title": "Launch", "completed": false}
+      ]
+    },
+    {
+      "id": 14,
+      "name": "Taxes Filing (2 years)",
+      "icon": "💰",
+      "category": "urgent",
+      "priority": "URGENT",
+      "status": "active",
+      "xp_value": 100,
+      "notes": "Urgent - file 2 years of tax returns",
+      "subtasks": [
+        {"title": "Scan all papers", "completed": false},
+        {"title": "Organize documents", "completed": false},
+        {"title": "Submit to CPA", "completed": false}
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Nasheed Watani",
+      "icon": "🎵",
+      "category": "work",
+      "priority": "medium",
+      "status": "awaiting_client",
+      "xp_value": 75,
+      "notes": "33% complete - awaiting client",
+      "subtasks": [
+        {"title": "Music production", "completed": true},
+        {"title": "Awaiting client feedback", "completed": false},
+        {"title": "Start the project", "completed": false}
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Audio Courses Launch",
+      "icon": "🎓",
+      "category": "urgent",
+      "priority": "URGENT",
+      "status": "active",
+      "xp_value": 200,
+      "notes": "High priority course launch",
+      "subtasks": [
+        {"title": "Payment gateway setup", "completed": false},
+        {"title": "Marketing reels", "completed": false},
+        {"title": "Design", "completed": false},
+        {"title": "Lesson preparation", "completed": false},
+        {"title": "Launch date announcement", "completed": false},
+        {"title": "Go live", "completed": false}
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Abdulwareth Lahham Project",
+      "icon": "🎤",
+      "category": "urgent",
+      "priority": "high",
+      "status": "active",
+      "xp_value": 100,
+      "notes": "Urgent music project",
+      "subtasks": [
+        {"title": "Samples gathering", "completed": false},
+        {"title": "Awaiting for approval", "completed": false},
+        {"title": "Recording", "completed": false},
+        {"title": "Delivery", "completed": false}
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Tamim and Tasnim Song 7",
+      "icon": "👥",
+      "category": "work",
+      "priority": "high",
+      "status": "awaiting_client",
+      "xp_value": 100,
+      "notes": "25% complete - awaiting client",
+      "subtasks": [
+        {"title": "Recording", "completed": true},
+        {"title": "Animation", "completed": false},
+        {"title": "Mixing", "completed": false},
+        {"title": "Deliver to client", "completed": false}
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Space Song Aljazeera",
+      "icon": "🌌",
+      "category": "work",
+      "priority": "low",
+      "status": "planning",
+      "xp_value": 75,
+      "notes": "In planning phase",
+      "subtasks": []
+    },
+    {
+      "id": 20,
+      "name": "Memory Game",
+      "icon": "🧠",
+      "category": "personal",
+      "priority": "low",
+      "status": "active",
+      "xp_value": 50,
+      "notes": "Game development project",
+      "subtasks": []
+    },
+    {
+      "id": 21,
+      "name": "Path of Heroes Game",
+      "icon": "⚔️",
+      "category": "personal",
+      "priority": "low",
+      "status": "active",
+      "xp_value": 75,
+      "notes": "Game development project",
+      "subtasks": []
+    },
+    {
+      "id": 22,
+      "name": "Facebook Ad Campaigns - Studio Client Acquisition",
+      "icon": "📱",
+      "category": "work",
+      "priority": "high",
+      "status": "planning",
+      "xp_value": 150,
+      "notes": "Full system: targeting, creative, funnel, follow-up",
+      "subtasks": [
+        {"title": "Define target audience (location, interests, demographics)", "completed": false},
+        {"title": "Create ad creative (images, videos, copy)", "completed": false},
+        {"title": "Set up Facebook Business Manager & Ads Account", "completed": false},
+        {"title": "Design landing page or booking funnel", "completed": false},
+        {"title": "Set budget and campaign structure", "completed": false},
+        {"title": "Launch test campaign", "completed": false},
+        {"title": "Track metrics (CPA, conversion rate)", "completed": false},
+        {"title": "Optimize based on results", "completed": false},
+        {"title": "Set up automated follow-up system", "completed": false},
+        {"title": "Scale winning campaigns", "completed": false}
+      ]
+    },
+    {
+      "id": 23,
+      "name": "Email Management System",
+      "icon": "📧",
+      "category": "personal",
+      "priority": "medium",
+      "status": "planning",
+      "xp_value": 75,
+      "notes": "Sort and organize email - discuss later",
+      "subtasks": []
+    }
+  ]
+}

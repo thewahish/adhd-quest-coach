@@ -296,6 +296,82 @@
         .hidden {
             display: none;
         }
+
+        /* Voice Input Styles */
+        .voice-input-container {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .mic-button {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mic-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .mic-button.recording {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 10px rgba(220, 53, 69, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+            }
+        }
+
+        .recording-indicator {
+            display: none;
+            background: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+
+        .recording-indicator.active {
+            display: block;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .browser-support-warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -382,8 +458,17 @@
         <!-- Brain Dump Section -->
         <div class="input-section">
             <h2>🧠 Brain Dump</h2>
-            <p style="color: #666; margin-bottom: 10px;">Got thoughts racing? Dump them here. I'll help you organize them.</p>
-            <textarea id="brain-dump" rows="5" placeholder="Type anything that's on your mind..."></textarea>
+            <p style="color: #666; margin-bottom: 10px;">Got thoughts racing? Dump them here by typing or speaking. I'll help you organize them.</p>
+            <div class="voice-input-container">
+                <textarea id="brain-dump" rows="5" placeholder="Type or click the mic to speak..."></textarea>
+                <button class="mic-button" id="mic-button" onclick="toggleVoiceInput()" title="Click to speak">🎤</button>
+            </div>
+            <div id="recording-indicator" class="recording-indicator">
+                🔴 Recording... (Click mic again to stop)
+            </div>
+            <div id="browser-warning" class="browser-support-warning">
+                Voice input not supported in your browser. Please use Chrome, Edge, or Safari.
+            </div>
             <button onclick="processBrainDump()">Process Thoughts</button>
         </div>
 
@@ -677,12 +762,132 @@
             showNotification('✅ New quest added!');
         }
 
+        // Voice input functionality
+        let recognition = null;
+        let isRecording = false;
+
+        // Initialize speech recognition
+        function initSpeechRecognition() {
+            // Check browser support
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                document.getElementById('browser-warning').style.display = 'block';
+                document.getElementById('mic-button').style.display = 'none';
+                return false;
+            }
+
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            let finalTranscript = '';
+
+            recognition.onresult = function(event) {
+                let interimTranscript = '';
+
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript + ' ';
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+
+                // Update textarea with transcript
+                const textarea = document.getElementById('brain-dump');
+                const currentText = textarea.value;
+
+                // Only update if there's new content
+                if (finalTranscript) {
+                    textarea.value = currentText + finalTranscript;
+                    finalTranscript = '';
+
+                    // Auto-scroll to bottom
+                    textarea.scrollTop = textarea.scrollHeight;
+                }
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error:', event.error);
+                if (event.error === 'no-speech') {
+                    // Don't stop recording for no-speech error
+                    return;
+                }
+                stopRecording();
+                alert('Error with voice input: ' + event.error);
+            };
+
+            recognition.onend = function() {
+                if (isRecording) {
+                    // Restart if user didn't manually stop
+                    try {
+                        recognition.start();
+                    } catch (e) {
+                        console.log('Recognition ended');
+                    }
+                }
+            };
+
+            return true;
+        }
+
+        // Toggle voice input
+        function toggleVoiceInput() {
+            if (!recognition) {
+                const initialized = initSpeechRecognition();
+                if (!initialized) return;
+            }
+
+            if (isRecording) {
+                stopRecording();
+            } else {
+                startRecording();
+            }
+        }
+
+        // Start recording
+        function startRecording() {
+            try {
+                recognition.start();
+                isRecording = true;
+
+                // Update UI
+                document.getElementById('mic-button').classList.add('recording');
+                document.getElementById('recording-indicator').classList.add('active');
+
+                // Focus textarea
+                document.getElementById('brain-dump').focus();
+            } catch (e) {
+                console.error('Error starting recognition:', e);
+            }
+        }
+
+        // Stop recording
+        function stopRecording() {
+            if (recognition) {
+                recognition.stop();
+            }
+            isRecording = false;
+
+            // Update UI
+            document.getElementById('mic-button').classList.remove('recording');
+            document.getElementById('recording-indicator').classList.remove('active');
+        }
+
         // Process brain dump
         function processBrainDump() {
+            // Stop recording if active
+            if (isRecording) {
+                stopRecording();
+            }
+
             const dump = document.getElementById('brain-dump').value.trim();
 
             if (!dump) {
-                alert('Please write something first!');
+                alert('Please write or speak something first!');
                 return;
             }
 

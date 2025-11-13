@@ -433,32 +433,10 @@
         <!-- Active Quests -->
         <div class="quest-section">
             <h2>⚔️ Active Quests</h2>
-            <p style="color: #666; margin-bottom: 15px;">Focus on these right now. Keep it manageable!</p>
             <ul class="quest-list" id="quest-list">
                 <!-- Quests will be populated here -->
             </ul>
             <button onclick="showAddQuest()">➕ Add New Quest</button>
-            <button onclick="toggleInventory()" style="background: #6c757d; margin-left: 10px;">📦 Quest Inventory (<span id="inventory-count">0</span>)</button>
-        </div>
-
-        <!-- Quest Inventory (Hidden by default) -->
-        <div class="quest-section hidden" id="inventory-section">
-            <h2>📦 Quest Inventory</h2>
-            <p style="color: #666; margin-bottom: 15px;">All your available quests. Pull them into Active when you have the stamina!</p>
-
-            <!-- Filter buttons -->
-            <div style="margin-bottom: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                <button onclick="filterInventory('all')" style="background: #6c757d; padding: 10px 20px; font-size: 0.9em;">All</button>
-                <button onclick="filterInventory('urgent')" style="background: #dc3545; padding: 10px 20px; font-size: 0.9em;">🚨 Urgent</button>
-                <button onclick="filterInventory('work')" style="background: #667eea; padding: 10px 20px; font-size: 0.9em;">💼 Work</button>
-                <button onclick="filterInventory('awaiting_client')" style="background: #ffc107; padding: 10px 20px; font-size: 0.9em;">⏳ Awaiting Client</button>
-                <button onclick="filterInventory('planning')" style="background: #17a2b8; padding: 10px 20px; font-size: 0.9em;">📋 Planning</button>
-            </div>
-
-            <ul class="quest-list" id="inventory-list">
-                <!-- Inventory quests will be populated here -->
-            </ul>
-            <button onclick="toggleInventory()" style="background: #6c757d;">Close Inventory</button>
         </div>
 
         <!-- Add Quest Section (Hidden by default) -->
@@ -509,8 +487,7 @@
             xp: 0,
             level: 1,
             streak: 0,
-            quests: [], // Active quests only
-            inventory: [], // All available quests (not active)
+            quests: [],
             mood: null,
             lastActiveDate: null,
             brainDumps: [],
@@ -524,7 +501,7 @@
                 appState = JSON.parse(saved);
                 updateUI();
             } else {
-                // Initialize ACTIVE quests (only urgent/high priority - max 5)
+                // Initialize with default quests from the conversation
                 appState.quests = [
                     {
                         id: Date.now() + 1,
@@ -532,234 +509,55 @@
                         category: "urgent",
                         completed: false,
                         xpValue: 50,
-                        icon: "🚨",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Installation tomorrow!"
+                        icon: "🚨"
                     },
                     {
                         id: Date.now() + 2,
-                        title: "Ministry of Media Syria - Proposal & Presentation",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 150,
-                        icon: "📄",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Present to minister"
-                    },
-                    {
-                        id: Date.now() + 3,
                         title: "Finish Rakan's Song project",
                         category: "work",
                         completed: false,
                         xpValue: 100,
-                        icon: "🎵",
-                        status: "active",
-                        priority: "high",
-                        notes: ""
-                    }
-                ];
-
-                // Initialize INVENTORY (all other projects - not shown by default)
-                appState.inventory = [
-                    {
-                        id: Date.now() + 100,
-                        title: "Ministry of Child Affairs Syria - Proposal",
-                        category: "work",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "👶",
-                        status: "planning",
-                        priority: "medium",
-                        notes: "Not urgent but needs attention"
+                        icon: "🎵"
                     },
                     {
-                        id: Date.now() + 101,
-                        title: "Syria's Tale Song",
+                        id: Date.now() + 3,
+                        title: "Follow up with CPA for K1s (tax returns)",
                         category: "work",
                         completed: false,
                         xpValue: 75,
-                        icon: "🎵",
-                        status: "awaiting_client",
-                        priority: "low",
-                        notes: "Project with Rima - awaiting feedback"
+                        icon: "📋"
                     },
                     {
-                        id: Date.now() + 102,
-                        title: "Reels from Syria Lecture",
+                        id: Date.now() + 4,
+                        title: "Work on PA sound system for Syria Ministry",
+                        category: "work",
+                        completed: false,
+                        xpValue: 100,
+                        icon: "🔊"
+                    },
+                    {
+                        id: Date.now() + 5,
+                        title: "Follow up with Washington DC networking contacts",
                         category: "work",
                         completed: false,
                         xpValue: 50,
-                        icon: "📹",
-                        status: "active",
-                        priority: "medium",
-                        notes: "Create social media content"
+                        icon: "🤝"
                     },
                     {
-                        id: Date.now() + 103,
-                        title: "'I Can Do This' Song & Video Clip",
-                        category: "work",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "🎬",
-                        status: "awaiting_client",
-                        priority: "high",
-                        notes: "Project with Rima - 33% complete"
-                    },
-                    {
-                        id: Date.now() + 104,
-                        title: "Quest Coach System Development",
-                        category: "work",
-                        completed: false,
-                        xpValue: 200,
-                        icon: "🎮",
-                        status: "active",
-                        priority: "high",
-                        notes: "This system - ongoing"
-                    },
-                    {
-                        id: Date.now() + 105,
-                        title: "Follow up with CPA for K1s (Tax Returns)",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 75,
-                        icon: "📋",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "2 years to file"
-                    },
-                    {
-                        id: Date.now() + 106,
-                        title: "Ministry of Dakhiliyah - PA System",
-                        category: "work",
-                        completed: false,
-                        xpValue: 150,
-                        icon: "🔊",
-                        status: "active",
-                        priority: "high",
-                        notes: "Sound system - 20% complete"
-                    },
-                    {
-                        id: Date.now() + 107,
-                        title: "Follow up DC Networking Contacts",
-                        category: "work",
-                        completed: false,
-                        xpValue: 50,
-                        icon: "🤝",
-                        status: "active",
-                        priority: "medium",
-                        notes: "Met Syria president - follow up"
-                    },
-                    {
-                        id: Date.now() + 108,
-                        title: "Umayyad Mosque Acoustic Project",
-                        category: "work",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "🕌",
-                        status: "planning",
-                        priority: "medium",
-                        notes: "Reviving older project"
-                    },
-                    {
-                        id: Date.now() + 109,
-                        title: "Update Personal Website",
+                        id: Date.now() + 6,
+                        title: "Revive Umayyad Mosque acoustic project",
                         category: "work",
                         completed: false,
                         xpValue: 75,
-                        icon: "🌐",
-                        status: "active",
-                        priority: "high",
-                        notes: "Modernize + add CTAs"
+                        icon: "🕌"
                     },
                     {
-                        id: Date.now() + 110,
-                        title: "Taxes Filing (2 years)",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "💰",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Scan papers, organize, submit to CPA"
-                    },
-                    {
-                        id: Date.now() + 111,
-                        title: "Nasheed Watani",
+                        id: Date.now() + 7,
+                        title: "Update and modernize personal website",
                         category: "work",
                         completed: false,
                         xpValue: 75,
-                        icon: "🎵",
-                        status: "awaiting_client",
-                        priority: "medium",
-                        notes: "33% complete - awaiting client"
-                    },
-                    {
-                        id: Date.now() + 112,
-                        title: "Audio Courses Launch",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 200,
-                        icon: "🎓",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Payment gateway, marketing, lessons"
-                    },
-                    {
-                        id: Date.now() + 113,
-                        title: "Abdulwareth Lahham Project",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "🎤",
-                        status: "active",
-                        priority: "high",
-                        notes: "Samples, approval, recording, delivery"
-                    },
-                    {
-                        id: Date.now() + 114,
-                        title: "Tamim and Tasnim Song 7",
-                        category: "work",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "👥",
-                        status: "awaiting_client",
-                        priority: "high",
-                        notes: "25% complete - animation pending"
-                    },
-                    {
-                        id: Date.now() + 115,
-                        title: "Space Song Aljazeera",
-                        category: "work",
-                        completed: false,
-                        xpValue: 75,
-                        icon: "🌌",
-                        status: "planning",
-                        priority: "low",
-                        notes: "In planning phase"
-                    },
-                    {
-                        id: Date.now() + 116,
-                        title: "Memory Game",
-                        category: "personal",
-                        completed: false,
-                        xpValue: 50,
-                        icon: "🧠",
-                        status: "active",
-                        priority: "low",
-                        notes: "Game development project"
-                    },
-                    {
-                        id: Date.now() + 117,
-                        title: "Path of Heroes Game",
-                        category: "personal",
-                        completed: false,
-                        xpValue: 75,
-                        icon: "⚔️",
-                        status: "active",
-                        priority: "low",
-                        notes: "Game development project"
+                        icon: "🌐"
                     }
                 ];
                 saveState();
@@ -824,20 +622,10 @@
                             ${quest.title}
                             <span class="category-badge category-${quest.category}">${quest.category}</span>
                         </div>
-                        <div class="quest-category">
-                            +${quest.xpValue} XP
-                            ${quest.notes ? '<br><small style="color:#888;">' + quest.notes + '</small>' : ''}
-                        </div>
+                        <div class="quest-category">+${quest.xpValue} XP</div>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <button onclick="deactivateQuest(${quest.id})"
-                                style="padding: 5px 10px; font-size: 0.75em; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;"
-                                title="Move to inventory">
-                            📦
-                        </button>
-                        <input type="checkbox" class="quest-checkbox" ${quest.completed ? 'checked' : ''}
-                               onchange="toggleQuest(${quest.id})">
-                    </div>
+                    <input type="checkbox" class="quest-checkbox" ${quest.completed ? 'checked' : ''}
+                           onchange="toggleQuest(${quest.id})">
                 `;
                 questList.appendChild(li);
             });
@@ -1097,138 +885,6 @@
             document.getElementById('mic-button').classList.remove('recording');
             document.getElementById('recording-indicator').classList.remove('active');
         }
-
-        // === INVENTORY SYSTEM ===
-
-        let currentInventoryFilter = 'all';
-
-        // Toggle inventory visibility
-        function toggleInventory() {
-            const inventorySection = document.getElementById('inventory-section');
-            inventorySection.classList.toggle('hidden');
-
-            if (!inventorySection.classList.contains('hidden')) {
-                renderInventory();
-            }
-        }
-
-        // Render inventory quests
-        function renderInventory() {
-            const inventoryList = document.getElementById('inventory-list');
-            const inventoryCount = document.getElementById('inventory-count');
-
-            inventoryCount.textContent = appState.inventory.length;
-
-            inventoryList.innerHTML = '';
-
-            let filtered = appState.inventory;
-
-            // Apply filter
-            if (currentInventoryFilter !== 'all') {
-                if (currentInventoryFilter === 'urgent') {
-                    filtered = appState.inventory.filter(q => q.priority === 'urgent');
-                } else if (currentInventoryFilter === 'awaiting_client' || currentInventoryFilter === 'planning') {
-                    filtered = appState.inventory.filter(q => q.status === currentInventoryFilter);
-                } else {
-                    filtered = appState.inventory.filter(q => q.category === currentInventoryFilter);
-                }
-            }
-
-            // Sort by priority
-            const priorityOrder = { 'urgent': 0, 'high': 1, 'medium': 2, 'low': 3 };
-            filtered.sort((a, b) => {
-                return priorityOrder[a.priority] - priorityOrder[b.priority];
-            });
-
-            filtered.forEach(quest => {
-                const li = document.createElement('li');
-                const statusEmoji = {
-                    'active': '▶️',
-                    'awaiting_client': '⏳',
-                    'planning': '📋',
-                    'blocked': '🚫'
-                };
-
-                const priorityBadge = quest.priority === 'urgent' ? '<span style="background:#dc3545;color:white;padding:2px 8px;border-radius:10px;font-size:0.75em;margin-left:5px;">URGENT</span>' : '';
-
-                li.className = `quest-item`;
-                li.innerHTML = `
-                    <div class="quest-icon">${quest.icon}</div>
-                    <div class="quest-content">
-                        <div class="quest-title">
-                            ${quest.title}
-                            ${priorityBadge}
-                        </div>
-                        <div class="quest-category">
-                            ${statusEmoji[quest.status] || ''} ${quest.status.replace('_', ' ')} • +${quest.xpValue} XP
-                            ${quest.notes ? '<br><small style="color:#888;">' + quest.notes + '</small>' : ''}
-                        </div>
-                    </div>
-                    <button onclick="activateQuest(${quest.id})" style="padding: 8px 15px; font-size: 0.85em; background: #28a745;">
-                        ⬆️ Activate
-                    </button>
-                `;
-                inventoryList.appendChild(li);
-            });
-
-            if (filtered.length === 0) {
-                inventoryList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No quests match this filter.</p>';
-            }
-        }
-
-        // Filter inventory
-        function filterInventory(filter) {
-            currentInventoryFilter = filter;
-            renderInventory();
-        }
-
-        // Move quest from inventory to active
-        function activateQuest(questId) {
-            const questIndex = appState.inventory.findIndex(q => q.id === questId);
-            if (questIndex > -1) {
-                const quest = appState.inventory.splice(questIndex, 1)[0];
-                appState.quests.push(quest);
-                saveState();
-                updateUI();
-                renderInventory();
-                showNotification(`✅ "${quest.title}" activated! Let's do this!`);
-            }
-        }
-
-        // Move quest from active to inventory
-        function deactivateQuest(questId) {
-            const questIndex = appState.quests.findIndex(q => q.id === questId);
-            if (questIndex > -1) {
-                const quest = appState.quests.splice(questIndex, 1)[0];
-                quest.completed = false; // Reset completion when moving to inventory
-                appState.inventory.push(quest);
-                saveState();
-                updateUI();
-                showNotification(`📦 "${quest.title}" moved to inventory.`);
-            }
-        }
-
-        // Update the updateUI function to include inventory count
-        const originalUpdateUI = updateUI;
-        updateUI = function() {
-            if (typeof originalUpdateUI === 'function') {
-                originalUpdateUI();
-            }
-
-            // Update inventory count
-            const inventoryCount = document.getElementById('inventory-count');
-            if (inventoryCount) {
-                inventoryCount.textContent = appState.inventory ? appState.inventory.length : 0;
-            }
-
-            // Render inventory if visible
-            const inventorySection = document.getElementById('inventory-section');
-            if (inventorySection && !inventorySection.classList.contains('hidden')) {
-                renderInventory();
-            }
-        };
-
-        // === END INVENTORY SYSTEM ===
 
         // Process brain dump
         function processBrainDump() {

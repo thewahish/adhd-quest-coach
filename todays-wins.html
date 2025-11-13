@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Today's Wins - November 13, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .date {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .xp-total {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+        }
+
+        .xp-total h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .xp-total p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .quest-item {
+            background: #f8f9fa;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .quest-item:nth-child(1) { animation-delay: 0.1s; }
+        .quest-item:nth-child(2) { animation-delay: 0.2s; }
+        .quest-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .quest-icon {
+            font-size: 2.5em;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .quest-details {
+            flex: 1;
+        }
+
+        .quest-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .quest-xp {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .checkmark {
+            color: #4caf50;
+            font-size: 2em;
+            animation: checkPop 0.5s ease;
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .motivation {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #856404;
+            font-weight: 500;
+        }
+
+        .next-up {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            border-left: 5px solid #2196f3;
+        }
+
+        .next-up h3 {
+            color: #2196f3;
+            margin-bottom: 15px;
+        }
+
+        .next-quest {
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .xp-total h2 {
+                font-size: 2em;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 TODAY'S WINS! 🎉</h1>
+        <p class="date">November 13, 2025</p>
+
+        <div class="xp-total">
+            <h2>+200 XP</h2>
+            <p>EARNED TODAY</p>
+        </div>
+
+        <div class="quests-completed">
+            <div class="quest-item">
+                <div class="quest-icon">🚗</div>
+                <div class="quest-details">
+                    <div class="quest-name">Uber Driver App Paperwork</div>
+                    <div class="quest-xp">+100 XP</div>
+                </div>
+                <div class="checkmark">✓</div>
+            </div>
+
+            <div class="quest-item">
+                <div class="quest-icon">🚨</div>
+                <div class="quest-details">
+                    <div class="quest-name">Amazon Order - Webcam & Speakers</div>
+                    <div class="quest-xp">+50 XP</div>
+                </div>
+                <div class="checkmark">✓</div>
+            </div>
+
+            <div class="quest-item">
+                <div class="quest-icon">🎮</div>
+                <div class="quest-details">
+                    <div class="quest-name">Quest System Setup & Sync</div>
+                    <div class="quest-xp">+50 XP (Bonus!)</div>
+                </div>
+                <div class="checkmark">✓</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-box">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Quests Done</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">200</span>
+                <span class="stat-label">XP Earned</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">33</span>
+                <span class="stat-label">To Go</span>
+            </div>
+        </div>
+
+        <div class="motivation">
+            💪 You're on fire! Keep this momentum going!
+        </div>
+
+        <div class="next-up">
+            <h3>🎯 Up Next (Today):</h3>
+            <div class="next-quest">
+                <span>🎧 Anas Bitar - Audio Cleaning</span>
+                <strong>100 XP</strong>
+            </div>
+            <div class="next-quest">
+                <span>💰 Abdulwareth Invoice</span>
+                <strong>75 XP</strong>
+            </div>
+            <div class="next-quest">
+                <span>🕌 Mawlid Songs (2 songs)</span>
+                <strong>260 XP</strong>
+            </div>
+            <div style="margin-top: 15px; text-align: center; color: #666;">
+                <strong>Potential Today: 435 XP more!</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create confetti
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = ['#ff0', '#f0f', '#0ff', '#f00', '#0f0'][Math.floor(Math.random() * 5)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(confetti);
+        }
+
+        // Play success sound
+        const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBCx+zPLTgjMGHm7A7+OZURE');
+        audio.volume = 0.3;
+        audio.play().catch(() => {}); // Ignore if audio fails
+    </script>
+</body>
+</html>

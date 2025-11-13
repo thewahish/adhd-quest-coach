@@ -381,6 +381,22 @@
             <h1>⚔️ Quest Coach</h1>
             <p class="subtitle">Your ADHD-Friendly RPG Life System</p>
             <p class="subtitle">Level up one quest at a time, at your own pace</p>
+
+            <!-- GitHub Sync Controls -->
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center;">
+                <button id="sync-push-btn" onclick="syncToGitHub()" style="background: #28a745; padding: 10px 20px; font-size: 0.9em;">
+                    ⬆️ Sync to GitHub
+                </button>
+                <button id="sync-pull-btn" onclick="syncFromGitHub()" style="background: #17a2b8; padding: 10px 20px; font-size: 0.9em;">
+                    ⬇️ Load from GitHub
+                </button>
+                <button onclick="showSyncSettings()" style="background: #6c757d; padding: 10px 20px; font-size: 0.9em;">
+                    ⚙️ Sync Settings
+                </button>
+                <span id="sync-status" style="color: #ffc107; font-size: 0.85em; margin-left: 10px;">
+                    Not configured
+                </span>
+            </div>
         </div>
 
         <!-- Stats Dashboard -->
@@ -502,6 +518,60 @@
             <button onclick="saveReflection()">Save Reflection</button>
         </div>
     </div>
+
+    <!-- GitHub Sync Settings Modal -->
+    <div id="sync-settings-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 20px; padding: 40px; max-width: 600px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="color: #667eea; margin-bottom: 20px;">⚙️ GitHub Sync Settings</h2>
+
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #333; font-size: 1.1em; margin-bottom: 10px;">📝 Setup Instructions:</h3>
+                <ol style="color: #666; line-height: 1.8; margin-left: 20px;">
+                    <li>Go to <a href="https://github.com/settings/tokens" target="_blank" style="color: #667eea;">GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)</a></li>
+                    <li>Click "Generate new token (classic)"</li>
+                    <li>Give it a name like "Quest Coach Sync"</li>
+                    <li>Select scope: <strong>repo</strong> (full control of private repositories)</li>
+                    <li>Click "Generate token"</li>
+                    <li>Copy the token and paste it below</li>
+                </ol>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; color: #333; font-weight: bold; margin-bottom: 8px;">GitHub Personal Access Token:</label>
+                <input type="password" id="github-token-input" placeholder="ghp_xxxxxxxxxxxx" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.95em;">
+                <p style="color: #888; font-size: 0.85em; margin-top: 8px;">🔒 Stored securely in your browser's localStorage</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label style="display: flex; align-items: center; color: #333; cursor: pointer;">
+                    <input type="checkbox" id="auto-sync-checkbox" style="width: 20px; height: 20px; margin-right: 10px; cursor: pointer;">
+                    <span>Enable auto-sync (syncs 5 seconds after each change)</span>
+                </label>
+            </div>
+
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button onclick="closeSyncSettings()" style="background: #6c757d; padding: 12px 25px;">
+                    Cancel
+                </button>
+                <button onclick="saveSyncSettings()" style="background: #28a745; padding: 12px 25px;">
+                    💾 Save Settings
+                </button>
+            </div>
+
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 2px solid #e0e0e0;">
+                <h3 style="color: #333; font-size: 1em; margin-bottom: 10px;">💡 How it works:</h3>
+                <ul style="color: #666; line-height: 1.8; margin-left: 20px; font-size: 0.9em;">
+                    <li><strong>⬆️ Sync to GitHub:</strong> Pushes your current progress to GitHub (overwrites remote)</li>
+                    <li><strong>⬇️ Load from GitHub:</strong> Loads progress from GitHub (overwrites local)</li>
+                    <li><strong>Auto-sync:</strong> Automatically pushes to GitHub 5 seconds after any change</li>
+                    <li><strong>Result:</strong> Access same progress on all devices! 🎉</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include GitHub Sync Script -->
+    <script src="github-sync.js"></script>
 
     <script>
         // Initialize app state

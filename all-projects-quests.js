@@ -390,6 +390,71 @@ const allProjectQuests = [
         ]
     },
     {
+        name: "Ministry of Child Affairs Syria - Proposal",
+        category: "work",
+        priority: "medium",
+        status: "planning",
+        xpValue: 100,
+        icon: "👶",
+        notes: "Not urgent but needs attention - draft proposal",
+        project: "syria-ministry-child",
+        subtasks: [
+            { title: "Understand project scope", completed: false },
+            { title: "Draft initial proposal", completed: false },
+            { title: "Review and finalize", completed: false },
+            { title: "Submit to ministry", completed: false }
+        ]
+    },
+    {
+        name: "Reels from Syria Lecture",
+        category: "work",
+        priority: "medium",
+        status: "active",
+        xpValue: 50,
+        icon: "📹",
+        notes: "Create social media content from Syria lecture",
+        project: "media-content",
+        subtasks: [
+            { title: "Review lecture footage", completed: false },
+            { title: "Select best clips", completed: false },
+            { title: "Edit reels", completed: false },
+            { title: "Post to social media", completed: false }
+        ]
+    },
+    {
+        name: "Nasheed Watani",
+        category: "work",
+        priority: "medium",
+        status: "awaiting_client",
+        xpValue: 75,
+        icon: "🎵",
+        notes: "33% complete - Music done, awaiting client feedback",
+        project: "audio-work",
+        subtasks: [
+            { title: "Music production", completed: true },
+            { title: "Awaiting client feedback", completed: false },
+            { title: "Revisions if needed", completed: false },
+            { title: "Final delivery", completed: false }
+        ]
+    },
+    {
+        name: "Email Management System",
+        category: "work",
+        priority: "medium",
+        status: "planning",
+        xpValue: 75,
+        icon: "📧",
+        notes: "Set up efficient email workflow and management system",
+        project: "business-operations",
+        subtasks: [
+            { title: "Audit current email workflow", completed: false },
+            { title: "Choose email management tool", completed: false },
+            { title: "Set up folders and filters", completed: false },
+            { title: "Create templates", completed: false },
+            { title: "Train on new system", completed: false }
+        ]
+    },
+    {
         name: "Karazah Mobile App Development",
         category: "work",
         priority: "medium",
@@ -522,6 +587,37 @@ const allProjectQuests = [
     // =====================================================
     // ONGOING / LOW PRIORITY
     // =====================================================
+    {
+        name: "Syria's Tale Song",
+        category: "work",
+        priority: "low",
+        status: "awaiting_client",
+        xpValue: 75,
+        icon: "🎵",
+        notes: "Project with Rima - awaiting client feedback",
+        project: "audio-work",
+        subtasks: [
+            { title: "Wait for client feedback", completed: false },
+            { title: "Implement revisions if needed", completed: false },
+            { title: "Final delivery", completed: false }
+        ]
+    },
+    {
+        name: "Space Song Aljazeera",
+        category: "work",
+        priority: "low",
+        status: "planning",
+        xpValue: 75,
+        icon: "🌌",
+        notes: "New project - needs scoping and planning",
+        project: "audio-work",
+        subtasks: [
+            { title: "Discuss project scope with client", completed: false },
+            { title: "Review requirements", completed: false },
+            { title: "Create project timeline", completed: false },
+            { title: "Begin production", completed: false }
+        ]
+    },
     {
         name: "ADHD Posts & Reels Plan",
         category: "personal",

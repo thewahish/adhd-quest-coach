@@ -784,6 +784,11 @@
 
             let finalTranscript = '';
 
+            recognition.onstart = function() {
+                console.log('Speech recognition started');
+                isRecording = true;
+            };
+
             recognition.onresult = function(event) {
                 let interimTranscript = '';
 
@@ -860,8 +865,12 @@
 
                 // Focus textarea
                 document.getElementById('brain-dump').focus();
+
+                console.log('Recording started successfully');
             } catch (e) {
                 console.error('Error starting recognition:', e);
+                alert('Could not start voice input: ' + e.message + '\n\nMake sure you:\n1. Granted microphone permission\n2. Are using Chrome, Edge, or Safari\n3. Have a working microphone');
+                stopRecording();
             }
         }
 

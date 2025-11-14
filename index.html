@@ -559,6 +559,7 @@
             </ul>
             <button onclick="showAddQuest()">➕ Add New Quest</button>
             <button onclick="toggleInventory()" style="background: #6c757d; margin-left: 10px;">📦 Quest Inventory (<span id="inventory-count">0</span>)</button>
+            <button onclick="toggleCompleted()" style="background: #28a745; margin-left: 10px;">✅ Completed (<span id="completed-count">0</span>)</button>
         </div>
 
         <!-- Quest Inventory (Hidden by default) -->
@@ -579,6 +580,17 @@
                 <!-- Inventory quests will be populated here -->
             </ul>
             <button onclick="toggleInventory()" style="background: #6c757d;">Close Inventory</button>
+        </div>
+
+        <!-- Completed Quests (Hidden by default) -->
+        <div class="quest-section hidden" id="completed-section">
+            <h2>✅ Completed Quests</h2>
+            <p style="color: #666; margin-bottom: 15px;">Your victories! You crushed these quests. 🎉</p>
+
+            <ul class="quest-list" id="completed-list">
+                <!-- Completed quests will be populated here -->
+            </ul>
+            <button onclick="toggleCompleted()" style="background: #28a745;">Close Completed</button>
         </div>
 
         <!-- Add Quest Section (Hidden by default) -->
@@ -767,9 +779,11 @@
             const questList = document.getElementById('quest-list');
             questList.innerHTML = '';
 
-            // Sort: urgent first, then incomplete, then completed
-            const sortedQuests = [...appState.quests].sort((a, b) => {
-                if (a.completed !== b.completed) return a.completed ? 1 : -1;
+            // Filter out completed quests - they go to the completed section now
+            const activeQuests = appState.quests.filter(q => !q.completed);
+
+            // Sort: urgent first
+            const sortedQuests = [...activeQuests].sort((a, b) => {
                 if (a.category === 'urgent' && b.category !== 'urgent') return -1;
                 if (a.category !== 'urgent' && b.category === 'urgent') return 1;
                 return 0;
@@ -1376,7 +1390,7 @@
             }
         }
 
-        // Update the updateUI function to include inventory count
+        // Update the updateUI function to include inventory count and completed count
         const originalUpdateUI = updateUI;
         updateUI = function() {
             if (typeof originalUpdateUI === 'function') {
@@ -1389,12 +1403,92 @@
                 inventoryCount.textContent = appState.inventory ? appState.inventory.length : 0;
             }
 
+            // Update completed count
+            const completedCount = document.getElementById('completed-count');
+            if (completedCount) {
+                const completedQuests = appState.quests.filter(q => q.completed);
+                completedCount.textContent = completedQuests.length;
+            }
+
             // Render inventory if visible
             const inventorySection = document.getElementById('inventory-section');
             if (inventorySection && !inventorySection.classList.contains('hidden')) {
                 renderInventory();
             }
+
+            // Render completed if visible
+            const completedSection = document.getElementById('completed-section');
+            if (completedSection && !completedSection.classList.contains('hidden')) {
+                renderCompletedQuests();
+            }
         };
+
+        // === COMPLETED QUESTS SYSTEM ===
+
+        // Toggle completed quests visibility
+        function toggleCompleted() {
+            const completedSection = document.getElementById('completed-section');
+            completedSection.classList.toggle('hidden');
+
+            if (!completedSection.classList.contains('hidden')) {
+                renderCompletedQuests();
+            }
+        }
+
+        // Render completed quests
+        function renderCompletedQuests() {
+            const completedList = document.getElementById('completed-list');
+            const completedCount = document.getElementById('completed-count');
+
+            // Get completed quests from appState.quests
+            const completedQuests = appState.quests.filter(q => q.completed);
+
+            completedCount.textContent = completedQuests.length;
+            completedList.innerHTML = '';
+
+            // Sort by completion (most recent first if we had timestamps)
+            completedQuests.forEach(quest => {
+                const li = document.createElement('li');
+                li.className = 'quest-item completed';
+                li.innerHTML = `
+                    <div class="quest-icon">${quest.icon}</div>
+                    <div class="quest-content">
+                        <div class="quest-title">
+                            ${quest.title}
+                        </div>
+                        <div class="quest-category">
+                            ✅ Completed • +${quest.xpValue} XP
+                            ${quest.notes ? '<br><small style="color:#888;">' + quest.notes + '</small>' : ''}
+                        </div>
+                    </div>
+                    <button onclick="uncompleteQuest(${quest.id})" style="padding: 8px 15px; font-size: 0.85em; background: #ffc107;">
+                        ↩️ Undo
+                    </button>
+                `;
+                completedList.appendChild(li);
+            });
+
+            if (completedQuests.length === 0) {
+                completedList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No completed quests yet. Complete some quests to see them here!</p>';
+            }
+        }
+
+        // Uncomplete a quest (move back to active)
+        function uncompleteQuest(questId) {
+            const quest = appState.quests.find(q => q.id === questId);
+            if (quest) {
+                quest.completed = false;
+                // Remove XP that was awarded
+                appState.xp -= quest.xpValue;
+                if (appState.xp < 0) appState.xp = 0;
+                saveState();
+                updateUI();
+                renderCompletedQuests();
+                showNotification(`↩️ "${quest.title}" moved back to active quests.`);
+            }
+        }
+
+        // === END COMPLETED QUESTS SYSTEM ===
 
         // === END INVENTORY SYSTEM ===
 

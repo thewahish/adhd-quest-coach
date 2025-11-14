@@ -1,6 +1,6 @@
 {
-  "xp": 150,
-  "level": 2,
+  "xp": 350,
+  "level": 4,
   "streak": 2,
   "quests": [
     {
@@ -332,51 +332,10 @@
       "questChain": []
     },
     {
-      "id": 1763138540948,
-      "title": "Contacts Management System with Nour",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "👥",
-      "status": "active",
-      "priority": "high",
-      "notes": "Set up comprehensive contacts management system with assistant Nour",
-      "project": "business-operations",
-      "subtasks": [
-        {
-          "title": "Audit all existing contacts",
-          "completed": false
-        },
-        {
-          "title": "Define contact categories",
-          "completed": false
-        },
-        {
-          "title": "Set up shared contact database",
-          "completed": false
-        },
-        {
-          "title": "Create contact management workflow",
-          "completed": false
-        },
-        {
-          "title": "Train Nour on system",
-          "completed": false
-        },
-        {
-          "title": "Test system for 1 week",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
       "id": 1763138540949,
       "title": "Issa Endocrinology - Fix Voicemail System URGENT",
       "category": "urgent",
-      "completed": false,
+      "completed": true,
       "xpValue": 150,
       "icon": "📞",
       "status": "active",
@@ -592,15 +551,41 @@
   ],
   "reflections": [],
   "history": {
-    "questCompletions": [],
+    "questCompletions": [
+      {
+        "questId": 1763138540949,
+        "questName": "Issa Endocrinology - Fix Voicemail System URGENT",
+        "xpEarned": 150,
+        "category": "urgent",
+        "completedAt": "2025-11-14T17:42:33.040Z"
+      }
+    ],
     "levelUps": [
       {
         "level": 2,
         "totalXP": 150,
         "leveledUpAt": "2025-11-14T16:42:20.436Z"
+      },
+      {
+        "level": 3,
+        "totalXP": 350,
+        "leveledUpAt": "2025-11-14T17:42:33.045Z"
+      },
+      {
+        "level": 4,
+        "totalXP": 350,
+        "leveledUpAt": "2025-11-14T17:42:33.547Z"
       }
     ],
-    "dailyStats": [],
+    "dailyStats": [
+      {
+        "date": "2025-11-14",
+        "xpEarned": 150,
+        "questsCompleted": 1,
+        "mood": "good",
+        "brainDumps": 1
+      }
+    ],
     "moodCheckins": [],
     "sessions": [
       {
@@ -2042,6 +2027,51 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763138540948,
+      "title": "Contacts Management System with Nour",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "👥",
+      "status": "active",
+      "priority": "high",
+      "notes": "Set up comprehensive contacts management system with assistant Nour",
+      "project": "business-operations",
+      "subtasks": [
+        {
+          "title": "Audit all existing contacts",
+          "completed": false
+        },
+        {
+          "title": "Define contact categories",
+          "completed": false
+        },
+        {
+          "title": "Set up shared contact database",
+          "completed": false
+        },
+        {
+          "title": "Create contact management workflow",
+          "completed": false
+        },
+        {
+          "title": "Train Nour on system",
+          "completed": false
+        },
+        {
+          "title": "Test system for 1 week",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
+  ],
+  "achievements": [
+    "firstQuest",
+    "xp100"
   ]
 }

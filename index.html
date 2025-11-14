@@ -957,12 +957,47 @@
 
         // Load state from localStorage
         function loadState() {
+            console.log('🔄 [LOAD STATE] Loading Quest Coach state from localStorage...');
             const saved = localStorage.getItem('questCoachState');
             if (saved) {
                 appState = JSON.parse(saved);
+                console.log('✅ [LOAD STATE] State loaded from localStorage', {
+                    xp: appState.xp,
+                    level: appState.level,
+                    quests: appState.quests?.length || 0,
+                    inventory: appState.inventory?.length || 0
+                });
+
+                // Ensure history structure exists (for backwards compatibility)
+                if (!appState.history) {
+                    console.log('⚠️ [LOAD STATE] No history object found, initializing...');
+                    appState.history = {};
+                }
+                if (!appState.history.questCompletions) appState.history.questCompletions = [];
+                if (!appState.history.levelUps) appState.history.levelUps = [];
+                if (!appState.history.dailyStats) appState.history.dailyStats = [];
+                if (!appState.history.moodCheckins) appState.history.moodCheckins = [];
+                if (!appState.history.sessions) appState.history.sessions = [];
+                if (!appState.history.syncLog) {
+                    console.log('⚠️ [LOAD STATE] No syncLog found, initializing...');
+                    appState.history.syncLog = [];
+                }
+                if (!appState.history.activityLog) {
+                    console.log('⚠️ [LOAD STATE] No activityLog found, initializing...');
+                    appState.history.activityLog = [];
+                }
+
+                console.log('📊 [LOAD STATE] History loaded:', {
+                    syncLog: appState.history.syncLog.length,
+                    activityLog: appState.history.activityLog.length,
+                    questCompletions: appState.history.questCompletions.length,
+                    moodCheckins: appState.history.moodCheckins.length
+                });
+
                 updateUI();
                 updateBrainDumpCount();
             } else {
+                console.log('ℹ️ [LOAD STATE] No saved state found, using defaults');
                 // Initialize with empty arrays - quest importer will populate from all-projects-quests.js
                 appState.quests = [];
                 appState.inventory = [];
@@ -972,7 +1007,16 @@
 
         // Save state to localStorage
         function saveState() {
+            console.log('💾 [SAVE STATE] Saving Quest Coach state to localStorage...', {
+                xp: appState.xp,
+                level: appState.level,
+                quests: appState.quests?.length || 0,
+                inventory: appState.inventory?.length || 0,
+                syncLogEntries: appState.history?.syncLog?.length || 0,
+                activityLogEntries: appState.history?.activityLog?.length || 0
+            });
             localStorage.setItem('questCoachState', JSON.stringify(appState));
+            console.log('✅ [SAVE STATE] State saved successfully');
         }
 
         // Update all UI elements
@@ -1021,15 +1065,28 @@
             // Filter out completed quests - they go to the completed section now
             const activeQuests = appState.quests.filter(q => !q.completed);
 
-            // Sort: urgent first (check both category and priority)
+            // Sort by priority: Urgent > High > Medium > Low
             const sortedQuests = [...activeQuests].sort((a, b) => {
-                const aIsUrgent = a.category === 'urgent' || a.priority === 'urgent';
-                const bIsUrgent = b.category === 'urgent' || b.priority === 'urgent';
+                // Define priority levels (lower number = higher priority)
+                const getPriorityLevel = (quest) => {
+                    const priority = quest.priority || quest.category || 'medium';
+                    if (priority === 'urgent' || quest.category === 'urgent') return 1;
+                    if (priority === 'high') return 2;
+                    if (priority === 'medium' || priority === 'work') return 3;
+                    if (priority === 'low' || priority === 'planning') return 4;
+                    if (priority === 'awaiting') return 5;
+                    return 3; // Default to medium
+                };
 
-                if (aIsUrgent && !bIsUrgent) return -1;
-                if (!aIsUrgent && bIsUrgent) return 1;
-                return 0;
+                const aPriority = getPriorityLevel(a);
+                const bPriority = getPriorityLevel(b);
+
+                console.log(`🔄 [RENDER QUESTS] Sorting: ${a.title} (priority ${aPriority}) vs ${b.title} (priority ${bPriority})`);
+
+                return aPriority - bPriority;
             });
+
+            console.log(`📊 [RENDER QUESTS] Rendering ${sortedQuests.length} active quests (sorted by priority)`);
 
             sortedQuests.forEach(quest => {
                 // Check if quest is part of a chain and if it's locked
@@ -1075,6 +1132,19 @@
                     `;
                 }
 
+                // Get current priority for display
+                const currentPriority = quest.priority || quest.category || 'medium';
+                const priorityIcons = {
+                    'urgent': '🚨',
+                    'high': '⚡',
+                    'medium': '💼',
+                    'work': '💼',
+                    'low': '📋',
+                    'planning': '📋',
+                    'awaiting': '⏳'
+                };
+                const priorityIcon = priorityIcons[currentPriority] || '💼';
+
                 li.innerHTML = `
                     <div class="quest-icon">${quest.icon}</div>
                     <div class="quest-content" style="flex: 1;">
@@ -1090,6 +1160,15 @@
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px;">
+                        <select onchange="changeQuestPriority(${quest.id}, this.value)"
+                                style="padding: 5px 8px; font-size: 0.8em; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background: white;"
+                                title="Change priority">
+                            <option value="urgent" ${currentPriority === 'urgent' ? 'selected' : ''}>🚨 Urgent</option>
+                            <option value="high" ${currentPriority === 'high' ? 'selected' : ''}>⚡ High</option>
+                            <option value="medium" ${currentPriority === 'medium' || currentPriority === 'work' ? 'selected' : ''}>💼 Work</option>
+                            <option value="awaiting" ${currentPriority === 'awaiting' ? 'selected' : ''}>⏳ Awaiting</option>
+                            <option value="low" ${currentPriority === 'low' || currentPriority === 'planning' ? 'selected' : ''}>📋 Planning</option>
+                        </select>
                         <button onclick="deactivateQuest(${quest.id})"
                                 style="padding: 5px 10px; font-size: 0.75em; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;"
                                 title="Move to inventory">
@@ -1165,14 +1244,25 @@
 
         // Toggle quest completion
         function toggleQuest(questId) {
+            console.log(`🔄 [TOGGLE QUEST] Toggling quest ${questId}...`);
             const quest = appState.quests.find(q => q.id === questId);
             if (quest) {
+                console.log(`📋 [TOGGLE QUEST] Found quest: ${quest.title}`, {
+                    completed: quest.completed,
+                    xpValue: quest.xpValue,
+                    priority: quest.priority,
+                    category: quest.category
+                });
+
                 // Check if quest is locked
                 if (isQuestLocked(quest) && !quest.completed) {
+                    console.log(`🔒 [TOGGLE QUEST] Quest is locked`);
                     const chainInfo = getQuestChainInfo(quest);
                     if (chainInfo.blockingQuest) {
+                        console.log(`🔒 [TOGGLE QUEST] Blocking quest: ${chainInfo.blockingQuest.title}`);
                         showNotification(`🔒 Complete "${chainInfo.blockingQuest.title}" first!`);
                     } else {
+                        console.log(`🔒 [TOGGLE QUEST] Quest locked by chain requirement`);
                         showNotification('🔒 This quest is locked. Complete the previous quest first!');
                     }
                     updateUI(); // Refresh to uncheck the checkbox
@@ -1180,8 +1270,10 @@
                 }
 
                 quest.completed = !quest.completed;
+                console.log(`✅ [TOGGLE QUEST] Quest completion toggled to: ${quest.completed}`);
 
                 if (quest.completed) {
+                    console.log(`🎉 [TOGGLE QUEST] Completing quest! Awarding ${quest.xpValue} XP`);
                     // Award XP
                     appState.xp += quest.xpValue;
                     let totalXP = quest.xpValue;
@@ -1194,6 +1286,14 @@
                         xpEarned: quest.xpValue,
                         category: quest.category,
                         completedAt: new Date().toISOString()
+                    });
+
+                    // Log to activity log
+                    logActivity('quest_complete', `Quest completed: ${quest.title}`, {
+                        questId: quest.id,
+                        xpEarned: quest.xpValue,
+                        category: quest.category,
+                        priority: quest.priority
                     });
 
                     // Update daily stats
@@ -1224,7 +1324,9 @@
                     } else {
                         showNotification(`🎉 Quest completed! +${totalXP} XP`);
                     }
+                    console.log(`✅ [TOGGLE QUEST] Quest completion processed. Total XP: ${appState.xp}`);
                 } else {
+                    console.log(`↩️ [TOGGLE QUEST] Uncompleting quest. Removing ${quest.xpValue} XP`);
                     // Remove XP
                     appState.xp -= quest.xpValue;
 
@@ -1394,6 +1496,7 @@
 
         // Select mood
         function selectMood(mood, emoji) {
+            console.log(`😊 [SELECT MOOD] User selected mood: ${mood} ${emoji}`);
             appState.mood = { mood, emoji, date: new Date().toISOString() };
 
             // 📊 Log mood check-in to history
@@ -1403,6 +1506,10 @@
                 emoji: emoji,
                 timestamp: new Date().toISOString()
             });
+
+            // Log to activity log
+            logActivity('mood_check', `Mood checked in: ${mood} ${emoji}`, { mood, emoji });
+            console.log('✅ [SELECT MOOD] Mood saved and logged to activity log');
 
             // Update button states
             document.querySelectorAll('.mood-btn').forEach(btn => {
@@ -1538,22 +1645,48 @@
 
         // Toggle sync log visibility
         function toggleSyncLog() {
+            console.log('🔄 [TOGGLE SYNC LOG] Toggling sync log visibility...');
             const logSection = document.getElementById('sync-log-section');
-            logSection.classList.toggle('hidden');
 
-            if (!logSection.classList.contains('hidden')) {
+            if (!logSection) {
+                console.error('❌ [TOGGLE SYNC LOG] sync-log-section element not found!');
+                return;
+            }
+
+            logSection.classList.toggle('hidden');
+            const isVisible = !logSection.classList.contains('hidden');
+            console.log(`📊 [TOGGLE SYNC LOG] Sync log is now ${isVisible ? 'visible' : 'hidden'}`);
+
+            if (isVisible) {
+                console.log('🔄 [TOGGLE SYNC LOG] Rendering sync log...');
                 renderSyncLog();
             }
         }
 
         // Render sync log
         function renderSyncLog() {
+            console.log('📊 [RENDER SYNC LOG] Starting to render sync log...');
             const logList = document.getElementById('sync-log-list');
 
+            if (!logList) {
+                console.error('❌ [RENDER SYNC LOG] sync-log-list element not found!');
+                return;
+            }
+
+            console.log('📊 [RENDER SYNC LOG] Checking appState.history...', {
+                hasHistory: !!appState.history,
+                hasSyncLog: !!appState.history?.syncLog,
+                syncLogLength: appState.history?.syncLog?.length || 0
+            });
+
             if (!appState.history || !appState.history.syncLog || appState.history.syncLog.length === 0) {
+                console.log('ℹ️ [RENDER SYNC LOG] No sync log entries found, showing empty message');
                 logList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No sync attempts yet.</p>';
                 return;
             }
+
+            console.log(`✅ [RENDER SYNC LOG] Found ${appState.history.syncLog.length} sync log entries`);
+            console.log('📋 [RENDER SYNC LOG] Sync log entries:', appState.history.syncLog);
 
             // Sort by most recent first
             const sorted = [...appState.history.syncLog].reverse();
@@ -1606,22 +1739,48 @@
 
         // Toggle activity log visibility
         function toggleActivityLog() {
+            console.log('🔄 [TOGGLE ACTIVITY LOG] Toggling activity log visibility...');
             const logSection = document.getElementById('activity-log-section');
-            logSection.classList.toggle('hidden');
 
-            if (!logSection.classList.contains('hidden')) {
+            if (!logSection) {
+                console.error('❌ [TOGGLE ACTIVITY LOG] activity-log-section element not found!');
+                return;
+            }
+
+            logSection.classList.toggle('hidden');
+            const isVisible = !logSection.classList.contains('hidden');
+            console.log(`📊 [TOGGLE ACTIVITY LOG] Activity log is now ${isVisible ? 'visible' : 'hidden'}`);
+
+            if (isVisible) {
+                console.log('🔄 [TOGGLE ACTIVITY LOG] Rendering activity log...');
                 renderActivityLog();
             }
         }
 
         // Render activity log
         function renderActivityLog() {
+            console.log('📊 [RENDER ACTIVITY LOG] Starting to render activity log...');
             const logList = document.getElementById('activity-log-list');
 
+            if (!logList) {
+                console.error('❌ [RENDER ACTIVITY LOG] activity-log-list element not found!');
+                return;
+            }
+
+            console.log('📊 [RENDER ACTIVITY LOG] Checking appState.history...', {
+                hasHistory: !!appState.history,
+                hasActivityLog: !!appState.history?.activityLog,
+                activityLogLength: appState.history?.activityLog?.length || 0
+            });
+
             if (!appState.history || !appState.history.activityLog || appState.history.activityLog.length === 0) {
+                console.log('ℹ️ [RENDER ACTIVITY LOG] No activity log entries found, showing empty message');
                 logList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No activity logged yet.</p>';
                 return;
             }
+
+            console.log(`✅ [RENDER ACTIVITY LOG] Found ${appState.history.activityLog.length} activity log entries`);
+            console.log('📋 [RENDER ACTIVITY LOG] Activity log entries:', appState.history.activityLog);
 
             // Sort by most recent first
             const sorted = [...appState.history.activityLog].reverse();
@@ -1692,10 +1851,14 @@
 
         // Add new quest
         function addQuest() {
+            console.log('➕ [ADD QUEST] Adding new quest...');
             const title = document.getElementById('quest-title-input').value.trim();
             const category = document.getElementById('quest-category').value;
 
+            console.log(`📋 [ADD QUEST] Quest details:`, { title, category });
+
             if (!title) {
+                console.warn('⚠️ [ADD QUEST] No title provided, aborting');
                 alert('Please enter a quest title!');
                 return;
             }
@@ -1723,11 +1886,21 @@
                 icon: categoryIcons[category]
             };
 
+            console.log(`✅ [ADD QUEST] Created quest:`, newQuest);
             appState.quests.push(newQuest);
+
+            // Log to activity log
+            logActivity('quest_add', `New quest added: ${title}`, {
+                category,
+                xpValue: newQuest.xpValue,
+                questId: newQuest.id
+            });
+
             saveState();
             updateUI();
             cancelAddQuest();
             showNotification('✅ New quest added!');
+            console.log(`🎉 [ADD QUEST] Quest added successfully! Total quests: ${appState.quests.length}`);
         }
 
         // Voice input functionality
@@ -1962,15 +2135,65 @@
 
         // Move quest from active to inventory
         function deactivateQuest(questId) {
+            console.log(`📦 [DEACTIVATE QUEST] Moving quest ${questId} to inventory...`);
             const questIndex = appState.quests.findIndex(q => q.id === questId);
             if (questIndex > -1) {
                 const quest = appState.quests.splice(questIndex, 1)[0];
+                console.log(`📦 [DEACTIVATE QUEST] Found quest: ${quest.title}`);
                 quest.completed = false; // Reset completion when moving to inventory
                 appState.inventory.push(quest);
+                logActivity('quest_deactivate', `Quest moved to inventory: ${quest.title}`, {
+                    questId: quest.id,
+                    category: quest.category,
+                    priority: quest.priority
+                });
                 saveState();
                 updateUI();
                 showNotification(`📦 "${quest.title}" moved to inventory.`);
+                console.log(`✅ [DEACTIVATE QUEST] Quest moved to inventory successfully`);
             }
+        }
+
+        // Change quest priority
+        function changeQuestPriority(questId, newPriority) {
+            console.log(`🔄 [CHANGE PRIORITY] Changing priority for quest ${questId} to ${newPriority}...`);
+            const quest = appState.quests.find(q => q.id === questId);
+
+            if (!quest) {
+                console.error(`❌ [CHANGE PRIORITY] Quest ${questId} not found`);
+                return;
+            }
+
+            const oldPriority = quest.priority || quest.category || 'medium';
+            console.log(`📋 [CHANGE PRIORITY] Quest: ${quest.title}, Old priority: ${oldPriority}, New priority: ${newPriority}`);
+
+            // Update priority
+            quest.priority = newPriority;
+
+            // Update category if changing to urgent
+            if (newPriority === 'urgent') {
+                quest.category = 'urgent';
+            }
+
+            logActivity('quest_priority_change', `Priority changed: ${quest.title}`, {
+                questId: quest.id,
+                oldPriority: oldPriority,
+                newPriority: newPriority
+            });
+
+            saveState();
+            updateUI();
+
+            const priorityNames = {
+                'urgent': '🚨 Urgent',
+                'high': '⚡ High',
+                'medium': '💼 Work',
+                'awaiting': '⏳ Awaiting',
+                'low': '📋 Planning'
+            };
+
+            showNotification(`✅ "${quest.title}" priority changed to ${priorityNames[newPriority]}`);
+            console.log(`✅ [CHANGE PRIORITY] Priority updated successfully`);
         }
 
         // Update the updateUI function to include inventory count and completed count
@@ -2077,18 +2300,22 @@
 
         // Process brain dump
         async function processBrainDump() {
+            console.log('💭 [BRAIN DUMP] Processing brain dump...');
             // Stop recording if active
             if (isRecording) {
+                console.log('🎤 [BRAIN DUMP] Stopping voice recording...');
                 stopRecording();
             }
 
             const dump = document.getElementById('brain-dump').value.trim();
 
             if (!dump) {
+                console.warn('⚠️ [BRAIN DUMP] No content provided');
                 alert('Please write or speak something first!');
                 return;
             }
 
+            console.log(`📝 [BRAIN DUMP] Saving brain dump (${dump.length} characters)...`);
             appState.brainDumps.push({
                 content: dump,
                 date: new Date().toISOString()
@@ -2096,6 +2323,7 @@
 
             // Log activity
             logActivity('brain_dump', 'Brain dump saved', { contentLength: dump.length });
+            console.log('✅ [BRAIN DUMP] Brain dump saved to state');
 
             saveState();
 
@@ -2103,11 +2331,13 @@
             document.getElementById('brain-dump').value = '';
 
             // Automatically push to GitHub after brain dump
+            console.log('🔄 [BRAIN DUMP] Checking GitHub sync configuration...');
             if (window.githubSync && window.githubSync.isConfigured()) {
                 try {
-                    console.log('Auto-syncing brain dump to GitHub...');
+                    console.log('🔄 [BRAIN DUMP] GitHub sync configured, auto-syncing...');
                     const questData = JSON.parse(localStorage.getItem('questCoachState'));
                     const result = await window.githubSync.pushToGitHub(questData);
+                    console.log('✅ [BRAIN DUMP] GitHub sync successful:', result);
 
                     // Log successful sync
                     logSync('success', 'Brain dump synced to GitHub', {
@@ -2138,13 +2368,14 @@
                     }
                 }
             } else {
-                console.log('GitHub sync not configured - brain dump saved locally only');
+                console.log('ℹ️ [BRAIN DUMP] GitHub sync not configured - brain dump saved locally only');
 
                 // Log that sync was skipped
                 logSync('skipped', 'GitHub sync not configured', {
                     trigger: 'brain_dump_auto',
                     reason: 'no_token'
                 });
+                console.log('📊 [BRAIN DUMP] Sync skipped and logged');
 
                 if (typeof showSyncNotification === 'function') {
                     showSyncNotification('💾 Brain dump saved locally (GitHub sync not configured)', 'warning');

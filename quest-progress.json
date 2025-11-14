@@ -1,6 +1,6 @@
 {
-  "xp": 150,
-  "level": 2,
+  "xp": 225,
+  "level": 3,
   "streak": 2,
   "quests": [
     {
@@ -47,7 +47,7 @@
       "id": 1763045218496,
       "title": "Revive Umayyad Mosque acoustic project",
       "category": "work",
-      "completed": false,
+      "completed": true,
       "xpValue": 75,
       "icon": "🕌"
     },

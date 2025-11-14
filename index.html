@@ -723,50 +723,21 @@
                 appState = JSON.parse(saved);
                 updateUI();
             } else {
-                // Initialize ACTIVE quests (only urgent/high priority - max 5)
-                appState.quests = [
-                    {
-                        id: Date.now() + 1,
-                        title: "Order webcam and speakers for client",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 50,
-                        icon: "🚨",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Installation tomorrow!"
-                    },
-                    {
-                        id: Date.now() + 2,
-                        title: "Ministry of Media Syria - Proposal & Presentation",
-                        category: "urgent",
-                        completed: false,
-                        xpValue: 150,
-                        icon: "📄",
-                        status: "active",
-                        priority: "urgent",
-                        notes: "Present to minister"
-                    },
-                    {
-                        id: Date.now() + 3,
-                        title: "Finish Rakan's Song project",
-                        category: "work",
-                        completed: false,
-                        xpValue: 100,
-                        icon: "🎵",
-                        status: "active",
-                        priority: "high",
-                        notes: ""
-                    }
-                ];
+                // Initialize with empty arrays - quest importer will populate from all-projects-quests.js
+                appState.quests = [];
+                appState.inventory = [];
+                saveState();
+            }
+        }
 
-                // Initialize INVENTORY (all other projects - not shown by default)
-                appState.inventory = [
-                    {
-                        id: Date.now() + 100,
-                        title: "Ministry of Child Affairs Syria - Proposal",
-                        category: "work",
-                        completed: false,
+        // Save state to localStorage
+        function saveState() {
+            localStorage.setItem('questCoachState', JSON.stringify(appState));
+        }
+
+        // Update all UI elements
+        function updateUI() {
+            // Update stats
                         xpValue: 100,
                         icon: "👶",
                         status: "planning",

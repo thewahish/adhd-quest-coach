@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Test</title>
+</head>
+<body>
+    <h1>Microphone Test</h1>
+    <button onclick="testMic()">Test Microphone</button>
+    <p id="result"></p>
+    <textarea id="output" rows="10" cols="50"></textarea>
+
+    <script>
+        function testMic() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (!SpeechRecognition) {
+                document.getElementById('result').textContent = 'Speech recognition not supported';
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+
+            recognition.onstart = () => {
+                document.getElementById('result').textContent = '✅ Recording...';
+            };
+
+            recognition.onresult = (event) => {
+                let text = '';
+                for (let i = 0; i < event.results.length; i++) {
+                    text += event.results[i][0].transcript + ' ';
+                }
+                document.getElementById('output').value = text;
+            };
+
+            recognition.onerror = (event) => {
+                document.getElementById('result').textContent = '❌ Error: ' + event.error;
+                console.error('Error details:', event);
+            };
+
+            try {
+                recognition.start();
+            } catch (e) {
+                document.getElementById('result').textContent = '❌ Failed to start: ' + e.message;
+            }
+        }
+    </script>
+</body>
+</html>

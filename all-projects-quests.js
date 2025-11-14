@@ -29,7 +29,7 @@ const allProjectQuests = [
         status: "active",
         xpValue: 500,
         icon: "📱",
-        notes: "Build and improve Quest Coach! Every feature = subtask = XP! Currently: 280/500 XP (56%)",
+        notes: "Build and improve Quest Coach! Every feature = subtask = XP! Currently: 400/500 XP (80%)",
         project: "adhd-quest-coach",
         subtasks: [
             { title: "✅ Initial setup & project structure (50 XP)", completed: true },
@@ -39,15 +39,16 @@ const allProjectQuests = [
             { title: "✅ Fix token persistence UX (show saved status) (10 XP)", completed: true },
             { title: "✅ Add complete history tracking system (50 XP)", completed: true },
             { title: "✅ Add daily stats, mood, and session tracking (10 XP)", completed: true },
-            { title: "Import all 41 real quests into Quest Coach UI (30 XP)", completed: false },
+            { title: "✅ Import all 42 real quests into Quest Coach UI (30 XP)", completed: true },
+            { title: "✅ Build achievement/badge system with celebrations & combos (60 XP)", completed: true },
+            { title: "✅ Add collapsible sync controls UI enhancement (10 XP)", completed: true },
+            { title: "✅ Add rank/title system with 9 progressive ranks (20 XP)", completed: true },
             { title: "Build stats dashboard with graphs & charts (100 XP)", completed: false },
-            { title: "Add quest progress visualization (subtasks shown) (20 XP)", completed: false },
-            { title: "Create quest dependencies system (blocked/waiting states) (30 XP)", completed: false },
+            { title: "Add sequential quest dependencies (show & lock next steps) (40 XP)", completed: false },
             { title: "Build mobile-optimized responsive UI (30 XP)", completed: false },
             { title: "Add data export/backup feature (download JSON) (20 XP)", completed: false },
             { title: "Create quest templates for common tasks (20 XP)", completed: false },
             { title: "Add time tracking per quest/subtask (40 XP)", completed: false },
-            { title: "Build achievement/badge system (earn badges!) (60 XP)", completed: false },
             { title: "Create weekly/monthly progress reports (30 XP)", completed: false },
             { title: "Add quest filtering & search (20 XP)", completed: false },
             { title: "Build quest sharing feature (share with friends) (30 XP)", completed: false },
@@ -212,11 +213,27 @@ const allProjectQuests = [
         name: "Request K-1 from CPA for Taxes",
         category: "urgent",
         priority: "urgent",
-        status: "blocked",
+        status: "active",
         xpValue: 50,
         icon: "📋",
-        notes: "⏸️ BLOCKED: Waiting for K-1 from CPA. Taxes cannot proceed until received.",
+        notes: "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
         project: "personal-finance-management",
+        questId: "quest-tax-k1-2023",  // Unique ID for quest chain
+        // Show what comes next in the chain
+        questChain: [
+            {
+                title: "File 2023 & 2024 Tax Returns (After K-1)",
+                xpValue: 250,
+                completed: false,
+                notes: "STEP 2: File taxes after receiving K-1"
+            },
+            {
+                title: "Set Up Payment Plan or Pay Taxes",
+                xpValue: 100,
+                completed: false,
+                notes: "STEP 3: Handle tax payment after filing"
+            }
+        ],
         subtasks: [
             { title: "Email CPA for K-1", completed: false },
             { title: "Follow up if no response in 3 days", completed: false },
@@ -227,19 +244,46 @@ const allProjectQuests = [
         name: "File 2023 & 2024 Tax Returns (After K-1)",
         category: "urgent",
         priority: "urgent",
-        status: "blocked",
+        status: "active",
         xpValue: 250,
         icon: "💰",
-        notes: "⏸️ BLOCKED: Waiting for K-1 from CPA before filing",
+        notes: "STEP 2 of 3: File taxes AFTER receiving K-1. This quest is locked until you complete the K-1 request.",
         project: "personal-finance-management",
+        questId: "quest-tax-filing-2023-2024",  // Unique ID
+        requiresQuest: "quest-tax-k1-2023",  // 🔒 LOCKED until K-1 quest completed!
+        // Show what comes next
+        questChain: [
+            {
+                title: "Set Up Payment Plan or Pay Taxes",
+                xpValue: 100,
+                completed: false,
+                notes: "STEP 3: Handle tax payment after filing"
+            }
+        ],
         subtasks: [
-            { title: "Wait for K-1 arrival", completed: false },
             { title: "Review 2023 return with Claude", completed: false },
             { title: "Submit 2023 via TurboTax e-file", completed: false },
             { title: "Wait for 2023 IRS confirmation", completed: false },
             { title: "Review 2024 return with Claude", completed: false },
-            { title: "Submit 2024 via TurboTax e-file", completed: false },
-            { title: "Set up payment plan if needed", completed: false }
+            { title: "Submit 2024 via TurboTax e-file", completed: false }
+        ]
+    },
+    {
+        name: "Set Up Payment Plan or Pay Taxes",
+        category: "urgent",
+        priority: "urgent",
+        status: "active",
+        xpValue: 100,
+        icon: "💳",
+        notes: "STEP 3 of 3: Handle tax payment AFTER filing. This quest is locked until you file taxes.",
+        project: "personal-finance-management",
+        questId: "quest-tax-payment-2023-2024",  // Unique ID
+        requiresQuest: "quest-tax-filing-2023-2024",  // 🔒 LOCKED until filing completed!
+        subtasks: [
+            { title: "Review total amount owed", completed: false },
+            { title: "Set up IRS payment plan if needed", completed: false },
+            { title: "Request penalty abatement letter", completed: false },
+            { title: "Make first payment", completed: false }
         ]
     },
     {

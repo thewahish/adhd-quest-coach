@@ -21,7 +21,11 @@ function importAllQuests() {
             priority: quest.priority || 'medium',
             notes: quest.notes || '',
             project: quest.project || '',
-            subtasks: quest.subtasks || []
+            subtasks: quest.subtasks || [],
+            // 🔗 Quest chain properties
+            questId: quest.questId || null,  // Unique ID for referencing
+            requiresQuest: quest.requiresQuest || null,  // Locks quest until another is completed
+            questChain: quest.questChain || []  // Shows next steps in sequence
         };
     });
 

@@ -141,6 +141,100 @@
             background: #fff5f5;
         }
 
+        .quest-item.locked {
+            opacity: 0.5;
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        .quest-item.locked:hover {
+            background: #f5f5f5;
+            transform: none;
+        }
+
+        .quest-chain-indicator {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            margin-left: 8px;
+        }
+
+        .quest-chain-locked {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+
+        .expand-chain-btn {
+            background: transparent;
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .expand-chain-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .quest-chain-list {
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 3px dashed #667eea;
+            display: none;
+        }
+
+        .quest-chain-list.expanded {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .chain-step {
+            padding: 10px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #ddd;
+        }
+
+        .chain-step.current {
+            border-left-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .chain-step.completed-step {
+            border-left-color: #28a745;
+            opacity: 0.7;
+        }
+
+        .chain-step.locked-step {
+            opacity: 0.5;
+            background: #f9f9f9;
+        }
+
         .quest-icon {
             font-size: 2em;
             min-width: 50px;
@@ -956,18 +1050,60 @@
             });
 
             sortedQuests.forEach(quest => {
+                // Check if quest is part of a chain and if it's locked
+                const isLocked = isQuestLocked(quest);
+                const chainInfo = getQuestChainInfo(quest);
+
                 const li = document.createElement('li');
-                li.className = `quest-item ${quest.completed ? 'completed' : ''} ${quest.category === 'urgent' ? 'urgent' : ''}`;
+                li.className = `quest-item ${quest.completed ? 'completed' : ''} ${quest.category === 'urgent' ? 'urgent' : ''} ${isLocked ? 'locked' : ''}`;
+
+                let chainHTML = '';
+                if (chainInfo.hasChain) {
+                    chainHTML = `
+                        <span class="quest-chain-indicator">📊 Step ${chainInfo.currentStep}/${chainInfo.totalSteps}</span>
+                        ${chainInfo.nextSteps.length > 0 ? `
+                            <button class="expand-chain-btn" onclick="toggleChainExpansion(${quest.id})" id="chain-btn-${quest.id}">
+                                ▼ Show Next Steps (${chainInfo.nextSteps.length})
+                            </button>
+                            <div class="quest-chain-list" id="chain-${quest.id}">
+                                ${chainInfo.nextSteps.map((step, idx) => `
+                                    <div class="chain-step ${step.completed ? 'completed-step' : (idx === 0 ? 'current' : 'locked-step')}">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span>${step.completed ? '✅' : (idx === 0 ? '📍' : '🔒')}</span>
+                                            <div style="flex: 1;">
+                                                <div style="font-weight: ${idx === 0 ? 'bold' : 'normal'};">${step.title}</div>
+                                                <small style="color: #888;">+${step.xpValue} XP</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    `;
+                }
+
+                let lockedHTML = '';
+                if (isLocked && chainInfo.blockingQuest) {
+                    lockedHTML = `
+                        <div class="quest-chain-locked">
+                            <span>🔒</span>
+                            <span>Complete "<strong>${chainInfo.blockingQuest.title}</strong>" first</span>
+                        </div>
+                    `;
+                }
+
                 li.innerHTML = `
                     <div class="quest-icon">${quest.icon}</div>
-                    <div class="quest-content">
+                    <div class="quest-content" style="flex: 1;">
                         <div class="quest-title">
                             ${quest.title}
                             <span class="category-badge category-${quest.category}">${quest.category}</span>
+                            ${chainHTML}
                         </div>
                         <div class="quest-category">
                             +${quest.xpValue} XP
                             ${quest.notes ? '<br><small style="color:#888;">' + quest.notes + '</small>' : ''}
+                            ${lockedHTML}
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -976,8 +1112,8 @@
                                 title="Move to inventory">
                             📦
                         </button>
-                        <input type="checkbox" class="quest-checkbox" ${quest.completed ? 'checked' : ''}
-                               onchange="toggleQuest(${quest.id})">
+                        <input type="checkbox" class="quest-checkbox" ${quest.completed ? 'checked' : ''} ${isLocked ? 'disabled' : ''}
+                               onchange="toggleQuest(${quest.id})" title="${isLocked ? 'Complete previous quest first' : 'Mark as complete'}">
                     </div>
                 `;
                 questList.appendChild(li);
@@ -988,10 +1124,78 @@
             }
         }
 
+        // Toggle chain expansion
+        function toggleChainExpansion(questId) {
+            const chainList = document.getElementById(`chain-${questId}`);
+            const btn = document.getElementById(`chain-btn-${questId}`);
+
+            if (chainList.classList.contains('expanded')) {
+                chainList.classList.remove('expanded');
+                btn.textContent = btn.textContent.replace('▲ Hide', '▼ Show');
+            } else {
+                chainList.classList.add('expanded');
+                btn.textContent = btn.textContent.replace('▼ Show', '▲ Hide');
+            }
+        }
+
+        // Check if quest is locked (requires previous quest completion)
+        function isQuestLocked(quest) {
+            if (!quest.requiresQuest) return false;
+
+            // Find the required quest by questId (string)
+            const requiredQuest = appState.quests.find(q => q.questId === quest.requiresQuest);
+            if (!requiredQuest) {
+                // Also check inventory
+                const inventoryQuest = appState.inventory?.find(q => q.questId === quest.requiresQuest);
+                return inventoryQuest ? !inventoryQuest.completed : false;
+            }
+
+            return !requiredQuest.completed;
+        }
+
+        // Get quest chain information
+        function getQuestChainInfo(quest) {
+            const info = {
+                hasChain: false,
+                currentStep: 1,
+                totalSteps: 1,
+                nextSteps: [],
+                blockingQuest: null
+            };
+
+            // If quest has a chain property with next steps
+            if (quest.questChain && Array.isArray(quest.questChain)) {
+                info.hasChain = true;
+                info.nextSteps = quest.questChain;
+                info.totalSteps = 1 + quest.questChain.length;
+                info.currentStep = 1;
+            }
+
+            // If quest requires another quest, find the blocking quest by questId
+            if (quest.requiresQuest) {
+                info.blockingQuest = appState.quests.find(q => q.questId === quest.requiresQuest) ||
+                                    appState.inventory?.find(q => q.questId === quest.requiresQuest);
+            }
+
+            return info;
+        }
+
         // Toggle quest completion
         function toggleQuest(questId) {
             const quest = appState.quests.find(q => q.id === questId);
             if (quest) {
+                // Check if quest is locked
+                if (isQuestLocked(quest) && !quest.completed) {
+                    const chainInfo = getQuestChainInfo(quest);
+                    if (chainInfo.blockingQuest) {
+                        showNotification(`🔒 Complete "${chainInfo.blockingQuest.title}" first!`);
+                    } else {
+                        showNotification('🔒 This quest is locked. Complete the previous quest first!');
+                    }
+                    updateUI(); // Refresh to uncheck the checkbox
+                    return;
+                }
+
                 quest.completed = !quest.completed;
 
                 if (quest.completed) {

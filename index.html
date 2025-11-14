@@ -378,12 +378,19 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>⚔️ Quest Coach</h1>
-            <p class="subtitle">Your ADHD-Friendly RPG Life System</p>
-            <p class="subtitle">Level up one quest at a time, at your own pace</p>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div style="flex: 1;">
+                    <h1>⚔️ Quest Coach</h1>
+                    <p class="subtitle">Your ADHD-Friendly RPG Life System</p>
+                    <p class="subtitle" id="player-title">Level up one quest at a time, at your own pace</p>
+                </div>
+                <button id="toggle-sync-btn" onclick="toggleSyncControls()" style="background: #6c757d; padding: 8px 15px; font-size: 0.85em; border-radius: 50px; margin-top: 10px;">
+                    ⚙️ Sync
+                </button>
+            </div>
 
-            <!-- GitHub Sync Controls -->
-            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center;">
+            <!-- GitHub Sync Controls (Collapsible) -->
+            <div id="sync-controls" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: none; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center;">
                 <button id="sync-push-btn" onclick="syncToGitHub()" style="background: #28a745; padding: 10px 20px; font-size: 0.9em;">
                     ⬆️ Sync to GitHub
                 </button>
@@ -585,6 +592,9 @@
 
     <!-- Include Quest Importer -->
     <script src="quest-importer.js"></script>
+
+    <!-- Include Gamification System -->
+    <script src="gamification.js"></script>
 
     <script>
         // Initialize app state
@@ -987,7 +997,7 @@
                 if (quest.completed) {
                     // Award XP
                     appState.xp += quest.xpValue;
-                    showNotification(`🎉 Quest completed! +${quest.xpValue} XP`);
+                    let totalXP = quest.xpValue;
 
                     // 📊 Log completion to history
                     if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
@@ -1001,6 +1011,32 @@
 
                     // Update daily stats
                     updateDailyStats(quest.xpValue, 1);
+
+                    // 🎮 GAMIFICATION: Check for achievements
+                    if (typeof checkAchievements === 'function') {
+                        const newAchievements = checkAchievements(appState);
+                        newAchievements.forEach(achievement => {
+                            appState.xp += achievement.xpBonus;
+                            totalXP += achievement.xpBonus;
+                            showAchievementPopup(achievement);
+                        });
+                    }
+
+                    // 🎮 GAMIFICATION: Combo system
+                    if (typeof incrementCombo === 'function') {
+                        const comboBonus = incrementCombo(quest.xpValue);
+                        if (comboBonus > 0) {
+                            appState.xp += comboBonus;
+                            totalXP += comboBonus;
+                        }
+                    }
+
+                    // 🎮 GAMIFICATION: Quest complete animation
+                    if (typeof showQuestCompleteAnimation === 'function') {
+                        showQuestCompleteAnimation(totalXP);
+                    } else {
+                        showNotification(`🎉 Quest completed! +${totalXP} XP`);
+                    }
                 } else {
                     // Remove XP
                     appState.xp -= quest.xpValue;
@@ -1042,13 +1078,21 @@
 
                 saveState(); // 🔧 Save the level increase!
 
-                // Show level up notification
-                showNotification(`🎊 LEVEL UP! You're now level ${appState.level}!`);
+                // 🎮 GAMIFICATION: Level up celebration
+                if (typeof showLevelUpCelebration === 'function') {
+                    showLevelUpCelebration(appState.level);
+                } else {
+                    showNotification(`🎊 LEVEL UP! You're now level ${appState.level}!`);
+                    // Play success sound
+                    const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBCx+zPLTgjMGHm7A7+OZURE');
+                    audio.volume = 0.5;
+                    audio.play().catch(() => {});
+                }
 
-                // Play success sound
-                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBCx+zPLTgjMGHm7A7+OZURE');
-                audio.volume = 0.5;
-                audio.play().catch(() => {});
+                // 🎮 GAMIFICATION: Update rank title
+                if (typeof updatePlayerTitle === 'function') {
+                    updatePlayerTitle();
+                }
 
                 // Check if there's another level to gain
                 const newXpForNextLevel = appState.level * 100;

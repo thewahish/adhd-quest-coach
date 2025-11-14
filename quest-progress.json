@@ -1,6 +1,6 @@
 {
-  "xp": 350,
-  "level": 4,
+  "xp": 400,
+  "level": 5,
   "streak": 2,
   "quests": [
     {
@@ -384,7 +384,7 @@
       "id": 1763138540950,
       "title": "Request K-1 from CPA for Taxes",
       "category": "urgent",
-      "completed": false,
+      "completed": true,
       "xpValue": 50,
       "icon": "📋",
       "status": "active",
@@ -558,6 +558,13 @@
         "xpEarned": 150,
         "category": "urgent",
         "completedAt": "2025-11-14T17:42:33.040Z"
+      },
+      {
+        "questId": 1763138540950,
+        "questName": "Request K-1 from CPA for Taxes",
+        "xpEarned": 50,
+        "category": "urgent",
+        "completedAt": "2025-11-14T17:42:45.335Z"
       }
     ],
     "levelUps": [
@@ -575,13 +582,18 @@
         "level": 4,
         "totalXP": 350,
         "leveledUpAt": "2025-11-14T17:42:33.547Z"
+      },
+      {
+        "level": 5,
+        "totalXP": 400,
+        "leveledUpAt": "2025-11-14T17:42:45.339Z"
       }
     ],
     "dailyStats": [
       {
         "date": "2025-11-14",
-        "xpEarned": 150,
-        "questsCompleted": 1,
+        "xpEarned": 200,
+        "questsCompleted": 2,
         "mood": "good",
         "brainDumps": 1
       }

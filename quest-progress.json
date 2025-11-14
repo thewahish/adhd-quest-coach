@@ -36,14 +36,6 @@
       "icon": "🔊"
     },
     {
-      "id": 1763045218495,
-      "title": "Follow up with Washington DC networking contacts",
-      "category": "work",
-      "completed": false,
-      "xpValue": 50,
-      "icon": "🤝"
-    },
-    {
       "id": 1763045218496,
       "title": "Revive Umayyad Mosque acoustic project",
       "category": "work",
@@ -1737,6 +1729,14 @@
       "completed": false,
       "xpValue": 75,
       "icon": "🌐"
+    },
+    {
+      "id": 1763045218495,
+      "title": "Follow up with Washington DC networking contacts",
+      "category": "work",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "🤝"
     }
   ]
 }

@@ -418,6 +418,43 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763131515089,
+      "title": "Update All Resumes (Arafa, Maya, Taha)",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "📄",
+      "status": "active",
+      "priority": "medium",
+      "notes": "Update resumes with latest experience and generate PDFs.",
+      "project": "resumes",
+      "subtasks": [
+        {
+          "title": "Update Arafa's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Maya's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Taha's resume",
+          "completed": false
+        },
+        {
+          "title": "Create ATS-optimized versions",
+          "completed": false
+        },
+        {
+          "title": "Generate PDF versions",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
   ],
   "mood": {
@@ -465,6 +502,12 @@
       },
       {
         "startTime": "2025-11-14T15:51:31.843Z",
+        "level": 3,
+        "xp": 225,
+        "activeQuests": 12
+      },
+      {
+        "startTime": "2025-11-14T16:03:09.010Z",
         "level": 3,
         "xp": 225,
         "activeQuests": 12
@@ -535,6 +578,280 @@
         },
         {
           "title": "Follow up after 2-3 weeks",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427516,
+      "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 1000,
+      "icon": "🕌",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "CRITICAL DEADLINE: Event Nov 23rd, need done by Nov 18th (5 days left!). 10 songs, 20 minutes total.",
+      "project": "mawlid-songs",
+      "subtasks": [
+        {
+          "title": "Planning: Select 10 songs for Mawlid",
+          "completed": false
+        },
+        {
+          "title": "Planning: Finalize all lyrics and arrangements",
+          "completed": false
+        },
+        {
+          "title": "Song 1: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 2: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 3: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 4: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 5: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 6: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 7: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 8: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 9: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 10: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Final: Compile all songs into sequence",
+          "completed": false
+        },
+        {
+          "title": "Final: Quality check all 20 minutes",
+          "completed": false
+        },
+        {
+          "title": "Final: Prepare video/visual content if needed",
+          "completed": false
+        },
+        {
+          "title": "Final: Deliver to event organizers by Nov 18",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427519,
+      "title": "File 2023 Tax Return (CRITICAL FIRST)",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review 2023 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit via TurboTax e-file",
+          "completed": false
+        },
+        {
+          "title": "Wait for IRS confirmation (24-48 hrs)",
+          "completed": false
+        },
+        {
+          "title": "Set up payment plan if needed",
+          "completed": false
+        },
+        {
+          "title": "Request penalty abatement letter",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427520,
+      "title": "Request K-1 from CPA for Taxes",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "📋",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Email CPA for K-1",
+          "completed": false
+        },
+        {
+          "title": "Follow up if no response in 3 days",
+          "completed": false
+        },
+        {
+          "title": "Review K-1 when received",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-k1-2023",
+      "requiresQuest": null,
+      "questChain": [
+        {
+          "title": "File 2023 & 2024 Tax Returns (After K-1)",
+          "xpValue": 250,
+          "completed": false,
+          "notes": "STEP 2: File taxes after receiving K-1"
+        },
+        {
+          "title": "Set Up Payment Plan or Pay Taxes",
+          "xpValue": 100,
+          "completed": false,
+          "notes": "STEP 3: Handle tax payment after filing"
+        }
+      ]
+    },
+    {
+      "id": 1763132427521,
+      "title": "File 2023 & 2024 Tax Returns (After K-1)",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 2 of 3: File taxes AFTER receiving K-1. This quest is locked until you complete the K-1 request.",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review 2023 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit 2023 via TurboTax e-file",
+          "completed": false
+        },
+        {
+          "title": "Wait for 2023 IRS confirmation",
+          "completed": false
+        },
+        {
+          "title": "Review 2024 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit 2024 via TurboTax e-file",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-filing-2023-2024",
+      "requiresQuest": "quest-tax-k1-2023",
+      "questChain": [
+        {
+          "title": "Set Up Payment Plan or Pay Taxes",
+          "xpValue": 100,
+          "completed": false,
+          "notes": "STEP 3: Handle tax payment after filing"
+        }
+      ]
+    },
+    {
+      "id": 1763132427522,
+      "title": "Set Up Payment Plan or Pay Taxes",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "💳",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 3 of 3: Handle tax payment AFTER filing. This quest is locked until you file taxes.",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review total amount owed",
+          "completed": false
+        },
+        {
+          "title": "Set up IRS payment plan if needed",
+          "completed": false
+        },
+        {
+          "title": "Request penalty abatement letter",
+          "completed": false
+        },
+        {
+          "title": "Make first payment",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-payment-2023-2024",
+      "requiresQuest": "quest-tax-filing-2023-2024",
+      "questChain": []
+    },
+    {
+      "id": 1763132427523,
+      "title": "Apply to 5 High-Priority IT Director Jobs",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "💼",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "Focus on Director-level IT positions",
+      "project": "job-applications",
+      "subtasks": [
+        {
+          "title": "Adyen Head Technical Support Americas",
+          "completed": false
+        },
+        {
+          "title": "BWE Director IT Security",
+          "completed": false
+        },
+        {
+          "title": "Business Wire Director IT",
+          "completed": false
+        },
+        {
+          "title": "CW Zumbiel Director IT",
+          "completed": false
+        },
+        {
+          "title": "Cedar Integration Support Manager",
           "completed": false
         }
       ],
@@ -1452,43 +1769,6 @@
       "questChain": []
     },
     {
-      "id": 1763131515089,
-      "title": "Update All Resumes (Arafa, Maya, Taha)",
-      "category": "work",
-      "completed": false,
-      "xpValue": 75,
-      "icon": "📄",
-      "status": "active",
-      "priority": "medium",
-      "notes": "Update resumes with latest experience and generate PDFs.",
-      "project": "resumes",
-      "subtasks": [
-        {
-          "title": "Update Arafa's resume",
-          "completed": false
-        },
-        {
-          "title": "Update Maya's resume",
-          "completed": false
-        },
-        {
-          "title": "Update Taha's resume",
-          "completed": false
-        },
-        {
-          "title": "Create ATS-optimized versions",
-          "completed": false
-        },
-        {
-          "title": "Generate PDF versions",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
       "id": 1763131515090,
       "title": "Website 2.0 - Consolidate & Deploy",
       "category": "work",
@@ -2055,280 +2335,6 @@
         },
         {
           "title": "Deliver to client",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427516,
-      "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 1000,
-      "icon": "🕌",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "CRITICAL DEADLINE: Event Nov 23rd, need done by Nov 18th (5 days left!). 10 songs, 20 minutes total.",
-      "project": "mawlid-songs",
-      "subtasks": [
-        {
-          "title": "Planning: Select 10 songs for Mawlid",
-          "completed": false
-        },
-        {
-          "title": "Planning: Finalize all lyrics and arrangements",
-          "completed": false
-        },
-        {
-          "title": "Song 1: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 2: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 3: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 4: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 5: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 6: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 7: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 8: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 9: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 10: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Final: Compile all songs into sequence",
-          "completed": false
-        },
-        {
-          "title": "Final: Quality check all 20 minutes",
-          "completed": false
-        },
-        {
-          "title": "Final: Prepare video/visual content if needed",
-          "completed": false
-        },
-        {
-          "title": "Final: Deliver to event organizers by Nov 18",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427519,
-      "title": "File 2023 Tax Return (CRITICAL FIRST)",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 150,
-      "icon": "💰",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Review 2023 return with Claude",
-          "completed": false
-        },
-        {
-          "title": "Submit via TurboTax e-file",
-          "completed": false
-        },
-        {
-          "title": "Wait for IRS confirmation (24-48 hrs)",
-          "completed": false
-        },
-        {
-          "title": "Set up payment plan if needed",
-          "completed": false
-        },
-        {
-          "title": "Request penalty abatement letter",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427520,
-      "title": "Request K-1 from CPA for Taxes",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 50,
-      "icon": "📋",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Email CPA for K-1",
-          "completed": false
-        },
-        {
-          "title": "Follow up if no response in 3 days",
-          "completed": false
-        },
-        {
-          "title": "Review K-1 when received",
-          "completed": false
-        }
-      ],
-      "questId": "quest-tax-k1-2023",
-      "requiresQuest": null,
-      "questChain": [
-        {
-          "title": "File 2023 & 2024 Tax Returns (After K-1)",
-          "xpValue": 250,
-          "completed": false,
-          "notes": "STEP 2: File taxes after receiving K-1"
-        },
-        {
-          "title": "Set Up Payment Plan or Pay Taxes",
-          "xpValue": 100,
-          "completed": false,
-          "notes": "STEP 3: Handle tax payment after filing"
-        }
-      ]
-    },
-    {
-      "id": 1763132427521,
-      "title": "File 2023 & 2024 Tax Returns (After K-1)",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 250,
-      "icon": "💰",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "STEP 2 of 3: File taxes AFTER receiving K-1. This quest is locked until you complete the K-1 request.",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Review 2023 return with Claude",
-          "completed": false
-        },
-        {
-          "title": "Submit 2023 via TurboTax e-file",
-          "completed": false
-        },
-        {
-          "title": "Wait for 2023 IRS confirmation",
-          "completed": false
-        },
-        {
-          "title": "Review 2024 return with Claude",
-          "completed": false
-        },
-        {
-          "title": "Submit 2024 via TurboTax e-file",
-          "completed": false
-        }
-      ],
-      "questId": "quest-tax-filing-2023-2024",
-      "requiresQuest": "quest-tax-k1-2023",
-      "questChain": [
-        {
-          "title": "Set Up Payment Plan or Pay Taxes",
-          "xpValue": 100,
-          "completed": false,
-          "notes": "STEP 3: Handle tax payment after filing"
-        }
-      ]
-    },
-    {
-      "id": 1763132427522,
-      "title": "Set Up Payment Plan or Pay Taxes",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "💳",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "STEP 3 of 3: Handle tax payment AFTER filing. This quest is locked until you file taxes.",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Review total amount owed",
-          "completed": false
-        },
-        {
-          "title": "Set up IRS payment plan if needed",
-          "completed": false
-        },
-        {
-          "title": "Request penalty abatement letter",
-          "completed": false
-        },
-        {
-          "title": "Make first payment",
-          "completed": false
-        }
-      ],
-      "questId": "quest-tax-payment-2023-2024",
-      "requiresQuest": "quest-tax-filing-2023-2024",
-      "questChain": []
-    },
-    {
-      "id": 1763132427523,
-      "title": "Apply to 5 High-Priority IT Director Jobs",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 250,
-      "icon": "💼",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "Focus on Director-level IT positions",
-      "project": "job-applications",
-      "subtasks": [
-        {
-          "title": "Adyen Head Technical Support Americas",
-          "completed": false
-        },
-        {
-          "title": "BWE Director IT Security",
-          "completed": false
-        },
-        {
-          "title": "Business Wire Director IT",
-          "completed": false
-        },
-        {
-          "title": "CW Zumbiel Director IT",
-          "completed": false
-        },
-        {
-          "title": "Cedar Integration Support Manager",
           "completed": false
         }
       ],

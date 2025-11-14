@@ -1528,8 +1528,17 @@
                     // Don't stop recording for no-speech error
                     return;
                 }
+
+                // Handle network errors with helpful message
+                if (event.error === 'network') {
+                    stopRecording();
+                    alert('⚠️ Voice input needs internet connection.\n\nChrome uses Google Speech API which requires internet.\n\nCheck:\n✓ WiFi/internet is connected\n✓ VPN isn\'t blocking Google services\n✓ Try refreshing the page\n\n💡 You can type instead!');
+                    return;
+                }
+
+                // Handle other errors
                 stopRecording();
-                alert('Error with voice input: ' + event.error);
+                alert('Error with voice input: ' + event.error + '\n\nYou can still type your thoughts!');
             };
 
             recognition.onend = function() {

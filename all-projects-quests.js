@@ -860,6 +860,22 @@ const allProjectQuests = [
             { title: "Create Act 3: The Sanctum (Floors 21-30)", completed: false },
             { title: "Test full 30-floor campaign", completed: false }
         ]
+    },
+    {
+        name: "Ahmad Halabi-Rahma Touchbase",
+        category: "work",
+        priority: "low",
+        status: "active",
+        xpValue: 25,
+        icon: "👋",
+        notes: "Low priority - Check in with Ahmad Halabi-Rahma when time permits",
+        project: "client-relations",
+        subtasks: [
+            { title: "Schedule touchbase meeting", completed: false },
+            { title: "Prepare agenda/discussion points", completed: false },
+            { title: "Conduct touchbase call", completed: false },
+            { title: "Follow up on action items", completed: false }
+        ]
     }
 ];
 
@@ -870,9 +886,9 @@ const xpSummary = {
     urgent: 1275,      // Urgent quests this week
     highPriority: 1100, // High priority this month
     mediumPriority: 1125, // Medium priority next quarter
-    lowPriority: 250,   // Low priority / ongoing
+    lowPriority: 275,   // Low priority / ongoing
     epic: 1300,         // Epic long-term quests
-    total: 5050         // Total XP available in this sync
+    total: 5075         // Total XP available in this sync
 };
 
 // =====================================================

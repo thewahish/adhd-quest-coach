@@ -423,7 +423,7 @@
   "mood": {
     "mood": "good",
     "emoji": "😊",
-    "date": "2025-11-14T14:01:52.171Z"
+    "date": "2025-11-14T15:00:33.007Z"
   },
   "lastActiveDate": "2025-11-14T14:01:52.171Z",
   "brainDumps": [],
@@ -432,7 +432,13 @@
     "questCompletions": [],
     "levelUps": [],
     "dailyStats": [],
-    "moodCheckins": [],
+    "moodCheckins": [
+      {
+        "mood": "good",
+        "emoji": "😊",
+        "timestamp": "2025-11-14T15:00:33.007Z"
+      }
+    ],
     "sessions": [
       {
         "startTime": "2025-11-14T14:45:14.554Z",

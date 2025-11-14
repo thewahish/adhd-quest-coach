@@ -520,9 +520,7 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
-    }
-  ],
-  "inventory": [
+    },
     {
       "id": 1763143075441,
       "title": "Uber driver app paperwork submit",
@@ -549,6 +547,78 @@
         },
         {
           "title": "Follow up on status",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    }
+  ],
+  "inventory": [
+    {
+      "id": 1763143075454,
+      "title": "Smart Herbal Farms - DECISION: Send Mentorship Letter",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🌿",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "40,000+ words analysis complete. Time to decide and act.",
+      "project": "smart-herbal-farms",
+      "subtasks": [
+        {
+          "title": "Make final decision (Yes/No/Pass)",
+          "completed": false
+        },
+        {
+          "title": "If YES: Send mentorship-response-arabic.html",
+          "completed": false
+        },
+        {
+          "title": "Wait 1-2 weeks for response",
+          "completed": false
+        },
+        {
+          "title": "If positive: Schedule Month 1 call",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763143075455,
+      "title": "Syria Media Proposal - DECISION: Submit to Ministry",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "📄",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "Professional proposal complete. Ready to submit.",
+      "project": "syria-media-proposal",
+      "subtasks": [
+        {
+          "title": "Generate final PDF with background graphics",
+          "completed": false
+        },
+        {
+          "title": "Prepare cover letter",
+          "completed": false
+        },
+        {
+          "title": "Research ministry contact information",
+          "completed": false
+        },
+        {
+          "title": "Send via official channels",
+          "completed": false
+        },
+        {
+          "title": "Follow up after 2-3 weeks",
           "completed": false
         }
       ],
@@ -695,76 +765,6 @@
         },
         {
           "title": "Deliver to client",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763143075454,
-      "title": "Smart Herbal Farms - DECISION: Send Mentorship Letter",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "🌿",
-      "status": "planning",
-      "priority": "urgent",
-      "notes": "40,000+ words analysis complete. Time to decide and act.",
-      "project": "smart-herbal-farms",
-      "subtasks": [
-        {
-          "title": "Make final decision (Yes/No/Pass)",
-          "completed": false
-        },
-        {
-          "title": "If YES: Send mentorship-response-arabic.html",
-          "completed": false
-        },
-        {
-          "title": "Wait 1-2 weeks for response",
-          "completed": false
-        },
-        {
-          "title": "If positive: Schedule Month 1 call",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763143075455,
-      "title": "Syria Media Proposal - DECISION: Submit to Ministry",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "📄",
-      "status": "planning",
-      "priority": "urgent",
-      "notes": "Professional proposal complete. Ready to submit.",
-      "project": "syria-media-proposal",
-      "subtasks": [
-        {
-          "title": "Generate final PDF with background graphics",
-          "completed": false
-        },
-        {
-          "title": "Prepare cover letter",
-          "completed": false
-        },
-        {
-          "title": "Research ministry contact information",
-          "completed": false
-        },
-        {
-          "title": "Send via official channels",
-          "completed": false
-        },
-        {
-          "title": "Follow up after 2-3 weeks",
           "completed": false
         }
       ],
@@ -1150,6 +1150,43 @@
       "questChain": []
     },
     {
+      "id": 1763143075471,
+      "title": "Karazah v1.1.0 - User Registration System",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "👥",
+      "status": "planning",
+      "priority": "high",
+      "notes": "85% complete. v1.0 live, time for v1.1 features.",
+      "project": "Karazah",
+      "subtasks": [
+        {
+          "title": "Design user database schema",
+          "completed": false
+        },
+        {
+          "title": "Implement registration form",
+          "completed": false
+        },
+        {
+          "title": "Add login/logout functionality",
+          "completed": false
+        },
+        {
+          "title": "Create user profile page",
+          "completed": false
+        },
+        {
+          "title": "Test authentication flow",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
       "id": 1763143075466,
       "title": "Ministry of Child Affairs Syria - Proposal",
       "category": "work",
@@ -1343,43 +1380,6 @@
       "questChain": []
     },
     {
-      "id": 1763143075471,
-      "title": "Karazah v1.1.0 - User Registration System",
-      "category": "work",
-      "completed": false,
-      "xpValue": 200,
-      "icon": "👥",
-      "status": "planning",
-      "priority": "high",
-      "notes": "85% complete. v1.0 live, time for v1.1 features.",
-      "project": "Karazah",
-      "subtasks": [
-        {
-          "title": "Design user database schema",
-          "completed": false
-        },
-        {
-          "title": "Implement registration form",
-          "completed": false
-        },
-        {
-          "title": "Add login/logout functionality",
-          "completed": false
-        },
-        {
-          "title": "Create user profile page",
-          "completed": false
-        },
-        {
-          "title": "Test authentication flow",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
       "id": 1763143075472,
       "title": "Arabian Sweets Empire - Phase 4: Meta-Progression",
       "category": "personal",
@@ -1561,6 +1561,43 @@
         },
         {
           "title": "Deploy selected version",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763143075484,
+      "title": "Path of Heroes - Phase 3: Enemy Variety & Equipment",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 500,
+      "icon": "⚔️",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Phase 3: Add enemy affixes and equipment system.",
+      "project": "p-o-h",
+      "subtasks": [
+        {
+          "title": "Design enemy affix system (Vicious, Swift, Armored)",
+          "completed": false
+        },
+        {
+          "title": "Implement enhanced elite encounters",
+          "completed": false
+        },
+        {
+          "title": "Create equipment system",
+          "completed": false
+        },
+        {
+          "title": "Add character-appropriate gear drops",
+          "completed": false
+        },
+        {
+          "title": "Test build variety",
           "completed": false
         }
       ],
@@ -1796,43 +1833,6 @@
       "questChain": []
     },
     {
-      "id": 1763143075484,
-      "title": "Path of Heroes - Phase 3: Enemy Variety & Equipment",
-      "category": "personal",
-      "completed": false,
-      "xpValue": 500,
-      "icon": "⚔️",
-      "status": "planning",
-      "priority": "medium",
-      "notes": "Phase 3: Add enemy affixes and equipment system.",
-      "project": "p-o-h",
-      "subtasks": [
-        {
-          "title": "Design enemy affix system (Vicious, Swift, Armored)",
-          "completed": false
-        },
-        {
-          "title": "Implement enhanced elite encounters",
-          "completed": false
-        },
-        {
-          "title": "Create equipment system",
-          "completed": false
-        },
-        {
-          "title": "Add character-appropriate gear drops",
-          "completed": false
-        },
-        {
-          "title": "Test build variety",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
       "id": 1763143075485,
       "title": "Path of Heroes - Phase 4: Story & 30-Floor Campaign",
       "category": "personal",
@@ -1922,6 +1922,12 @@
         "level": 1,
         "xp": 0,
         "activeQuests": 0
+      },
+      {
+        "startTime": "2025-11-14T17:58:29.613Z",
+        "level": 5,
+        "xp": 400,
+        "activeQuests": 10
       }
     ],
     "syncLog": [],

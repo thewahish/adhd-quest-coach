@@ -1,6 +1,6 @@
 {
-  "xp": 400,
-  "level": 5,
+  "xp": 150,
+  "level": 2,
   "streak": 2,
   "quests": [
     {
@@ -36,15 +36,31 @@
       "icon": "🔊"
     },
     {
+      "id": 1763045218495,
+      "title": "Follow up with Washington DC networking contacts",
+      "category": "work",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "🤝"
+    },
+    {
       "id": 1763045218496,
       "title": "Revive Umayyad Mosque acoustic project",
       "category": "work",
-      "completed": true,
+      "completed": false,
       "xpValue": 75,
       "icon": "🕌"
     },
     {
-      "id": 1763131515058,
+      "id": 1763045218497,
+      "title": "Update and modernize personal website",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🌐"
+    },
+    {
+      "id": 1763138540943,
       "title": "Abdulwareth Lahham - Money request & Invoice",
       "category": "urgent",
       "completed": false,
@@ -77,7 +93,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515059,
+      "id": 1763138540944,
       "title": "Apply for Medicaid - Health Insurance Coverage",
       "category": "urgent",
       "completed": false,
@@ -190,7 +206,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515061,
+      "id": 1763138540946,
       "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
       "category": "urgent",
       "completed": false,
@@ -271,147 +287,43 @@
       "questChain": []
     },
     {
-      "id": 1763131641349,
-      "title": "File 2023 Tax Return (CRITICAL FIRST)",
+      "id": 1763138540947,
+      "title": "Setup Zoho CRM & Meeting with Reseller",
       "category": "urgent",
       "completed": false,
       "xpValue": 150,
-      "icon": "💰",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Review 2023 return with Claude",
-          "completed": false
-        },
-        {
-          "title": "Submit via TurboTax e-file",
-          "completed": false
-        },
-        {
-          "title": "Wait for IRS confirmation (24-48 hrs)",
-          "completed": false
-        },
-        {
-          "title": "Set up payment plan if needed",
-          "completed": false
-        },
-        {
-          "title": "Request penalty abatement letter",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131641350,
-      "title": "Request K-1 from CPA for Taxes",
-      "category": "urgent",
-      "completed": true,
-      "xpValue": 50,
-      "icon": "📋",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
-      "project": "personal-finance-management",
-      "subtasks": [
-        {
-          "title": "Email CPA for K-1",
-          "completed": false
-        },
-        {
-          "title": "Follow up if no response in 3 days",
-          "completed": false
-        },
-        {
-          "title": "Review K-1 when received",
-          "completed": false
-        }
-      ],
-      "questId": "quest-tax-k1-2023",
-      "requiresQuest": null,
-      "questChain": [
-        {
-          "title": "File 2023 & 2024 Tax Returns (After K-1)",
-          "xpValue": 250,
-          "completed": false,
-          "notes": "STEP 2: File taxes after receiving K-1"
-        },
-        {
-          "title": "Set Up Payment Plan or Pay Taxes",
-          "xpValue": 100,
-          "completed": false,
-          "notes": "STEP 3: Handle tax payment after filing"
-        }
-      ]
-    },
-    {
-      "id": 1763131515055,
-      "title": "Uber driver app paperwork submit",
-      "category": "urgent",
-      "completed": true,
-      "xpValue": 100,
-      "icon": "🚗",
-      "status": "completed",
-      "priority": "urgent",
-      "notes": "✅ COMPLETED Nov 13! Submit Uber driver application paperwork",
-      "project": "personal-urgent",
-      "subtasks": [
-        {
-          "title": "Gather required documents",
-          "completed": true
-        },
-        {
-          "title": "Fill out application form",
-          "completed": true
-        },
-        {
-          "title": "Submit online application",
-          "completed": true
-        },
-        {
-          "title": "Follow up on status",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131515060,
-      "title": "Anas Bitar - Audio files cleaning",
-      "category": "work",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "🎧",
+      "icon": "📊",
       "status": "active",
       "priority": "high",
-      "notes": "Clean and process audio files for Anas Bitar",
-      "project": "audio-work",
+      "notes": "Configure Zoho CRM for business management and meet with reseller",
+      "project": "business-tools",
       "subtasks": [
         {
-          "title": "Review all audio files",
+          "title": "Research Zoho CRM features needed",
           "completed": false
         },
         {
-          "title": "Remove noise and artifacts",
+          "title": "Schedule meeting with Zoho reseller",
           "completed": false
         },
         {
-          "title": "Normalize audio levels",
+          "title": "Attend meeting and take notes",
           "completed": false
         },
         {
-          "title": "Export final files",
+          "title": "Set up Zoho account",
           "completed": false
         },
         {
-          "title": "Deliver to client",
+          "title": "Configure initial settings",
+          "completed": false
+        },
+        {
+          "title": "Import existing contacts",
+          "completed": false
+        },
+        {
+          "title": "Train Nour on Zoho usage",
           "completed": false
         }
       ],
@@ -420,297 +332,39 @@
       "questChain": []
     },
     {
-      "id": 1763131515089,
-      "title": "Update All Resumes (Arafa, Maya, Taha)",
-      "category": "work",
-      "completed": true,
-      "xpValue": 75,
-      "icon": "📄",
-      "status": "active",
-      "priority": "medium",
-      "notes": "Update resumes with latest experience and generate PDFs.",
-      "project": "resumes",
-      "subtasks": [
-        {
-          "title": "Update Arafa's resume",
-          "completed": false
-        },
-        {
-          "title": "Update Maya's resume",
-          "completed": false
-        },
-        {
-          "title": "Update Taha's resume",
-          "completed": false
-        },
-        {
-          "title": "Create ATS-optimized versions",
-          "completed": false
-        },
-        {
-          "title": "Generate PDF versions",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    }
-  ],
-  "mood": {
-    "mood": "good",
-    "emoji": "😊",
-    "date": "2025-11-14T15:51:34.647Z"
-  },
-  "lastActiveDate": "2025-11-14T14:01:52.171Z",
-  "brainDumps": [],
-  "reflections": [],
-  "history": {
-    "questCompletions": [
-      {
-        "questId": 1763131515089,
-        "questName": "Update All Resumes (Arafa, Maya, Taha)",
-        "xpEarned": 75,
-        "category": "work",
-        "completedAt": "2025-11-14T16:04:40.045Z"
-      },
-      {
-        "questId": 1763131641350,
-        "questName": "Request K-1 from CPA for Taxes",
-        "xpEarned": 50,
-        "category": "urgent",
-        "completedAt": "2025-11-14T16:12:19.815Z"
-      }
-    ],
-    "levelUps": [
-      {
-        "level": 4,
-        "totalXP": 350,
-        "leveledUpAt": "2025-11-14T16:04:40.050Z"
-      },
-      {
-        "level": 5,
-        "totalXP": 400,
-        "leveledUpAt": "2025-11-14T16:12:19.820Z"
-      }
-    ],
-    "dailyStats": [
-      {
-        "date": "2025-11-14",
-        "xpEarned": 125,
-        "questsCompleted": 2,
-        "mood": "good",
-        "brainDumps": 0
-      }
-    ],
-    "moodCheckins": [
-      {
-        "mood": "good",
-        "emoji": "😊",
-        "timestamp": "2025-11-14T15:00:33.007Z"
-      },
-      {
-        "mood": "good",
-        "emoji": "😊",
-        "timestamp": "2025-11-14T15:51:34.647Z"
-      }
-    ],
-    "sessions": [
-      {
-        "startTime": "2025-11-14T14:45:14.554Z",
-        "level": 3,
-        "xp": 225,
-        "activeQuests": 7
-      },
-      {
-        "startTime": "2025-11-14T14:47:16.779Z",
-        "level": 3,
-        "xp": 225,
-        "activeQuests": 8
-      },
-      {
-        "startTime": "2025-11-14T15:00:24.801Z",
-        "level": 3,
-        "xp": 225,
-        "activeQuests": 12
-      },
-      {
-        "startTime": "2025-11-14T15:51:31.843Z",
-        "level": 3,
-        "xp": 225,
-        "activeQuests": 12
-      },
-      {
-        "startTime": "2025-11-14T16:03:09.010Z",
-        "level": 3,
-        "xp": 225,
-        "activeQuests": 12
-      },
-      {
-        "startTime": "2025-11-14T16:09:28.357Z",
-        "level": 4,
-        "xp": 350,
-        "activeQuests": 13
-      },
-      {
-        "startTime": "2025-11-14T16:09:29.276Z",
-        "level": 4,
-        "xp": 350,
-        "activeQuests": 13
-      },
-      {
-        "startTime": "2025-11-14T16:11:58.950Z",
-        "level": 4,
-        "xp": 350,
-        "activeQuests": 13
-      }
-    ]
-  },
-  "inventory": [
-    {
-      "id": 1763131515069,
-      "title": "Smart Herbal Farms - DECISION: Send Mentorship Letter",
+      "id": 1763138540948,
+      "title": "Contacts Management System with Nour",
       "category": "urgent",
       "completed": false,
       "xpValue": 100,
-      "icon": "🌿",
-      "status": "planning",
-      "priority": "urgent",
-      "notes": "40,000+ words analysis complete. Time to decide and act.",
-      "project": "smart-herbal-farms",
-      "subtasks": [
-        {
-          "title": "Make final decision (Yes/No/Pass)",
-          "completed": false
-        },
-        {
-          "title": "If YES: Send mentorship-response-arabic.html",
-          "completed": false
-        },
-        {
-          "title": "Wait 1-2 weeks for response",
-          "completed": false
-        },
-        {
-          "title": "If positive: Schedule Month 1 call",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131515070,
-      "title": "Syria Media Proposal - DECISION: Submit to Ministry",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "📄",
-      "status": "planning",
-      "priority": "urgent",
-      "notes": "Professional proposal complete. Ready to submit.",
-      "project": "syria-media-proposal",
-      "subtasks": [
-        {
-          "title": "Generate final PDF with background graphics",
-          "completed": false
-        },
-        {
-          "title": "Prepare cover letter",
-          "completed": false
-        },
-        {
-          "title": "Research ministry contact information",
-          "completed": false
-        },
-        {
-          "title": "Send via official channels",
-          "completed": false
-        },
-        {
-          "title": "Follow up after 2-3 weeks",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427516,
-      "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 1000,
-      "icon": "🕌",
+      "icon": "👥",
       "status": "active",
-      "priority": "urgent",
-      "notes": "CRITICAL DEADLINE: Event Nov 23rd, need done by Nov 18th (5 days left!). 10 songs, 20 minutes total.",
-      "project": "mawlid-songs",
+      "priority": "high",
+      "notes": "Set up comprehensive contacts management system with assistant Nour",
+      "project": "business-operations",
       "subtasks": [
         {
-          "title": "Planning: Select 10 songs for Mawlid",
+          "title": "Audit all existing contacts",
           "completed": false
         },
         {
-          "title": "Planning: Finalize all lyrics and arrangements",
+          "title": "Define contact categories",
           "completed": false
         },
         {
-          "title": "Song 1: Record, mix, master (2 min)",
+          "title": "Set up shared contact database",
           "completed": false
         },
         {
-          "title": "Song 2: Record, mix, master (2 min)",
+          "title": "Create contact management workflow",
           "completed": false
         },
         {
-          "title": "Song 3: Record, mix, master (2 min)",
+          "title": "Train Nour on system",
           "completed": false
         },
         {
-          "title": "Song 4: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 5: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 6: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 7: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 8: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 9: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Song 10: Record, mix, master (2 min)",
-          "completed": false
-        },
-        {
-          "title": "Final: Compile all songs into sequence",
-          "completed": false
-        },
-        {
-          "title": "Final: Quality check all 20 minutes",
-          "completed": false
-        },
-        {
-          "title": "Final: Prepare video/visual content if needed",
-          "completed": false
-        },
-        {
-          "title": "Final: Deliver to event organizers by Nov 18",
+          "title": "Test system for 1 week",
           "completed": false
         }
       ],
@@ -719,35 +373,47 @@
       "questChain": []
     },
     {
-      "id": 1763132427519,
-      "title": "File 2023 Tax Return (CRITICAL FIRST)",
+      "id": 1763138540949,
+      "title": "Issa Endocrinology - Fix Voicemail System URGENT",
       "category": "urgent",
       "completed": false,
       "xpValue": 150,
-      "icon": "💰",
+      "icon": "📞",
       "status": "active",
       "priority": "urgent",
-      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
-      "project": "personal-finance-management",
+      "notes": "NEW CLIENT! Fix voicemail system for Issa Endocrinology. Critical client request.",
+      "project": "client-issa-endocrinology",
       "subtasks": [
         {
-          "title": "Review 2023 return with Claude",
+          "title": "Contact client to understand voicemail issues",
           "completed": false
         },
         {
-          "title": "Submit via TurboTax e-file",
+          "title": "Diagnose current voicemail setup/problems",
           "completed": false
         },
         {
-          "title": "Wait for IRS confirmation (24-48 hrs)",
+          "title": "Research solution options",
           "completed": false
         },
         {
-          "title": "Set up payment plan if needed",
+          "title": "Get client approval on solution",
           "completed": false
         },
         {
-          "title": "Request penalty abatement letter",
+          "title": "Implement voicemail system fix",
+          "completed": false
+        },
+        {
+          "title": "Test voicemail system thoroughly",
+          "completed": false
+        },
+        {
+          "title": "Train client on new system",
+          "completed": false
+        },
+        {
+          "title": "Follow up to ensure working properly",
           "completed": false
         }
       ],
@@ -756,7 +422,7 @@
       "questChain": []
     },
     {
-      "id": 1763132427520,
+      "id": 1763138540950,
       "title": "Request K-1 from CPA for Taxes",
       "category": "urgent",
       "completed": false,
@@ -798,7 +464,7 @@
       ]
     },
     {
-      "id": 1763132427521,
+      "id": 1763138540951,
       "title": "File 2023 & 2024 Tax Returns (After K-1)",
       "category": "urgent",
       "completed": false,
@@ -842,7 +508,7 @@
       ]
     },
     {
-      "id": 1763132427522,
+      "id": 1763138540952,
       "title": "Set Up Payment Plan or Pay Taxes",
       "category": "urgent",
       "completed": false,
@@ -875,7 +541,7 @@
       "questChain": []
     },
     {
-      "id": 1763132427523,
+      "id": 1763138540953,
       "title": "Apply to 5 High-Priority IT Director Jobs",
       "category": "urgent",
       "completed": false,
@@ -910,17 +576,80 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    }
+  ],
+  "mood": {
+    "mood": "good",
+    "emoji": "😊",
+    "date": "2025-11-14T14:01:52.171Z"
+  },
+  "lastActiveDate": "2025-11-14T14:01:52.171Z",
+  "brainDumps": [],
+  "reflections": [],
+  "history": {
+    "questCompletions": [],
+    "levelUps": [
+      {
+        "level": 2,
+        "totalXP": 150,
+        "leveledUpAt": "2025-11-14T16:42:20.436Z"
+      }
+    ],
+    "dailyStats": [],
+    "moodCheckins": [],
+    "sessions": [
+      {
+        "startTime": "2025-11-14T16:42:20.439Z",
+        "level": 2,
+        "xp": 150,
+        "activeQuests": 7
+      }
+    ]
+  },
+  "inventory": [
+    {
+      "id": 1763138540941,
+      "title": "Uber driver app paperwork submit",
+      "category": "urgent",
+      "completed": true,
+      "xpValue": 100,
+      "icon": "🚗",
+      "status": "completed",
+      "priority": "urgent",
+      "notes": "✅ COMPLETED Nov 13! Submit Uber driver application paperwork",
+      "project": "personal-urgent",
+      "subtasks": [
+        {
+          "title": "Gather required documents",
+          "completed": true
+        },
+        {
+          "title": "Fill out application form",
+          "completed": true
+        },
+        {
+          "title": "Submit online application",
+          "completed": true
+        },
+        {
+          "title": "Follow up on status",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     },
     {
-      "id": 1763131515057,
+      "id": 1763138540942,
       "title": "Quest Coach - Development & Enhancement",
       "category": "work",
-      "completed": false,
+      "completed": true,
       "xpValue": 500,
       "icon": "📱",
-      "status": "active",
+      "status": "completed",
       "priority": "high",
-      "notes": "Build and improve Quest Coach! Every feature = subtask = XP! Currently: 400/500 XP (80%)",
+      "notes": "✅ COMPLETED! All features built! 500/500 XP earned! 🎉",
       "project": "adhd-quest-coach",
       "subtasks": [
         {
@@ -968,12 +697,20 @@
           "completed": true
         },
         {
-          "title": "Build stats dashboard with graphs & charts (100 XP)",
-          "completed": false
+          "title": "✅ Add sequential quest dependencies (show & lock next steps) (40 XP)",
+          "completed": true
         },
         {
-          "title": "Add sequential quest dependencies (show & lock next steps) (40 XP)",
-          "completed": false
+          "title": "✅ Build project folder sync system (30 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Fix duplicate quest detection (10 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Fix quest importer critical bugs (20 XP)",
+          "completed": true
         },
         {
           "title": "Build mobile-optimized responsive UI (30 XP)",
@@ -1013,43 +750,35 @@
       "questChain": []
     },
     {
-      "id": 1763131515062,
-      "title": "Setup Zoho CRM & Meeting with Reseller",
-      "category": "urgent",
+      "id": 1763138540945,
+      "title": "Anas Bitar - Audio files cleaning",
+      "category": "work",
       "completed": false,
-      "xpValue": 150,
-      "icon": "📊",
+      "xpValue": 100,
+      "icon": "🎧",
       "status": "active",
       "priority": "high",
-      "notes": "Configure Zoho CRM for business management and meet with reseller",
-      "project": "business-tools",
+      "notes": "Clean and process audio files for Anas Bitar",
+      "project": "audio-work",
       "subtasks": [
         {
-          "title": "Research Zoho CRM features needed",
+          "title": "Review all audio files",
           "completed": false
         },
         {
-          "title": "Schedule meeting with Zoho reseller",
+          "title": "Remove noise and artifacts",
           "completed": false
         },
         {
-          "title": "Attend meeting and take notes",
+          "title": "Normalize audio levels",
           "completed": false
         },
         {
-          "title": "Set up Zoho account",
+          "title": "Export final files",
           "completed": false
         },
         {
-          "title": "Configure initial settings",
-          "completed": false
-        },
-        {
-          "title": "Import existing contacts",
-          "completed": false
-        },
-        {
-          "title": "Train Nour on Zoho usage",
+          "title": "Deliver to client",
           "completed": false
         }
       ],
@@ -1058,39 +787,31 @@
       "questChain": []
     },
     {
-      "id": 1763131515063,
-      "title": "Contacts Management System with Nour",
+      "id": 1763138540954,
+      "title": "Smart Herbal Farms - DECISION: Send Mentorship Letter",
       "category": "urgent",
       "completed": false,
       "xpValue": 100,
-      "icon": "👥",
-      "status": "active",
-      "priority": "high",
-      "notes": "Set up comprehensive contacts management system with assistant Nour",
-      "project": "business-operations",
+      "icon": "🌿",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "40,000+ words analysis complete. Time to decide and act.",
+      "project": "smart-herbal-farms",
       "subtasks": [
         {
-          "title": "Audit all existing contacts",
+          "title": "Make final decision (Yes/No/Pass)",
           "completed": false
         },
         {
-          "title": "Define contact categories",
+          "title": "If YES: Send mentorship-response-arabic.html",
           "completed": false
         },
         {
-          "title": "Set up shared contact database",
+          "title": "Wait 1-2 weeks for response",
           "completed": false
         },
         {
-          "title": "Create contact management workflow",
-          "completed": false
-        },
-        {
-          "title": "Train Nour on system",
-          "completed": false
-        },
-        {
-          "title": "Test system for 1 week",
+          "title": "If positive: Schedule Month 1 call",
           "completed": false
         }
       ],
@@ -1099,7 +820,44 @@
       "questChain": []
     },
     {
-      "id": 1763131515071,
+      "id": 1763138540955,
+      "title": "Syria Media Proposal - DECISION: Submit to Ministry",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "📄",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "Professional proposal complete. Ready to submit.",
+      "project": "syria-media-proposal",
+      "subtasks": [
+        {
+          "title": "Generate final PDF with background graphics",
+          "completed": false
+        },
+        {
+          "title": "Prepare cover letter",
+          "completed": false
+        },
+        {
+          "title": "Research ministry contact information",
+          "completed": false
+        },
+        {
+          "title": "Send via official channels",
+          "completed": false
+        },
+        {
+          "title": "Follow up after 2-3 weeks",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763138540956,
       "title": "Umayyad Mosque Report - DECISION: Submit to Client",
       "category": "urgent",
       "completed": false,
@@ -1136,7 +894,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515072,
+      "id": 1763138540957,
       "title": "Rakan's Song Project - Finish Production",
       "category": "work",
       "completed": false,
@@ -1169,7 +927,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515073,
+      "id": 1763138540958,
       "title": "Tamim and Tasnim Song 7",
       "category": "work",
       "completed": false,
@@ -1202,7 +960,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515074,
+      "id": 1763138540959,
       "title": "Facebook Ad Campaigns - Studio Client Acquisition",
       "category": "work",
       "completed": false,
@@ -1239,7 +997,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515075,
+      "id": 1763138540960,
       "title": "ADHD Quest Coach - Backend API & Cloud Sync",
       "category": "health",
       "completed": false,
@@ -1280,7 +1038,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515076,
+      "id": 1763138540961,
       "title": "AI Courses - Complete n8n + Canva Automation",
       "category": "work",
       "completed": false,
@@ -1325,7 +1083,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515077,
+      "id": 1763138540962,
       "title": "Path of Heroes - Phase 2: Character-Specific Content",
       "category": "personal",
       "completed": false,
@@ -1362,7 +1120,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515078,
+      "id": 1763138540963,
       "title": "Personal Website - SEO Optimization & Better CTAs",
       "category": "work",
       "completed": false,
@@ -1427,7 +1185,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515079,
+      "id": 1763138540964,
       "title": "Karazah Website - Enhanced Features & SEO",
       "category": "work",
       "completed": false,
@@ -1476,44 +1234,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515085,
-      "title": "Karazah v1.1.0 - User Registration System",
-      "category": "work",
-      "completed": false,
-      "xpValue": 200,
-      "icon": "👥",
-      "status": "planning",
-      "priority": "high",
-      "notes": "85% complete. v1.0 live, time for v1.1 features.",
-      "project": "Karazah",
-      "subtasks": [
-        {
-          "title": "Design user database schema",
-          "completed": false
-        },
-        {
-          "title": "Implement registration form",
-          "completed": false
-        },
-        {
-          "title": "Add login/logout functionality",
-          "completed": false
-        },
-        {
-          "title": "Create user profile page",
-          "completed": false
-        },
-        {
-          "title": "Test authentication flow",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131515080,
+      "id": 1763138540965,
       "title": "Ministry of Child Affairs Syria - Proposal",
       "category": "work",
       "completed": false,
@@ -1546,7 +1267,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515081,
+      "id": 1763138540966,
       "title": "Reels from Syria Lecture",
       "category": "work",
       "completed": false,
@@ -1579,7 +1300,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515082,
+      "id": 1763138540967,
       "title": "Nasheed Watani",
       "category": "work",
       "completed": false,
@@ -1612,7 +1333,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515083,
+      "id": 1763138540968,
       "title": "Email Management System",
       "category": "work",
       "completed": false,
@@ -1649,7 +1370,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515084,
+      "id": 1763138540969,
       "title": "Karazah Mobile App Development",
       "category": "work",
       "completed": false,
@@ -1706,7 +1427,44 @@
       "questChain": []
     },
     {
-      "id": 1763131515086,
+      "id": 1763138540970,
+      "title": "Karazah v1.1.0 - User Registration System",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "👥",
+      "status": "planning",
+      "priority": "high",
+      "notes": "85% complete. v1.0 live, time for v1.1 features.",
+      "project": "Karazah",
+      "subtasks": [
+        {
+          "title": "Design user database schema",
+          "completed": false
+        },
+        {
+          "title": "Implement registration form",
+          "completed": false
+        },
+        {
+          "title": "Add login/logout functionality",
+          "completed": false
+        },
+        {
+          "title": "Create user profile page",
+          "completed": false
+        },
+        {
+          "title": "Test authentication flow",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763138540971,
       "title": "Arabian Sweets Empire - Phase 4: Meta-Progression",
       "category": "personal",
       "completed": false,
@@ -1747,7 +1505,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515087,
+      "id": 1763138540972,
       "title": "Syrian Memory Game - Global Leaderboard",
       "category": "personal",
       "completed": false,
@@ -1784,7 +1542,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515088,
+      "id": 1763138540973,
       "title": "Tarboush - Power-ups and Shop System",
       "category": "personal",
       "completed": false,
@@ -1821,7 +1579,44 @@
       "questChain": []
     },
     {
-      "id": 1763131515090,
+      "id": 1763138540974,
+      "title": "Update All Resumes (Arafa, Maya, Taha)",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "📄",
+      "status": "active",
+      "priority": "medium",
+      "notes": "Update resumes with latest experience and generate PDFs.",
+      "project": "resumes",
+      "subtasks": [
+        {
+          "title": "Update Arafa's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Maya's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Taha's resume",
+          "completed": false
+        },
+        {
+          "title": "Create ATS-optimized versions",
+          "completed": false
+        },
+        {
+          "title": "Generate PDF versions",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763138540975,
       "title": "Website 2.0 - Consolidate & Deploy",
       "category": "work",
       "completed": false,
@@ -1858,44 +1653,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515098,
-      "title": "Path of Heroes - Phase 3: Enemy Variety & Equipment",
-      "category": "personal",
-      "completed": false,
-      "xpValue": 500,
-      "icon": "⚔️",
-      "status": "planning",
-      "priority": "medium",
-      "notes": "Phase 3: Add enemy affixes and equipment system.",
-      "project": "p-o-h",
-      "subtasks": [
-        {
-          "title": "Design enemy affix system (Vicious, Swift, Armored)",
-          "completed": false
-        },
-        {
-          "title": "Implement enhanced elite encounters",
-          "completed": false
-        },
-        {
-          "title": "Create equipment system",
-          "completed": false
-        },
-        {
-          "title": "Add character-appropriate gear drops",
-          "completed": false
-        },
-        {
-          "title": "Test build variety",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131515091,
+      "id": 1763138540976,
       "title": "Syria's Tale Song",
       "category": "work",
       "completed": false,
@@ -1924,7 +1682,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515092,
+      "id": 1763138540977,
       "title": "Space Song Aljazeera",
       "category": "work",
       "completed": false,
@@ -1957,7 +1715,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515093,
+      "id": 1763138540978,
       "title": "ADHD Posts & Reels Plan",
       "category": "personal",
       "completed": false,
@@ -1994,7 +1752,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515094,
+      "id": 1763138540979,
       "title": "Entertainment Hub - Investigate & Document",
       "category": "work",
       "completed": false,
@@ -2027,7 +1785,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515095,
+      "id": 1763138540980,
       "title": "Studio Emulator - Review & Test",
       "category": "personal",
       "completed": false,
@@ -2060,7 +1818,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515096,
+      "id": 1763138540981,
       "title": "Syria Ministry PA System - DECISION: Submit Proposal",
       "category": "work",
       "completed": false,
@@ -2093,7 +1851,7 @@
       "questChain": []
     },
     {
-      "id": 1763131515097,
+      "id": 1763138540982,
       "title": "MSU Oct2025 Event - Extract Templates",
       "category": "work",
       "completed": true,
@@ -2122,7 +1880,44 @@
       "questChain": []
     },
     {
-      "id": 1763131515099,
+      "id": 1763138540983,
+      "title": "Path of Heroes - Phase 3: Enemy Variety & Equipment",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 500,
+      "icon": "⚔️",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Phase 3: Add enemy affixes and equipment system.",
+      "project": "p-o-h",
+      "subtasks": [
+        {
+          "title": "Design enemy affix system (Vicious, Swift, Armored)",
+          "completed": false
+        },
+        {
+          "title": "Implement enhanced elite encounters",
+          "completed": false
+        },
+        {
+          "title": "Create equipment system",
+          "completed": false
+        },
+        {
+          "title": "Add character-appropriate gear drops",
+          "completed": false
+        },
+        {
+          "title": "Test build variety",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763138540984,
       "title": "Path of Heroes - Phase 4: Story & 30-Floor Campaign",
       "category": "personal",
       "completed": false,
@@ -2163,230 +1958,31 @@
       "questChain": []
     },
     {
-      "id": 1763045218497,
-      "title": "Update and modernize personal website",
+      "id": 1763138540985,
+      "title": "Ahmad Halabi-Rahma Touchbase",
       "category": "work",
       "completed": false,
-      "xpValue": 75,
-      "icon": "🌐"
-    },
-    {
-      "id": 1763045218495,
-      "title": "Follow up with Washington DC networking contacts",
-      "category": "work",
-      "completed": false,
-      "xpValue": 50,
-      "icon": "🤝"
-    },
-    {
-      "id": 1763132427510,
-      "title": "Uber driver app paperwork submit",
-      "category": "urgent",
-      "completed": true,
-      "xpValue": 100,
-      "icon": "🚗",
-      "status": "completed",
-      "priority": "urgent",
-      "notes": "✅ COMPLETED Nov 13! Submit Uber driver application paperwork",
-      "project": "personal-urgent",
-      "subtasks": [
-        {
-          "title": "Gather required documents",
-          "completed": true
-        },
-        {
-          "title": "Fill out application form",
-          "completed": true
-        },
-        {
-          "title": "Submit online application",
-          "completed": true
-        },
-        {
-          "title": "Follow up on status",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427512,
-      "title": "Abdulwareth Lahham - Money request & Invoice",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 75,
-      "icon": "💰",
+      "xpValue": 25,
+      "icon": "👋",
       "status": "active",
-      "priority": "urgent",
-      "notes": "Request payment and create invoice for Abdulwareth Lahham project",
-      "project": "personal-finance",
+      "priority": "low",
+      "notes": "Low priority - Check in with Ahmad Halabi-Rahma when time permits",
+      "project": "client-relations",
       "subtasks": [
         {
-          "title": "Calculate total amount owed",
+          "title": "Schedule touchbase meeting",
           "completed": false
         },
         {
-          "title": "Create professional invoice",
+          "title": "Prepare agenda/discussion points",
           "completed": false
         },
         {
-          "title": "Send invoice to client",
+          "title": "Conduct touchbase call",
           "completed": false
         },
         {
-          "title": "Follow up on payment",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427514,
-      "title": "Apply for Medicaid - Health Insurance Coverage",
-      "category": "urgent",
-      "completed": false,
-      "xpValue": 150,
-      "icon": "🏥",
-      "status": "active",
-      "priority": "urgent",
-      "notes": "CRITICAL: Apply for Medicaid now (no job). 2 phases: Start application, then submit tax returns when ready",
-      "project": "personal-health-insurance",
-      "subtasks": [
-        {
-          "title": "📋 PHASE 1: START APPLICATION (Do Now)",
-          "completed": false
-        },
-        {
-          "title": "Research Medicaid eligibility requirements in your state (15 min)",
-          "completed": false
-        },
-        {
-          "title": "Gather required documents (ID, proof of residency, SSN) (30 min)",
-          "completed": false
-        },
-        {
-          "title": "Go to Healthcare.gov or state Medicaid website (5 min)",
-          "completed": false
-        },
-        {
-          "title": "Create account on Medicaid application portal (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Start Medicaid application form (45 min)",
-          "completed": false
-        },
-        {
-          "title": "Fill out personal information section (20 min)",
-          "completed": false
-        },
-        {
-          "title": "Fill out household/income section (20 min)",
-          "completed": false
-        },
-        {
-          "title": "Upload initial documents (ID, residency proof) (15 min)",
-          "completed": false
-        },
-        {
-          "title": "Submit initial application (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Save confirmation number and application ID (5 min)",
-          "completed": false
-        },
-        {
-          "title": "🎉 MILESTONE: Initial Application Submitted!",
-          "completed": false
-        },
-        {
-          "title": "📋 PHASE 2: SUBMIT TAX RETURNS (When Ready)",
-          "completed": false
-        },
-        {
-          "title": "⏸️ Wait for 2023 tax return to be filed",
-          "completed": false
-        },
-        {
-          "title": "⏸️ Wait for 2024 tax return to be filed",
-          "completed": false
-        },
-        {
-          "title": "Download tax return PDFs from TurboTax (5 min)",
-          "completed": false
-        },
-        {
-          "title": "Log back into Medicaid application portal (5 min)",
-          "completed": false
-        },
-        {
-          "title": "Upload 2023 tax return as income verification (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Upload 2024 tax return as income verification (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Submit updated application with tax documents (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Receive Medicaid eligibility determination (wait 30-45 days)",
-          "completed": false
-        },
-        {
-          "title": "Review Medicaid approval letter (10 min)",
-          "completed": false
-        },
-        {
-          "title": "Activate Medicaid coverage (10 min)",
-          "completed": false
-        },
-        {
-          "title": "🎉 COMPLETE: Medicaid Coverage Active!",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763132427515,
-      "title": "Anas Bitar - Audio files cleaning",
-      "category": "work",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "🎧",
-      "status": "active",
-      "priority": "high",
-      "notes": "Clean and process audio files for Anas Bitar",
-      "project": "audio-work",
-      "subtasks": [
-        {
-          "title": "Review all audio files",
-          "completed": false
-        },
-        {
-          "title": "Remove noise and artifacts",
-          "completed": false
-        },
-        {
-          "title": "Normalize audio levels",
-          "completed": false
-        },
-        {
-          "title": "Export final files",
-          "completed": false
-        },
-        {
-          "title": "Deliver to client",
+          "title": "Follow up on action items",
           "completed": false
         }
       ],
@@ -2394,9 +1990,5 @@
       "requiresQuest": null,
       "questChain": []
     }
-  ],
-  "achievements": [
-    "firstQuest",
-    "xp100"
   ]
 }

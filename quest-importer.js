@@ -30,10 +30,9 @@ function importAllQuests() {
     });
 
     // Separate into active and inventory based on status/priority
+    // URGENT quests ALWAYS go to active, others go to inventory
     const activeQuests = convertedQuests.filter(q =>
-        q.status === 'active' &&
-        (q.priority === 'urgent' || q.completed) &&
-        appState.quests.length < 10 // Limit active quests to keep UI manageable
+        q.status === 'active' && (q.priority === 'urgent' || q.category === 'urgent')
     );
 
     const inventoryQuests = convertedQuests.filter(q =>
@@ -58,14 +57,15 @@ function importAllQuests() {
         }
     });
 
-    // Add urgent/completed to active (avoid duplicates - check both title AND questId)
+    // Add urgent quests to active (avoid duplicates - check both title AND questId)
+    // URGENT quests bypass the 10-quest limit - they're always added!
     let activeAdded = 0;
     activeQuests.forEach(quest => {
         const exists = appState.quests.find(q =>
             q.title === quest.title ||
             (q.questId && quest.questId && q.questId === quest.questId)
         );
-        if (!exists && appState.quests.length < 10) {
+        if (!exists) {
             appState.quests.push(quest);
             activeAdded++;
         }

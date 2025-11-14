@@ -23,6 +23,38 @@ const allProjectQuests = [
         ]
     },
     {
+        name: "Quest Coach - Development & Enhancement",
+        category: "work",
+        priority: "high",
+        status: "active",
+        xpValue: 500,
+        icon: "📱",
+        notes: "Build and improve Quest Coach! Every feature = subtask = XP! Currently: 280/500 XP (56%)",
+        project: "adhd-quest-coach",
+        subtasks: [
+            { title: "✅ Initial setup & project structure (50 XP)", completed: true },
+            { title: "✅ Create comprehensive quest system with 41 quests (100 XP)", completed: true },
+            { title: "✅ Add GitHub Sync feature for bidirectional syncing (50 XP)", completed: true },
+            { title: "✅ Fix level display bug (level persists correctly) (10 XP)", completed: true },
+            { title: "✅ Fix token persistence UX (show saved status) (10 XP)", completed: true },
+            { title: "✅ Add complete history tracking system (50 XP)", completed: true },
+            { title: "✅ Add daily stats, mood, and session tracking (10 XP)", completed: true },
+            { title: "Import all 41 real quests into Quest Coach UI (30 XP)", completed: false },
+            { title: "Build stats dashboard with graphs & charts (100 XP)", completed: false },
+            { title: "Add quest progress visualization (subtasks shown) (20 XP)", completed: false },
+            { title: "Create quest dependencies system (blocked/waiting states) (30 XP)", completed: false },
+            { title: "Build mobile-optimized responsive UI (30 XP)", completed: false },
+            { title: "Add data export/backup feature (download JSON) (20 XP)", completed: false },
+            { title: "Create quest templates for common tasks (20 XP)", completed: false },
+            { title: "Add time tracking per quest/subtask (40 XP)", completed: false },
+            { title: "Build achievement/badge system (earn badges!) (60 XP)", completed: false },
+            { title: "Create weekly/monthly progress reports (30 XP)", completed: false },
+            { title: "Add quest filtering & search (20 XP)", completed: false },
+            { title: "Build quest sharing feature (share with friends) (30 XP)", completed: false },
+            { title: "Add dark mode toggle (20 XP)", completed: false }
+        ]
+    },
+    {
         name: "Abdulwareth Lahham - Money request & Invoice",
         category: "urgent",
         priority: "urgent",

@@ -591,7 +591,16 @@
             mood: null,
             lastActiveDate: null,
             brainDumps: [],
-            reflections: []
+            reflections: [],
+
+            // 📊 NEW: History tracking for stats/graphs
+            history: {
+                questCompletions: [],  // Track every quest completed
+                levelUps: [],          // Track every level gained
+                dailyStats: [],        // Track daily XP/progress
+                moodCheckins: [],      // Track mood over time
+                sessions: []           // Track when you used Quest Coach
+            }
         };
 
         // Load state from localStorage
@@ -973,9 +982,35 @@
                     // Award XP
                     appState.xp += quest.xpValue;
                     showNotification(`🎉 Quest completed! +${quest.xpValue} XP`);
+
+                    // 📊 Log completion to history
+                    if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
+                    appState.history.questCompletions.push({
+                        questId: quest.id,
+                        questName: quest.title,
+                        xpEarned: quest.xpValue,
+                        category: quest.category,
+                        completedAt: new Date().toISOString()
+                    });
+
+                    // Update daily stats
+                    updateDailyStats(quest.xpValue, 1);
                 } else {
                     // Remove XP
                     appState.xp -= quest.xpValue;
+
+                    // 📊 Remove from history if uncompleted
+                    if (appState.history && appState.history.questCompletions) {
+                        const index = appState.history.questCompletions.findIndex(
+                            c => c.questId === quest.id && c.questName === quest.title
+                        );
+                        if (index > -1) {
+                            appState.history.questCompletions.splice(index, 1);
+                        }
+                    }
+
+                    // Update daily stats
+                    updateDailyStats(-quest.xpValue, -1);
                 }
 
                 saveState();
@@ -990,7 +1025,16 @@
             // Only level up if we have enough XP and haven't already leveled up
             if (appState.xp >= xpForNextLevel) {
                 appState.level++;
-                saveState(); // 🔧 FIX: Save the level increase!
+
+                // 📊 Log level up to history
+                if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
+                appState.history.levelUps.push({
+                    level: appState.level,
+                    totalXP: appState.xp,
+                    leveledUpAt: new Date().toISOString()
+                });
+
+                saveState(); // 🔧 Save the level increase!
 
                 // Show level up notification
                 showNotification(`🎊 LEVEL UP! You're now level ${appState.level}!`);
@@ -1018,6 +1062,14 @@
         // Select mood
         function selectMood(mood, emoji) {
             appState.mood = { mood, emoji, date: new Date().toISOString() };
+
+            // 📊 Log mood check-in to history
+            if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
+            appState.history.moodCheckins.push({
+                mood: mood,
+                emoji: emoji,
+                timestamp: new Date().toISOString()
+            });
 
             // Update button states
             document.querySelectorAll('.mood-btn').forEach(btn => {
@@ -1411,9 +1463,62 @@
             document.getElementById('daily-reflection').value = '';
         }
 
+        // 📊 Update daily stats helper
+        function updateDailyStats(xpChange, questsChange) {
+            if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
+
+            const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+            let todayStats = appState.history.dailyStats.find(s => s.date === today);
+
+            if (!todayStats) {
+                // Create new entry for today
+                todayStats = {
+                    date: today,
+                    xpEarned: 0,
+                    questsCompleted: 0,
+                    mood: appState.mood ? appState.mood.mood : null,
+                    brainDumps: appState.brainDumps ? appState.brainDumps.filter(d =>
+                        d.date && d.date.startsWith(today)
+                    ).length : 0
+                };
+                appState.history.dailyStats.push(todayStats);
+            }
+
+            // Update stats
+            todayStats.xpEarned += xpChange;
+            todayStats.questsCompleted += questsChange;
+
+            // Keep only last 365 days of stats (to prevent storage bloat)
+            if (appState.history.dailyStats.length > 365) {
+                appState.history.dailyStats = appState.history.dailyStats.slice(-365);
+            }
+        }
+
+        // 📊 Log session (when user opens Quest Coach)
+        function logSession() {
+            if (!appState.history) appState.history = { questCompletions: [], levelUps: [], dailyStats: [], moodCheckins: [], sessions: [] };
+
+            appState.history.sessions.push({
+                startTime: new Date().toISOString(),
+                level: appState.level,
+                xp: appState.xp,
+                activeQuests: appState.quests ? appState.quests.length : 0
+            });
+
+            // Keep only last 100 sessions (to prevent storage bloat)
+            if (appState.history.sessions.length > 100) {
+                appState.history.sessions = appState.history.sessions.slice(-100);
+            }
+
+            saveState();
+        }
+
         // Initialize app on load
         document.addEventListener('DOMContentLoaded', function() {
             loadState();
+
+            // 📊 Log this session
+            logSession();
         });
     </script>
 </body>

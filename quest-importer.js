@@ -44,21 +44,33 @@ function importAllQuests() {
     if (!appState.quests) appState.quests = [];
     if (!appState.inventory) appState.inventory = [];
 
-    // Add to inventory (avoid duplicates)
+    // Add to inventory (avoid duplicates - check both title AND questId)
+    let inventoryAdded = 0;
     inventoryQuests.forEach(quest => {
-        const exists = appState.inventory.find(q => q.title === quest.title);
+        const exists = appState.inventory.find(q =>
+            q.title === quest.title ||
+            (q.questId && quest.questId && q.questId === quest.questId)
+        );
         if (!exists) {
             appState.inventory.push(quest);
+            inventoryAdded++;
         }
     });
 
-    // Add urgent/completed to active (avoid duplicates)
+    // Add urgent/completed to active (avoid duplicates - check both title AND questId)
+    let activeAdded = 0;
     activeQuests.forEach(quest => {
-        const exists = appState.quests.find(q => q.title === quest.title);
+        const exists = appState.quests.find(q =>
+            q.title === quest.title ||
+            (q.questId && quest.questId && q.questId === quest.questId)
+        );
         if (!exists && appState.quests.length < 10) {
             appState.quests.push(quest);
+            activeAdded++;
         }
     });
+
+    console.log(`📥 Quest Import: Added ${activeAdded} active, ${inventoryAdded} inventory (skipped ${inventoryQuests.length - inventoryAdded + activeQuests.length - activeAdded} duplicates)`);
 
     // Save and update
     saveState();

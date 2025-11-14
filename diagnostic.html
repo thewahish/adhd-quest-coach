@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quest Coach Diagnostic</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .check {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        pre {
+            background: white;
+            padding: 10px;
+            border: 1px solid #ddd;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Quest Coach Diagnostic</h1>
+    <div id="results"></div>
+
+    <script src="all-projects-quests.js"></script>
+    <script>
+        const results = document.getElementById('results');
+
+        function check(name, condition, details = '') {
+            const div = document.createElement('div');
+            div.className = `check ${condition ? 'pass' : 'fail'}`;
+            div.innerHTML = `
+                ${condition ? '✅' : '❌'} <strong>${name}</strong>
+                ${details ? `<br><small>${details}</small>` : ''}
+            `;
+            results.appendChild(div);
+            return condition;
+        }
+
+        // Run diagnostics
+        setTimeout(() => {
+            check('all-projects-quests.js loaded', typeof allProjectQuests !== 'undefined');
+
+            if (typeof allProjectQuests !== 'undefined') {
+                check('allProjectQuests is an array', Array.isArray(allProjectQuests));
+                check('allProjectQuests has quests', allProjectQuests.length > 0,
+                    `Found ${allProjectQuests.length} quests`);
+
+                if (allProjectQuests.length > 0) {
+                    const sample = allProjectQuests[0];
+                    const pre = document.createElement('pre');
+                    pre.textContent = 'Sample quest:\n' + JSON.stringify(sample, null, 2);
+                    results.appendChild(pre);
+                }
+            }
+
+            // Check if quest-importer functions exist
+            check('importAllQuests function exists', typeof importAllQuests === 'function');
+            check('autoImportIfNeeded function exists', typeof autoImportIfNeeded === 'function');
+
+            // Try manual import
+            results.innerHTML += '<hr><button onclick="testImport()" style="padding: 10px 20px; font-size: 16px; cursor: pointer;">🧪 Test Manual Import</button>';
+        }, 500);
+
+        function testImport() {
+            results.innerHTML += '<hr><h2>Testing Import...</h2>';
+
+            try {
+                // Create test state
+                window.appState = {
+                    quests: [],
+                    inventory: [],
+                    xp: 0,
+                    level: 1
+                };
+
+                // Mock functions
+                window.saveState = function() {
+                    console.log('saveState called');
+                    results.innerHTML += '<div class="check pass">✅ saveState() called</div>';
+                };
+
+                window.updateUI = function() {
+                    console.log('updateUI called');
+                    results.innerHTML += '<div class="check pass">✅ updateUI() called</div>';
+                };
+
+                // Try import
+                if (typeof importAllQuests === 'function') {
+                    const result = importAllQuests();
+
+                    const pre = document.createElement('pre');
+                    pre.textContent = 'Import result:\n' + JSON.stringify(result, null, 2);
+                    results.appendChild(pre);
+
+                    const pre2 = document.createElement('pre');
+                    pre2.textContent = 'appState after import:\n' +
+                        `Active quests: ${window.appState.quests.length}\n` +
+                        `Inventory: ${window.appState.inventory.length}`;
+                    results.appendChild(pre2);
+                } else {
+                    results.innerHTML += '<div class="check fail">❌ importAllQuests not defined</div>';
+                }
+            } catch (err) {
+                const errDiv = document.createElement('div');
+                errDiv.className = 'check fail';
+                errDiv.innerHTML = `❌ <strong>Error during import:</strong><br>${err.message}<br><pre>${err.stack}</pre>`;
+                results.appendChild(errDiv);
+            }
+        }
+    </script>
+
+    <!-- Load quest-importer AFTER we've set up diagnostics -->
+    <script src="quest-importer.js"></script>
+</body>
+</html>

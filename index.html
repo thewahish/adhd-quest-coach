@@ -684,15 +684,7 @@
     <!-- Include Quest Data -->
     <script src="all-projects-quests.js"></script>
 
-    <!-- Include GitHub Sync Script -->
-    <script src="github-sync.js"></script>
-
-    <!-- Include Quest Importer -->
-    <script src="quest-importer.js"></script>
-
-    <!-- Include Gamification System -->
-    <script src="gamification.js"></script>
-
+    <!-- Initialize app state FIRST (before quest-importer needs it) -->
     <script>
         // Initialize app state (make it global so quest-importer can access it)
         window.appState = {
@@ -1793,5 +1785,10 @@
             logSession();
         });
     </script>
+
+    <!-- Load external scripts AFTER appState is initialized -->
+    <script src="github-sync.js"></script>
+    <script src="quest-importer.js"></script>
+    <script src="gamification.js"></script>
 </body>
 </html>

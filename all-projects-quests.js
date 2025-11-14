@@ -195,20 +195,23 @@ const allProjectQuests = [
         ]
     },
     {
-        name: "File 2023 Tax Return (CRITICAL FIRST)",
+        name: "Issa Endocrinology - Fix Voicemail System URGENT",
         category: "urgent",
         priority: "urgent",
         status: "active",
         xpValue: 150,
-        icon: "💰",
-        notes: "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
-        project: "personal-finance-management",
+        icon: "📞",
+        notes: "NEW CLIENT! Fix voicemail system for Issa Endocrinology. Critical client request.",
+        project: "client-issa-endocrinology",
         subtasks: [
-            { title: "Review 2023 return with Claude", completed: false },
-            { title: "Submit via TurboTax e-file", completed: false },
-            { title: "Wait for IRS confirmation (24-48 hrs)", completed: false },
-            { title: "Set up payment plan if needed", completed: false },
-            { title: "Request penalty abatement letter", completed: false }
+            { title: "Contact client to understand voicemail issues", completed: false },
+            { title: "Diagnose current voicemail setup/problems", completed: false },
+            { title: "Research solution options", completed: false },
+            { title: "Get client approval on solution", completed: false },
+            { title: "Implement voicemail system fix", completed: false },
+            { title: "Test voicemail system thoroughly", completed: false },
+            { title: "Train client on new system", completed: false },
+            { title: "Follow up to ensure working properly", completed: false }
         ]
     },
     {

@@ -269,6 +269,85 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763131641349,
+      "title": "File 2023 Tax Return (CRITICAL FIRST)",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review 2023 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit via TurboTax e-file",
+          "completed": false
+        },
+        {
+          "title": "Wait for IRS confirmation (24-48 hrs)",
+          "completed": false
+        },
+        {
+          "title": "Set up payment plan if needed",
+          "completed": false
+        },
+        {
+          "title": "Request penalty abatement letter",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131641350,
+      "title": "Request K-1 from CPA for Taxes",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "📋",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Email CPA for K-1",
+          "completed": false
+        },
+        {
+          "title": "Follow up if no response in 3 days",
+          "completed": false
+        },
+        {
+          "title": "Review K-1 when received",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-k1-2023",
+      "requiresQuest": null,
+      "questChain": [
+        {
+          "title": "File 2023 & 2024 Tax Returns (After K-1)",
+          "xpValue": 250,
+          "completed": false,
+          "notes": "STEP 2: File taxes after receiving K-1"
+        },
+        {
+          "title": "Set Up Payment Plan or Pay Taxes",
+          "xpValue": 100,
+          "completed": false,
+          "notes": "STEP 3: Handle tax payment after filing"
+        }
+      ]
     }
   ],
   "mood": {
@@ -290,6 +369,12 @@
         "level": 3,
         "xp": 225,
         "activeQuests": 7
+      },
+      {
+        "startTime": "2025-11-14T14:47:16.779Z",
+        "level": 3,
+        "xp": 225,
+        "activeQuests": 8
       }
     ]
   },

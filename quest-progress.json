@@ -535,6 +535,47 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763142202213,
+      "title": "Contacts Management System with Nour",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "👥",
+      "status": "active",
+      "priority": "high",
+      "notes": "Set up comprehensive contacts management system with assistant Nour",
+      "project": "business-operations",
+      "subtasks": [
+        {
+          "title": "Audit all existing contacts",
+          "completed": false
+        },
+        {
+          "title": "Define contact categories",
+          "completed": false
+        },
+        {
+          "title": "Set up shared contact database",
+          "completed": false
+        },
+        {
+          "title": "Create contact management workflow",
+          "completed": false
+        },
+        {
+          "title": "Train Nour on system",
+          "completed": false
+        },
+        {
+          "title": "Test system for 1 week",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
   ],
   "mood": {
@@ -657,6 +698,12 @@
         "level": 2,
         "xp": 150,
         "activeQuests": 17
+      },
+      {
+        "startTime": "2025-11-14T17:43:18.767Z",
+        "level": 5,
+        "xp": 400,
+        "activeQuests": 16
       }
     ]
   },

@@ -157,11 +157,108 @@ function autoImportIfNeeded() {
     }
 }
 
+// Auto-restore progress after clean import
+function autoRestoreProgress() {
+    const backup = sessionStorage.getItem('questProgressBackup');
+    const shouldRestore = sessionStorage.getItem('autoRestore');
+
+    if (!backup || !shouldRestore) {
+        return; // No backup to restore
+    }
+
+    console.log('🔄 Auto-restoring your progress...');
+
+    try {
+        const progressBackup = JSON.parse(backup);
+        const state = window.appState;
+
+        if (!state) {
+            console.warn('⚠️ appState not available yet, will retry...');
+            return;
+        }
+
+        // Restore XP and level
+        state.xp = progressBackup.xp;
+        state.level = progressBackup.level;
+        state.streak = progressBackup.streak;
+
+        // Restore completed quests
+        let restoredCount = 0;
+        progressBackup.completedQuests.forEach(completedQuest => {
+            // Find quest in current state (check both active and inventory)
+            let quest = state.quests?.find(q =>
+                q.title === completedQuest.title ||
+                (q.questId && completedQuest.questId && q.questId === completedQuest.questId)
+            );
+
+            if (!quest) {
+                quest = state.inventory?.find(q =>
+                    q.title === completedQuest.title ||
+                    (q.questId && completedQuest.questId && q.questId === completedQuest.questId)
+                );
+            }
+
+            if (quest) {
+                quest.completed = true;
+                restoredCount++;
+            }
+        });
+
+        // Restore subtask progress
+        let subtasksRestored = 0;
+        Object.keys(progressBackup.questProgress).forEach(questTitle => {
+            let quest = state.quests?.find(q => q.title === questTitle);
+            if (!quest) {
+                quest = state.inventory?.find(q => q.title === questTitle);
+            }
+
+            if (quest && quest.subtasks) {
+                const savedSubtasks = progressBackup.questProgress[questTitle].subtasks;
+                quest.subtasks.forEach(subtask => {
+                    const savedSubtask = savedSubtasks.find(st => st.title === subtask.title);
+                    if (savedSubtask && savedSubtask.completed) {
+                        subtask.completed = true;
+                        subtasksRestored++;
+                    }
+                });
+            }
+        });
+
+        // Save restored state
+        if (typeof saveState === 'function') saveState();
+        if (typeof updateUI === 'function') updateUI();
+
+        console.log('✅ Progress restored!');
+        console.log('   XP: ' + state.xp + ', Level: ' + state.level);
+        console.log('   ' + restoredCount + ' quests marked as completed');
+        console.log('   ' + subtasksRestored + ' subtasks restored');
+
+        // Clear backup
+        sessionStorage.removeItem('questProgressBackup');
+        sessionStorage.removeItem('autoRestore');
+
+        // Show success message
+        alert('✅ Clean import complete!\n\n' +
+              'XP: ' + state.xp + ', Level: ' + state.level + '\n' +
+              restoredCount + ' quests completed\n' +
+              subtasksRestored + ' subtasks restored\n\n' +
+              'All duplicates removed!');
+
+    } catch (err) {
+        console.error('❌ Error restoring progress:', err);
+        alert('⚠️ Error restoring progress. Check console for details.');
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     // Wait a bit for all scripts to load
     setTimeout(() => {
         showImportButton();
         autoImportIfNeeded();
+        // Try to restore progress after import
+        setTimeout(() => {
+            autoRestoreProgress();
+        }, 1000);
     }, 500);
 });

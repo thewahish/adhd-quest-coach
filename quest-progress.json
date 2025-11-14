@@ -1,7 +1,7 @@
 {
-  "xp": 50,
+  "xp": 150,
   "level": 1,
-  "streak": 1,
+  "streak": 2,
   "quests": [
     {
       "id": 1763045218491,
@@ -15,7 +15,7 @@
       "id": 1763045218492,
       "title": "Finish Rakan's Song project",
       "category": "work",
-      "completed": false,
+      "completed": true,
       "xpValue": 100,
       "icon": "🎵"
     },
@@ -63,9 +63,9 @@
   "mood": {
     "mood": "good",
     "emoji": "😊",
-    "date": "2025-11-13T17:42:38.969Z"
+    "date": "2025-11-14T14:01:52.171Z"
   },
-  "lastActiveDate": "2025-11-13T17:42:38.969Z",
+  "lastActiveDate": "2025-11-14T14:01:52.171Z",
   "brainDumps": [],
   "reflections": []
 }

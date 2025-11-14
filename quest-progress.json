@@ -1,6 +1,6 @@
 {
-  "xp": 225,
-  "level": 3,
+  "xp": 350,
+  "level": 4,
   "streak": 2,
   "quests": [
     {
@@ -423,7 +423,7 @@
       "id": 1763131515089,
       "title": "Update All Resumes (Arafa, Maya, Taha)",
       "category": "work",
-      "completed": false,
+      "completed": true,
       "xpValue": 75,
       "icon": "📄",
       "status": "active",
@@ -466,9 +466,31 @@
   "brainDumps": [],
   "reflections": [],
   "history": {
-    "questCompletions": [],
-    "levelUps": [],
-    "dailyStats": [],
+    "questCompletions": [
+      {
+        "questId": 1763131515089,
+        "questName": "Update All Resumes (Arafa, Maya, Taha)",
+        "xpEarned": 75,
+        "category": "work",
+        "completedAt": "2025-11-14T16:04:40.045Z"
+      }
+    ],
+    "levelUps": [
+      {
+        "level": 4,
+        "totalXP": 350,
+        "leveledUpAt": "2025-11-14T16:04:40.050Z"
+      }
+    ],
+    "dailyStats": [
+      {
+        "date": "2025-11-14",
+        "xpEarned": 75,
+        "questsCompleted": 1,
+        "mood": "good",
+        "brainDumps": 0
+      }
+    ],
     "moodCheckins": [
       {
         "mood": "good",
@@ -2342,5 +2364,9 @@
       "requiresQuest": null,
       "questChain": []
     }
+  ],
+  "achievements": [
+    "firstQuest",
+    "xp100"
   ]
 }

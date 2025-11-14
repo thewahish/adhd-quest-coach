@@ -784,6 +784,41 @@
                 Voice input not supported in your browser. Please use Chrome, Edge, or Safari.
             </div>
             <button onclick="processBrainDump()">Process Thoughts</button>
+
+            <!-- Daily Progress Log -->
+            <div style="margin-top: 15px;">
+                <button onclick="toggleDailyProgressLog()" style="background: #28a745; padding: 8px 15px; font-size: 0.85em; border-radius: 50px;">
+                    📊 Daily Progress Log
+                </button>
+            </div>
+
+            <div id="daily-progress-log" style="display: none; margin-top: 15px; padding: 15px; background: #f0f8ff; border-radius: 10px; max-height: 500px; overflow-y: auto;">
+                <h3 style="margin-top: 0; color: #28a745;">📊 Daily Progress Log</h3>
+                <div style="margin-bottom: 10px;">
+                    <select id="progress-date-filter" onchange="renderDailyProgress()" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="week">This Week</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </div>
+                <div id="daily-progress-content"></div>
+            </div>
+
+            <!-- View Past Brain Dumps -->
+            <div style="margin-top: 15px;">
+                <button onclick="toggleBrainDumpHistory()" style="background: #6c757d; padding: 8px 15px; font-size: 0.85em; border-radius: 50px;">
+                    📜 View Past Brain Dumps (<span id="brain-dump-count">0</span>)
+                </button>
+            </div>
+
+            <div id="brain-dump-history" style="display: none; margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px; max-height: 400px; overflow-y: auto;">
+                <h3 style="margin-top: 0; color: #667eea;">📜 Brain Dump History</h3>
+                <div id="brain-dump-list"></div>
+                <button onclick="clearBrainDumps()" style="background: #dc3545; margin-top: 10px; padding: 8px 15px; font-size: 0.85em;">
+                    🗑️ Clear All Brain Dumps
+                </button>
+            </div>
         </div>
 
         <!-- Daily Reflection (End of day) -->
@@ -886,6 +921,7 @@
             if (saved) {
                 appState = JSON.parse(saved);
                 updateUI();
+                updateBrainDumpCount();
             } else {
                 // Initialize with empty arrays - quest importer will populate from all-projects-quests.js
                 appState.quests = [];
@@ -1863,6 +1899,227 @@
             } else {
                 console.log('GitHub sync not configured - brain dump saved locally only');
             }
+        }
+
+        // Toggle brain dump history visibility
+        function toggleBrainDumpHistory() {
+            const historySection = document.getElementById('brain-dump-history');
+            historySection.style.display = historySection.style.display === 'none' ? 'block' : 'none';
+
+            if (historySection.style.display === 'block') {
+                renderBrainDumpHistory();
+            }
+        }
+
+        // Render brain dump history
+        function renderBrainDumpHistory() {
+            const listContainer = document.getElementById('brain-dump-list');
+            const brainDumps = appState.brainDumps || [];
+
+            if (brainDumps.length === 0) {
+                listContainer.innerHTML = '<p style="color: #999; font-style: italic;">No brain dumps yet. Start dumping your thoughts above!</p>';
+                return;
+            }
+
+            // Sort by date, newest first
+            const sortedDumps = [...brainDumps].reverse();
+
+            listContainer.innerHTML = sortedDumps.map((dump, index) => {
+                const date = new Date(dump.date);
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+                return `
+                    <div style="background: white; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #667eea;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span style="font-size: 0.85em; color: #667eea; font-weight: 600;">${dateStr} at ${timeStr}</span>
+                            <button onclick="deleteBrainDump(${brainDumps.length - 1 - index})" style="background: #dc3545; padding: 4px 8px; font-size: 0.75em; border-radius: 4px;">Delete</button>
+                        </div>
+                        <p style="margin: 0; color: #333; line-height: 1.5; white-space: pre-wrap;">${dump.content}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Delete a single brain dump
+        function deleteBrainDump(index) {
+            if (!confirm('Delete this brain dump?')) return;
+
+            appState.brainDumps.splice(index, 1);
+            saveState();
+            renderBrainDumpHistory();
+            updateBrainDumpCount();
+            showNotification('Brain dump deleted');
+        }
+
+        // Clear all brain dumps
+        function clearBrainDumps() {
+            if (!confirm('Delete ALL brain dumps? This cannot be undone!')) return;
+
+            appState.brainDumps = [];
+            saveState();
+            renderBrainDumpHistory();
+            updateBrainDumpCount();
+            showNotification('All brain dumps cleared');
+        }
+
+        // Update brain dump count
+        function updateBrainDumpCount() {
+            const countElement = document.getElementById('brain-dump-count');
+            if (countElement) {
+                countElement.textContent = (appState.brainDumps || []).length;
+            }
+        }
+
+        // Toggle daily progress log
+        function toggleDailyProgressLog() {
+            const progressSection = document.getElementById('daily-progress-log');
+            progressSection.style.display = progressSection.style.display === 'none' ? 'block' : 'none';
+
+            if (progressSection.style.display === 'block') {
+                renderDailyProgress();
+            }
+        }
+
+        // Render daily progress
+        function renderDailyProgress() {
+            const filter = document.getElementById('progress-date-filter').value;
+            const contentDiv = document.getElementById('daily-progress-content');
+
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const yesterdayStart = new Date(todayStart);
+            yesterdayStart.setDate(yesterdayStart.getDate() - 1);
+            const weekStart = new Date(todayStart);
+            weekStart.setDate(weekStart.getDate() - 7);
+
+            // Filter completed quests
+            const completedQuests = (appState.quests || []).filter(q => q.completed);
+            const filteredQuests = completedQuests.filter(q => {
+                if (!q.completedDate) return false;
+                const questDate = new Date(q.completedDate);
+
+                switch(filter) {
+                    case 'today': return questDate >= todayStart;
+                    case 'yesterday': return questDate >= yesterdayStart && questDate < todayStart;
+                    case 'week': return questDate >= weekStart;
+                    default: return true;
+                }
+            });
+
+            // Filter brain dumps
+            const filteredBrainDumps = (appState.brainDumps || []).filter(dump => {
+                const dumpDate = new Date(dump.date);
+
+                switch(filter) {
+                    case 'today': return dumpDate >= todayStart;
+                    case 'yesterday': return dumpDate >= yesterdayStart && dumpDate < todayStart;
+                    case 'week': return dumpDate >= weekStart;
+                    default: return true;
+                }
+            });
+
+            // Filter reflections
+            const filteredReflections = (appState.reflections || []).filter(ref => {
+                const refDate = new Date(ref.date);
+
+                switch(filter) {
+                    case 'today': return refDate >= todayStart;
+                    case 'yesterday': return refDate >= yesterdayStart && refDate < todayStart;
+                    case 'week': return refDate >= weekStart;
+                    default: return true;
+                }
+            });
+
+            // Calculate XP
+            const totalXP = filteredQuests.reduce((sum, q) => sum + (q.xp || 0), 0);
+
+            // Build HTML
+            let html = `
+                <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                    <h4 style="margin: 0 0 10px 0; color: #667eea;">📈 Summary</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+                        <div>
+                            <div style="font-size: 24px; font-weight: bold; color: #28a745;">${filteredQuests.length}</div>
+                            <div style="font-size: 0.85em; color: #666;">Quests Completed</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 24px; font-weight: bold; color: #fbbf24;">${totalXP}</div>
+                            <div style="font-size: 0.85em; color: #666;">XP Earned</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 24px; font-weight: bold; color: #667eea;">${filteredBrainDumps.length}</div>
+                            <div style="font-size: 0.85em; color: #666;">Brain Dumps</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Completed quests
+            if (filteredQuests.length > 0) {
+                html += `
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="margin: 0 0 10px 0; color: #28a745;">✅ Completed Quests</h4>
+                        ${filteredQuests.map(q => {
+                            const completedDate = new Date(q.completedDate);
+                            return `
+                                <div style="padding: 8px; margin-bottom: 8px; background: #f0fdf4; border-left: 3px solid #28a745; border-radius: 4px;">
+                                    <div style="font-weight: 500; color: #333;">${q.title}</div>
+                                    <div style="font-size: 0.85em; color: #666;">
+                                        ${completedDate.toLocaleDateString()} at ${completedDate.toLocaleTimeString(undefined, {hour: 'numeric', minute: '2-digit'})} • +${q.xp || 0} XP
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+
+            // Brain dumps
+            if (filteredBrainDumps.length > 0) {
+                html += `
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <h4 style="margin: 0 0 10px 0; color: #667eea;">💭 Brain Dumps</h4>
+                        ${filteredBrainDumps.map(dump => {
+                            const dumpDate = new Date(dump.date);
+                            return `
+                                <div style="padding: 8px; margin-bottom: 8px; background: #eff6ff; border-left: 3px solid #667eea; border-radius: 4px;">
+                                    <div style="font-size: 0.85em; color: #667eea; margin-bottom: 4px;">
+                                        ${dumpDate.toLocaleDateString()} at ${dumpDate.toLocaleTimeString(undefined, {hour: 'numeric', minute: '2-digit'})}
+                                    </div>
+                                    <div style="color: #333; font-size: 0.9em;">${dump.content}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+
+            // Reflections
+            if (filteredReflections.length > 0) {
+                html += `
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h4 style="margin: 0 0 10px 0; color: #92278F;">📝 Reflections</h4>
+                        ${filteredReflections.map(ref => {
+                            const refDate = new Date(ref.date);
+                            return `
+                                <div style="padding: 8px; margin-bottom: 8px; background: #faf5ff; border-left: 3px solid #92278F; border-radius: 4px;">
+                                    <div style="font-size: 0.85em; color: #92278F; margin-bottom: 4px;">
+                                        ${refDate.toLocaleDateString()}
+                                    </div>
+                                    <div style="color: #333; font-size: 0.9em;">${ref.content}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+            }
+
+            if (filteredQuests.length === 0 && filteredBrainDumps.length === 0 && filteredReflections.length === 0) {
+                html = '<p style="color: #999; font-style: italic; text-align: center; padding: 20px;">No activity for this time period yet.</p>';
+            }
+
+            contentDiv.innerHTML = html;
         }
 
         // Save daily reflection

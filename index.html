@@ -677,7 +677,16 @@
 
         <!-- Mood Check -->
         <div class="mood-section">
-            <h2>😊 How are you feeling today?</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h2 style="margin: 0;">😊 How are you feeling today?</h2>
+                <button onclick="toggleMoodHistory()" style="background: #9c27b0; padding: 8px 15px; font-size: 0.85em;">
+                    📊 Mood Log
+                </button>
+            </div>
+            <div id="current-mood-display" style="margin-bottom: 15px; padding: 10px; background: #e8f5e9; border-radius: 8px; display: none;">
+                <strong>Current mood:</strong> <span id="current-mood-text"></span> <span id="current-mood-emoji" style="font-size: 1.5em;"></span>
+                <small style="display: block; color: #666; margin-top: 5px;" id="current-mood-time"></small>
+            </div>
             <p style="color: #666; margin-bottom: 10px;">Select your current mood:</p>
             <div class="mood-buttons">
                 <button class="mood-btn" onclick="selectMood('amazing', '🤩')">🤩</button>
@@ -689,6 +698,16 @@
             <div id="mood-message" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px; display: none;">
                 <p id="mood-text"></p>
             </div>
+        </div>
+
+        <!-- Mood History (Hidden by default) -->
+        <div class="mood-section hidden" id="mood-history-section">
+            <h2>📊 Mood Log</h2>
+            <p style="color: #666; margin-bottom: 15px;">Your mood check-ins over time</p>
+            <div id="mood-history-list" style="max-height: 400px; overflow-y: auto;">
+                <!-- Mood history will be populated here -->
+            </div>
+            <button onclick="toggleMoodHistory()" style="background: #6c757d; margin-top: 15px;">Close Mood Log</button>
         </div>
 
         <!-- Active Quests -->
@@ -913,6 +932,9 @@
                     levelUp();
                 }
             }
+
+            // Display current mood
+            displayCurrentMood();
         }
 
         // Render quest list
@@ -1302,6 +1324,98 @@
 
             saveState();
             updateUI();
+            displayCurrentMood(); // Update current mood display
+        }
+
+        // Display current mood on page load
+        function displayCurrentMood() {
+            if (appState.mood && appState.mood.mood) {
+                const display = document.getElementById('current-mood-display');
+                const moodText = document.getElementById('current-mood-text');
+                const moodEmoji = document.getElementById('current-mood-emoji');
+                const moodTime = document.getElementById('current-mood-time');
+
+                moodText.textContent = appState.mood.mood;
+                moodEmoji.textContent = appState.mood.emoji;
+
+                // Format time
+                const moodDate = new Date(appState.mood.date);
+                const now = new Date();
+                const diffHours = Math.floor((now - moodDate) / (1000 * 60 * 60));
+
+                let timeText;
+                if (diffHours < 1) {
+                    timeText = 'Just now';
+                } else if (diffHours < 24) {
+                    timeText = `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+                } else {
+                    const diffDays = Math.floor(diffHours / 24);
+                    timeText = `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+                }
+
+                moodTime.textContent = `Logged ${timeText}`;
+                display.style.display = 'block';
+            }
+        }
+
+        // Toggle mood history visibility
+        function toggleMoodHistory() {
+            const historySection = document.getElementById('mood-history-section');
+            historySection.classList.toggle('hidden');
+
+            if (!historySection.classList.contains('hidden')) {
+                renderMoodHistory();
+            }
+        }
+
+        // Render mood history
+        function renderMoodHistory() {
+            const historyList = document.getElementById('mood-history-list');
+
+            if (!appState.history || !appState.history.moodCheckins || appState.history.moodCheckins.length === 0) {
+                historyList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No mood check-ins yet. Log your first mood!</p>';
+                return;
+            }
+
+            // Sort by most recent first
+            const sorted = [...appState.history.moodCheckins].reverse();
+
+            historyList.innerHTML = sorted.map((entry, index) => {
+                const date = new Date(entry.timestamp);
+                const dateStr = date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                const timeStr = date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+
+                const moodColors = {
+                    'amazing': '#4caf50',
+                    'good': '#8bc34a',
+                    'okay': '#ffc107',
+                    'struggling': '#ff9800',
+                    'overwhelmed': '#f44336'
+                };
+
+                return `
+                    <div style="padding: 12px; margin-bottom: 10px; background: ${moodColors[entry.mood]}15; border-left: 4px solid ${moodColors[entry.mood]}; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 1.8em; margin-right: 10px;">${entry.emoji}</span>
+                                <strong style="text-transform: capitalize;">${entry.mood}</strong>
+                            </div>
+                            <div style="text-align: right; font-size: 0.85em; color: #666;">
+                                <div>${dateStr}</div>
+                                <div>${timeStr}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
         // Show add quest section

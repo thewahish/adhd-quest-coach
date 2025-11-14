@@ -71,6 +71,45 @@ const allProjectQuests = [
         ]
     },
     {
+        name: "Apply for Medicaid - Health Insurance Coverage",
+        category: "urgent",
+        priority: "urgent",
+        status: "active",
+        xpValue: 150,
+        icon: "🏥",
+        notes: "CRITICAL: Apply for Medicaid now (no job). 2 phases: Start application, then submit tax returns when ready",
+        project: "personal-health-insurance",
+        subtasks: [
+            // PHASE 1: Start Application NOW
+            { title: "📋 PHASE 1: START APPLICATION (Do Now)", completed: false },
+            { title: "Research Medicaid eligibility requirements in your state (15 min)", completed: false },
+            { title: "Gather required documents (ID, proof of residency, SSN) (30 min)", completed: false },
+            { title: "Go to Healthcare.gov or state Medicaid website (5 min)", completed: false },
+            { title: "Create account on Medicaid application portal (10 min)", completed: false },
+            { title: "Start Medicaid application form (45 min)", completed: false },
+            { title: "Fill out personal information section (20 min)", completed: false },
+            { title: "Fill out household/income section (20 min)", completed: false },
+            { title: "Upload initial documents (ID, residency proof) (15 min)", completed: false },
+            { title: "Submit initial application (10 min)", completed: false },
+            { title: "Save confirmation number and application ID (5 min)", completed: false },
+            { title: "🎉 MILESTONE: Initial Application Submitted!", completed: false },
+
+            // PHASE 2: Submit Tax Returns (After Tax Filing Complete)
+            { title: "📋 PHASE 2: SUBMIT TAX RETURNS (When Ready)", completed: false },
+            { title: "⏸️ Wait for 2023 tax return to be filed", completed: false },
+            { title: "⏸️ Wait for 2024 tax return to be filed", completed: false },
+            { title: "Download tax return PDFs from TurboTax (5 min)", completed: false },
+            { title: "Log back into Medicaid application portal (5 min)", completed: false },
+            { title: "Upload 2023 tax return as income verification (10 min)", completed: false },
+            { title: "Upload 2024 tax return as income verification (10 min)", completed: false },
+            { title: "Submit updated application with tax documents (10 min)", completed: false },
+            { title: "Receive Medicaid eligibility determination (wait 30-45 days)", completed: false },
+            { title: "Review Medicaid approval letter (10 min)", completed: false },
+            { title: "Activate Medicaid coverage (10 min)", completed: false },
+            { title: "🎉 COMPLETE: Medicaid Coverage Active!", completed: false }
+        ]
+    },
+    {
         name: "Anas Bitar - Audio files cleaning",
         category: "work",
         priority: "high",

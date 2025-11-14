@@ -381,6 +381,43 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763131515060,
+      "title": "Anas Bitar - Audio files cleaning",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🎧",
+      "status": "active",
+      "priority": "high",
+      "notes": "Clean and process audio files for Anas Bitar",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Review all audio files",
+          "completed": false
+        },
+        {
+          "title": "Remove noise and artifacts",
+          "completed": false
+        },
+        {
+          "title": "Normalize audio levels",
+          "completed": false
+        },
+        {
+          "title": "Export final files",
+          "completed": false
+        },
+        {
+          "title": "Deliver to client",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
   ],
   "mood": {
@@ -576,43 +613,6 @@
         },
         {
           "title": "Add dark mode toggle (20 XP)",
-          "completed": false
-        }
-      ],
-      "questId": null,
-      "requiresQuest": null,
-      "questChain": []
-    },
-    {
-      "id": 1763131515060,
-      "title": "Anas Bitar - Audio files cleaning",
-      "category": "work",
-      "completed": false,
-      "xpValue": 100,
-      "icon": "🎧",
-      "status": "active",
-      "priority": "high",
-      "notes": "Clean and process audio files for Anas Bitar",
-      "project": "audio-work",
-      "subtasks": [
-        {
-          "title": "Review all audio files",
-          "completed": false
-        },
-        {
-          "title": "Remove noise and artifacts",
-          "completed": false
-        },
-        {
-          "title": "Normalize audio levels",
-          "completed": false
-        },
-        {
-          "title": "Export final files",
-          "completed": false
-        },
-        {
-          "title": "Deliver to client",
           "completed": false
         }
       ],

@@ -40,7 +40,8 @@ function importAllQuests() {
         !activeQuests.find(aq => aq.id === q.id)
     );
 
-    // Update appState
+    // Update appState (access from window)
+    const appState = window.appState || { quests: [], inventory: [] };
     if (!appState.quests) appState.quests = [];
     if (!appState.inventory) appState.inventory = [];
 
@@ -72,9 +73,9 @@ function importAllQuests() {
 
     console.log(`📥 Quest Import: Added ${activeAdded} active, ${inventoryAdded} inventory (skipped ${inventoryQuests.length - inventoryAdded + activeQuests.length - activeAdded} duplicates)`);
 
-    // Save and update
-    saveState();
-    updateUI();
+    // Save and update (call from window if available)
+    if (typeof saveState === 'function') saveState();
+    if (typeof updateUI === 'function') updateUI();
 
     return {
         success: true,
@@ -87,12 +88,17 @@ function importAllQuests() {
 
 // Clear all quests and reimport (useful for testing)
 function reimportAllQuests() {
+    if (!window.appState) {
+        console.error('❌ appState not available');
+        return false;
+    }
+
     const confirmed = confirm('⚠️ This will clear all current quests and reimport from all-projects-quests.js. Continue?');
     if (!confirmed) return false;
 
     // Clear existing
-    appState.quests = [];
-    appState.inventory = [];
+    window.appState.quests = [];
+    window.appState.inventory = [];
 
     // Import fresh
     return importAllQuests();
@@ -125,7 +131,14 @@ function autoImportIfNeeded() {
     // Only auto-import if:
     // 1. Inventory is empty
     // 2. allProjectQuests is available
-    // 3. Not already imported (check for Quest Coach Dev quest)
+    // 3. appState is available
+
+    if (!window.appState) {
+        console.warn('⚠️ appState not loaded yet');
+        return;
+    }
+
+    const appState = window.appState;
 
     if (appState.inventory && appState.inventory.length > 0) {
         console.log('✅ Inventory already has quests, skipping auto-import');

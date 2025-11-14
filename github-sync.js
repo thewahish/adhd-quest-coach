@@ -11,6 +11,21 @@ class GitHubSync {
         this.autoSyncEnabled = localStorage.getItem('auto_sync') === 'true';
     }
 
+    // Export state as downloadable JSON file
+    exportStateForProjectSync(questData) {
+        const stateJSON = JSON.stringify(questData, null, 2);
+        const blob = new Blob([stateJSON], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'quest-coach-state.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return true;
+    }
+
     // Check if sync is configured
     isConfigured() {
         return !!this.token;

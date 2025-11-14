@@ -1,0 +1,26 @@
+{
+  "xp": 200,
+  "level": 3,
+  "streak": 2,
+  "history": {
+    "questCompletions": [
+      {
+        "questId": "quest-uber-2023",
+        "questName": "Uber driver app paperwork submit",
+        "xpEarned": 100,
+        "category": "urgent",
+        "completedAt": "2025-11-13T12:21:15.000Z"
+      },
+      {
+        "questName": "Quest Coach - Development & Enhancement",
+        "xpEarned": 60,
+        "category": "work",
+        "completedAt": "2025-11-14T10:00:00.000Z"
+      }
+    ],
+    "levelUps": [],
+    "dailyStats": [],
+    "moodCheckins": [],
+    "sessions": []
+  }
+}

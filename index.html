@@ -491,6 +491,9 @@
                 <button id="sync-pull-btn" onclick="syncFromGitHub()" style="background: #17a2b8; padding: 10px 20px; font-size: 0.9em;">
                     ⬇️ Load from GitHub
                 </button>
+                <button onclick="exportForProjectSync()" style="background: #ff9800; padding: 10px 20px; font-size: 0.9em;" title="Download state to sync with project folders">
+                    📁 Sync to Projects
+                </button>
                 <button onclick="showSyncSettings()" style="background: #6c757d; padding: 10px 20px; font-size: 0.9em;">
                     ⚙️ Sync Settings
                 </button>
@@ -1765,6 +1768,50 @@
             }
 
             saveState();
+        }
+
+        // === PROJECT FOLDER SYNC ===
+
+        // Export state for syncing to project folders
+        function exportForProjectSync() {
+            // Download state file
+            if (window.githubSync && typeof window.githubSync.exportStateForProjectSync === 'function') {
+                window.githubSync.exportStateForProjectSync(appState);
+            } else {
+                // Fallback: manual download
+                const stateJSON = JSON.stringify(appState, null, 2);
+                const blob = new Blob([stateJSON], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'quest-coach-state.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            // Show instructions
+            const instructions = `📁 Project Sync Instructions:
+
+1. ✅ Downloaded: quest-coach-state.json
+
+2. Run this command in terminal:
+   cd /Volumes/Ai/Projects/adhd-quest-coach
+   node sync-projects-cli.js ~/Downloads/quest-coach-state.json
+
+3. This will create/update quest-status.json in each project folder with:
+   - Completed quests from Quest Coach
+   - XP earned per project
+   - Sync timestamps
+
+4. Each project's quest-status.json tracks what's done!
+
+💡 Your quest completions will now sync to individual project folders!`;
+
+            alert(instructions);
+
+            showNotification('✅ State file downloaded! Check your Downloads folder.');
         }
 
         // Initialize app on load

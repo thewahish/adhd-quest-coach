@@ -716,6 +716,26 @@
             <button onclick="toggleMoodHistory()" style="background: #6c757d; margin-top: 15px;">Close Mood Log</button>
         </div>
 
+        <!-- Sync Log (Hidden by default) -->
+        <div class="mood-section hidden" id="sync-log-section">
+            <h2>📊 Sync Log</h2>
+            <p style="color: #666; margin-bottom: 15px;">All sync attempts to GitHub</p>
+            <div id="sync-log-list" style="max-height: 400px; overflow-y: auto;">
+                <!-- Sync log will be populated here -->
+            </div>
+            <button onclick="toggleSyncLog()" style="background: #6c757d; margin-top: 15px;">Close Sync Log</button>
+        </div>
+
+        <!-- Activity Log (Hidden by default) -->
+        <div class="mood-section hidden" id="activity-log-section">
+            <h2>📜 Activity Log</h2>
+            <p style="color: #666; margin-bottom: 15px;">All your activity and interactions</p>
+            <div id="activity-log-list" style="max-height: 400px; overflow-y: auto;">
+                <!-- Activity log will be populated here -->
+            </div>
+            <button onclick="toggleActivityLog()" style="background: #6c757d; margin-top: 15px;">Close Activity Log</button>
+        </div>
+
         <!-- Active Quests -->
         <div class="quest-section">
             <h2>⚔️ Active Quests</h2>
@@ -833,6 +853,18 @@
             <p style="color: #666; margin-bottom: 10px;">Before you rest, let's reflect on your day:</p>
             <textarea id="daily-reflection" rows="4" placeholder="What went well today? What could be better tomorrow?"></textarea>
             <button onclick="saveReflection()">Save Reflection</button>
+
+            <!-- View Past Reflections -->
+            <div style="margin-top: 15px;">
+                <button onclick="toggleReflectionHistory()" style="background: #9c27b0; padding: 8px 15px; font-size: 0.85em; border-radius: 50px;">
+                    📜 View Past Reflections (<span id="reflection-count">0</span>)
+                </button>
+            </div>
+
+            <div id="reflection-history" style="display: none; margin-top: 15px; padding: 15px; background: #faf5ff; border-radius: 10px; max-height: 400px; overflow-y: auto;">
+                <h3 style="margin-top: 0; color: #9c27b0;">📜 Reflection History</h3>
+                <div id="reflection-list"></div>
+            </div>
         </div>
     </div>
 
@@ -1499,6 +1531,149 @@
                                 <div>${timeStr}</div>
                             </div>
                         </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle sync log visibility
+        function toggleSyncLog() {
+            const logSection = document.getElementById('sync-log-section');
+            logSection.classList.toggle('hidden');
+
+            if (!logSection.classList.contains('hidden')) {
+                renderSyncLog();
+            }
+        }
+
+        // Render sync log
+        function renderSyncLog() {
+            const logList = document.getElementById('sync-log-list');
+
+            if (!appState.history || !appState.history.syncLog || appState.history.syncLog.length === 0) {
+                logList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No sync attempts yet.</p>';
+                return;
+            }
+
+            // Sort by most recent first
+            const sorted = [...appState.history.syncLog].reverse();
+
+            logList.innerHTML = sorted.map((entry) => {
+                const date = new Date(entry.timestamp);
+                const dateStr = date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                const timeStr = date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+
+                const statusColors = {
+                    'success': '#28a745',
+                    'failed': '#dc3545',
+                    'skipped': '#ffc107'
+                };
+
+                const statusEmojis = {
+                    'success': '✅',
+                    'failed': '❌',
+                    'skipped': '⏭️'
+                };
+
+                return `
+                    <div style="padding: 12px; margin-bottom: 10px; background: ${statusColors[entry.status]}15; border-left: 4px solid ${statusColors[entry.status]}; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 1.3em; margin-right: 10px;">${statusEmojis[entry.status]}</span>
+                                <strong style="text-transform: capitalize;">${entry.status}</strong>
+                            </div>
+                            <div style="text-align: right; font-size: 0.85em; color: #666;">
+                                <div>${dateStr}</div>
+                                <div>${timeStr}</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; color: #333; font-size: 0.9em;">${entry.message}</div>
+                        ${entry.details && entry.details.trigger ? `<div style="margin-top: 4px; font-size: 0.8em; color: #888;">Trigger: ${entry.details.trigger}</div>` : ''}
+                        ${entry.details && entry.details.commitUrl ? `<div style="margin-top: 4px; font-size: 0.8em;"><a href="${entry.details.commitUrl}" target="_blank" style="color: #667eea;">View commit</a></div>` : ''}
+                        ${entry.details && entry.details.error ? `<div style="margin-top: 4px; font-size: 0.8em; color: #dc3545;">Error: ${entry.details.error}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle activity log visibility
+        function toggleActivityLog() {
+            const logSection = document.getElementById('activity-log-section');
+            logSection.classList.toggle('hidden');
+
+            if (!logSection.classList.contains('hidden')) {
+                renderActivityLog();
+            }
+        }
+
+        // Render activity log
+        function renderActivityLog() {
+            const logList = document.getElementById('activity-log-list');
+
+            if (!appState.history || !appState.history.activityLog || appState.history.activityLog.length === 0) {
+                logList.innerHTML = '<p style="text-align: center; color: #888; padding: 20px;">No activity logged yet.</p>';
+                return;
+            }
+
+            // Sort by most recent first
+            const sorted = [...appState.history.activityLog].reverse();
+
+            logList.innerHTML = sorted.map((entry) => {
+                const date = new Date(entry.timestamp);
+                const dateStr = date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+                const timeStr = date.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+
+                const typeIcons = {
+                    'brain_dump': '💭',
+                    'quest_complete': '✅',
+                    'mood_check': '😊',
+                    'reflection': '📝',
+                    'quest_add': '➕',
+                    'quest_delete': '🗑️'
+                };
+
+                const typeColors = {
+                    'brain_dump': '#667eea',
+                    'quest_complete': '#28a745',
+                    'mood_check': '#fbbf24',
+                    'reflection': '#9c27b0',
+                    'quest_add': '#17a2b8',
+                    'quest_delete': '#dc3545'
+                };
+
+                return `
+                    <div style="padding: 12px; margin-bottom: 10px; background: ${typeColors[entry.type] || '#6c757d'}15; border-left: 4px solid ${typeColors[entry.type] || '#6c757d'}; border-radius: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <span style="font-size: 1.3em; margin-right: 10px;">${typeIcons[entry.type] || '📋'}</span>
+                                <strong>${entry.message}</strong>
+                            </div>
+                            <div style="text-align: right; font-size: 0.85em; color: #666;">
+                                <div>${dateStr}</div>
+                                <div>${timeStr}</div>
+                            </div>
+                        </div>
+                        ${entry.details && Object.keys(entry.details).length > 0 ? `
+                            <div style="margin-top: 8px; font-size: 0.85em; color: #666;">
+                                ${JSON.stringify(entry.details, null, 2).replace(/[{}]/g, '').split('\n').filter(l => l.trim()).join('<br>')}
+                            </div>
+                        ` : ''}
                     </div>
                 `;
             }).join('');
@@ -2214,10 +2389,73 @@
                 date: new Date().toISOString()
             });
 
+            // Log activity
+            logActivity('reflection', 'Daily reflection saved', { contentLength: reflection.length });
+
             saveState();
+            updateReflectionCount();
 
             alert('📝 Reflection saved! Rest well, you did great today! 🌙');
             document.getElementById('daily-reflection').value = '';
+        }
+
+        // Toggle reflection history
+        function toggleReflectionHistory() {
+            const historySection = document.getElementById('reflection-history');
+            historySection.style.display = historySection.style.display === 'none' ? 'block' : 'none';
+
+            if (historySection.style.display === 'block') {
+                renderReflectionHistory();
+            }
+        }
+
+        // Render reflection history
+        function renderReflectionHistory() {
+            const listContainer = document.getElementById('reflection-list');
+            const reflections = appState.reflections || [];
+
+            if (reflections.length === 0) {
+                listContainer.innerHTML = '<p style="color: #999; font-style: italic;">No reflections yet. Save your first one above!</p>';
+                return;
+            }
+
+            // Sort by date, newest first
+            const sortedReflections = [...reflections].reverse();
+
+            listContainer.innerHTML = sortedReflections.map((ref, index) => {
+                const date = new Date(ref.date);
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+                return `
+                    <div style="background: white; padding: 12px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                            <span style="font-size: 0.85em; color: #9c27b0; font-weight: 600;">${dateStr} at ${timeStr}</span>
+                            <button onclick="deleteReflection(${reflections.length - 1 - index})" style="background: #dc3545; padding: 4px 8px; font-size: 0.75em; border-radius: 4px;">Delete</button>
+                        </div>
+                        <p style="margin: 0; color: #333; line-height: 1.5; white-space: pre-wrap;">${ref.content}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Delete a reflection
+        function deleteReflection(index) {
+            if (!confirm('Delete this reflection?')) return;
+
+            appState.reflections.splice(index, 1);
+            saveState();
+            renderReflectionHistory();
+            updateReflectionCount();
+            showNotification('Reflection deleted');
+        }
+
+        // Update reflection count
+        function updateReflectionCount() {
+            const countElement = document.getElementById('reflection-count');
+            if (countElement) {
+                countElement.textContent = (appState.reflections || []).length;
+            }
         }
 
         // 📊 Update daily stats helper
@@ -2317,6 +2555,9 @@
         // Initialize app on load
         document.addEventListener('DOMContentLoaded', function() {
             loadState();
+
+            // Update counts on page load
+            updateReflectionCount();
 
             // 📊 Log this session
             logSession();

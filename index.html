@@ -625,6 +625,12 @@
                 <button onclick="exportForProjectSync()" style="background: #ff9800; padding: 10px 20px; font-size: 0.9em;" title="Download state to sync with project folders">
                     📁 Export Progress
                 </button>
+                <button onclick="toggleSyncLog()" style="background: #17a2b8; padding: 10px 20px; font-size: 0.9em;" title="View all sync attempts and their status">
+                    📊 Sync Log
+                </button>
+                <button onclick="toggleActivityLog()" style="background: #6c757d; padding: 10px 20px; font-size: 0.9em;" title="View all your activity">
+                    📜 Activity Log
+                </button>
             </div>
 
             <!-- GitHub Sync Controls (Collapsible) -->
@@ -911,7 +917,9 @@
                 levelUps: [],          // Track every level gained
                 dailyStats: [],        // Track daily XP/progress
                 moodCheckins: [],      // Track mood over time
-                sessions: []           // Track when you used Quest Coach
+                sessions: [],          // Track when you used Quest Coach
+                syncLog: [],           // Track all sync attempts
+                activityLog: []        // Track all activity (chat, edits, etc.)
             }
         };
 
@@ -1302,6 +1310,48 @@
                     setTimeout(() => levelUp(), 500);
                 }
             }
+        }
+
+        // Log sync attempt
+        function logSync(status, message, details = {}) {
+            if (!appState.history) appState.history = {};
+            if (!appState.history.syncLog) appState.history.syncLog = [];
+
+            appState.history.syncLog.push({
+                status: status, // 'success', 'failed', 'skipped'
+                message: message,
+                details: details,
+                timestamp: new Date().toISOString()
+            });
+
+            // Keep only last 100 sync logs
+            if (appState.history.syncLog.length > 100) {
+                appState.history.syncLog = appState.history.syncLog.slice(-100);
+            }
+
+            saveState();
+            console.log(`[SYNC LOG] ${status.toUpperCase()}: ${message}`, details);
+        }
+
+        // Log activity
+        function logActivity(type, message, details = {}) {
+            if (!appState.history) appState.history = {};
+            if (!appState.history.activityLog) appState.history.activityLog = [];
+
+            appState.history.activityLog.push({
+                type: type, // 'brain_dump', 'quest_complete', 'mood_check', etc.
+                message: message,
+                details: details,
+                timestamp: new Date().toISOString()
+            });
+
+            // Keep only last 200 activity logs
+            if (appState.history.activityLog.length > 200) {
+                appState.history.activityLog = appState.history.activityLog.slice(-200);
+            }
+
+            saveState();
+            console.log(`[ACTIVITY] ${type}: ${message}`, details);
         }
 
         // Show notification
@@ -1869,6 +1919,9 @@
                 date: new Date().toISOString()
             });
 
+            // Log activity
+            logActivity('brain_dump', 'Brain dump saved', { contentLength: dump.length });
+
             saveState();
 
             alert('💭 Brain dump saved! Take a deep breath. We\'ll organize this together.');
@@ -1881,6 +1934,12 @@
                     const questData = JSON.parse(localStorage.getItem('questCoachState'));
                     const result = await window.githubSync.pushToGitHub(questData);
 
+                    // Log successful sync
+                    logSync('success', 'Brain dump synced to GitHub', {
+                        trigger: 'brain_dump_auto',
+                        commitUrl: result.commitUrl
+                    });
+
                     // Use showSyncNotification if available, otherwise fallback to showNotification
                     if (typeof showSyncNotification === 'function') {
                         showSyncNotification('✅ Brain dump synced to GitHub!', 'success');
@@ -1890,6 +1949,13 @@
                     console.log('GitHub sync successful:', result);
                 } catch (error) {
                     console.error('Auto-sync failed:', error);
+
+                    // Log failed sync
+                    logSync('failed', 'GitHub sync failed: ' + error.message, {
+                        trigger: 'brain_dump_auto',
+                        error: error.message
+                    });
+
                     if (typeof showSyncNotification === 'function') {
                         showSyncNotification('⚠️ Brain dump saved locally, but GitHub sync failed', 'warning');
                     } else {
@@ -1898,6 +1964,18 @@
                 }
             } else {
                 console.log('GitHub sync not configured - brain dump saved locally only');
+
+                // Log that sync was skipped
+                logSync('skipped', 'GitHub sync not configured', {
+                    trigger: 'brain_dump_auto',
+                    reason: 'no_token'
+                });
+
+                if (typeof showSyncNotification === 'function') {
+                    showSyncNotification('💾 Brain dump saved locally (GitHub sync not configured)', 'warning');
+                } else {
+                    showNotification('💾 Saved locally. Configure GitHub sync in settings to auto-sync.');
+                }
             }
         }
 

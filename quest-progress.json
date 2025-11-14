@@ -1,0 +1,71 @@
+{
+  "xp": 50,
+  "level": 1,
+  "streak": 1,
+  "quests": [
+    {
+      "id": 1763045218491,
+      "title": "Order webcam and speakers for client",
+      "category": "urgent",
+      "completed": true,
+      "xpValue": 50,
+      "icon": "🚨"
+    },
+    {
+      "id": 1763045218492,
+      "title": "Finish Rakan's Song project",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🎵"
+    },
+    {
+      "id": 1763045218493,
+      "title": "Follow up with CPA for K1s (tax returns)",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "📋"
+    },
+    {
+      "id": 1763045218494,
+      "title": "Work on PA sound system for Syria Ministry",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🔊"
+    },
+    {
+      "id": 1763045218495,
+      "title": "Follow up with Washington DC networking contacts",
+      "category": "work",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "🤝"
+    },
+    {
+      "id": 1763045218496,
+      "title": "Revive Umayyad Mosque acoustic project",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🕌"
+    },
+    {
+      "id": 1763045218497,
+      "title": "Update and modernize personal website",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🌐"
+    }
+  ],
+  "mood": {
+    "mood": "good",
+    "emoji": "😊",
+    "date": "2025-11-13T17:42:38.969Z"
+  },
+  "lastActiveDate": "2025-11-13T17:42:38.969Z",
+  "brainDumps": [],
+  "reflections": []
+}

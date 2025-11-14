@@ -52,14 +52,6 @@
       "icon": "🕌"
     },
     {
-      "id": 1763045218497,
-      "title": "Update and modernize personal website",
-      "category": "work",
-      "completed": false,
-      "xpValue": 75,
-      "icon": "🌐"
-    },
-    {
       "id": 1763131515058,
       "title": "Abdulwareth Lahham - Money request & Invoice",
       "category": "urgent",
@@ -1737,6 +1729,14 @@
       "questId": null,
       "requiresQuest": null,
       "questChain": []
+    },
+    {
+      "id": 1763045218497,
+      "title": "Update and modernize personal website",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🌐"
     }
   ]
 }

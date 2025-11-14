@@ -1806,7 +1806,7 @@
         // === END INVENTORY SYSTEM ===
 
         // Process brain dump
-        function processBrainDump() {
+        async function processBrainDump() {
             // Stop recording if active
             if (isRecording) {
                 stopRecording();
@@ -1828,6 +1828,32 @@
 
             alert('💭 Brain dump saved! Take a deep breath. We\'ll organize this together.');
             document.getElementById('brain-dump').value = '';
+
+            // Automatically push to GitHub after brain dump
+            if (window.githubSync && window.githubSync.isConfigured()) {
+                try {
+                    console.log('Auto-syncing brain dump to GitHub...');
+                    const questData = JSON.parse(localStorage.getItem('questCoachState'));
+                    const result = await window.githubSync.pushToGitHub(questData);
+
+                    // Use showSyncNotification if available, otherwise fallback to showNotification
+                    if (typeof showSyncNotification === 'function') {
+                        showSyncNotification('✅ Brain dump synced to GitHub!', 'success');
+                    } else {
+                        showNotification('✅ Brain dump synced to GitHub!');
+                    }
+                    console.log('GitHub sync successful:', result);
+                } catch (error) {
+                    console.error('Auto-sync failed:', error);
+                    if (typeof showSyncNotification === 'function') {
+                        showSyncNotification('⚠️ Brain dump saved locally, but GitHub sync failed', 'warning');
+                    } else {
+                        showNotification('⚠️ Brain dump saved locally, but GitHub sync failed. Use manual sync.');
+                    }
+                }
+            } else {
+                console.log('GitHub sync not configured - brain dump saved locally only');
+            }
         }
 
         // Save daily reflection

@@ -58,6 +58,233 @@
       "completed": false,
       "xpValue": 75,
       "icon": "🌐"
+    },
+    {
+      "id": 1763131515058,
+      "title": "Abdulwareth Lahham - Money request & Invoice",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "Request payment and create invoice for Abdulwareth Lahham project",
+      "project": "personal-finance",
+      "subtasks": [
+        {
+          "title": "Calculate total amount owed",
+          "completed": false
+        },
+        {
+          "title": "Create professional invoice",
+          "completed": false
+        },
+        {
+          "title": "Send invoice to client",
+          "completed": false
+        },
+        {
+          "title": "Follow up on payment",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515059,
+      "title": "Apply for Medicaid - Health Insurance Coverage",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "🏥",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "CRITICAL: Apply for Medicaid now (no job). 2 phases: Start application, then submit tax returns when ready",
+      "project": "personal-health-insurance",
+      "subtasks": [
+        {
+          "title": "📋 PHASE 1: START APPLICATION (Do Now)",
+          "completed": false
+        },
+        {
+          "title": "Research Medicaid eligibility requirements in your state (15 min)",
+          "completed": false
+        },
+        {
+          "title": "Gather required documents (ID, proof of residency, SSN) (30 min)",
+          "completed": false
+        },
+        {
+          "title": "Go to Healthcare.gov or state Medicaid website (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Create account on Medicaid application portal (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Start Medicaid application form (45 min)",
+          "completed": false
+        },
+        {
+          "title": "Fill out personal information section (20 min)",
+          "completed": false
+        },
+        {
+          "title": "Fill out household/income section (20 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload initial documents (ID, residency proof) (15 min)",
+          "completed": false
+        },
+        {
+          "title": "Submit initial application (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Save confirmation number and application ID (5 min)",
+          "completed": false
+        },
+        {
+          "title": "🎉 MILESTONE: Initial Application Submitted!",
+          "completed": false
+        },
+        {
+          "title": "📋 PHASE 2: SUBMIT TAX RETURNS (When Ready)",
+          "completed": false
+        },
+        {
+          "title": "⏸️ Wait for 2023 tax return to be filed",
+          "completed": false
+        },
+        {
+          "title": "⏸️ Wait for 2024 tax return to be filed",
+          "completed": false
+        },
+        {
+          "title": "Download tax return PDFs from TurboTax (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Log back into Medicaid application portal (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload 2023 tax return as income verification (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload 2024 tax return as income verification (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Submit updated application with tax documents (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Receive Medicaid eligibility determination (wait 30-45 days)",
+          "completed": false
+        },
+        {
+          "title": "Review Medicaid approval letter (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Activate Medicaid coverage (10 min)",
+          "completed": false
+        },
+        {
+          "title": "🎉 COMPLETE: Medicaid Coverage Active!",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515061,
+      "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 1000,
+      "icon": "🕌",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "CRITICAL DEADLINE: Event Nov 23rd, need done by Nov 18th (5 days left!). 10 songs, 20 minutes total.",
+      "project": "mawlid-songs",
+      "subtasks": [
+        {
+          "title": "Planning: Select 10 songs for Mawlid",
+          "completed": false
+        },
+        {
+          "title": "Planning: Finalize all lyrics and arrangements",
+          "completed": false
+        },
+        {
+          "title": "Song 1: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 2: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 3: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 4: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 5: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 6: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 7: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 8: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 9: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 10: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Final: Compile all songs into sequence",
+          "completed": false
+        },
+        {
+          "title": "Final: Quality check all 20 minutes",
+          "completed": false
+        },
+        {
+          "title": "Final: Prepare video/visual content if needed",
+          "completed": false
+        },
+        {
+          "title": "Final: Deliver to event organizers by Nov 18",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
   ],
   "mood": {
@@ -67,5 +294,1449 @@
   },
   "lastActiveDate": "2025-11-14T14:01:52.171Z",
   "brainDumps": [],
-  "reflections": []
+  "reflections": [],
+  "history": {
+    "questCompletions": [],
+    "levelUps": [],
+    "dailyStats": [],
+    "moodCheckins": [],
+    "sessions": [
+      {
+        "startTime": "2025-11-14T14:45:14.554Z",
+        "level": 3,
+        "xp": 225,
+        "activeQuests": 7
+      }
+    ]
+  },
+  "inventory": [
+    {
+      "id": 1763131515055,
+      "title": "Uber driver app paperwork submit",
+      "category": "urgent",
+      "completed": true,
+      "xpValue": 100,
+      "icon": "🚗",
+      "status": "completed",
+      "priority": "urgent",
+      "notes": "✅ COMPLETED Nov 13! Submit Uber driver application paperwork",
+      "project": "personal-urgent",
+      "subtasks": [
+        {
+          "title": "Gather required documents",
+          "completed": true
+        },
+        {
+          "title": "Fill out application form",
+          "completed": true
+        },
+        {
+          "title": "Submit online application",
+          "completed": true
+        },
+        {
+          "title": "Follow up on status",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515057,
+      "title": "Quest Coach - Development & Enhancement",
+      "category": "work",
+      "completed": false,
+      "xpValue": 500,
+      "icon": "📱",
+      "status": "active",
+      "priority": "high",
+      "notes": "Build and improve Quest Coach! Every feature = subtask = XP! Currently: 400/500 XP (80%)",
+      "project": "adhd-quest-coach",
+      "subtasks": [
+        {
+          "title": "✅ Initial setup & project structure (50 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Create comprehensive quest system with 41 quests (100 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Add GitHub Sync feature for bidirectional syncing (50 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Fix level display bug (level persists correctly) (10 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Fix token persistence UX (show saved status) (10 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Add complete history tracking system (50 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Add daily stats, mood, and session tracking (10 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Import all 42 real quests into Quest Coach UI (30 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Build achievement/badge system with celebrations & combos (60 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Add collapsible sync controls UI enhancement (10 XP)",
+          "completed": true
+        },
+        {
+          "title": "✅ Add rank/title system with 9 progressive ranks (20 XP)",
+          "completed": true
+        },
+        {
+          "title": "Build stats dashboard with graphs & charts (100 XP)",
+          "completed": false
+        },
+        {
+          "title": "Add sequential quest dependencies (show & lock next steps) (40 XP)",
+          "completed": false
+        },
+        {
+          "title": "Build mobile-optimized responsive UI (30 XP)",
+          "completed": false
+        },
+        {
+          "title": "Add data export/backup feature (download JSON) (20 XP)",
+          "completed": false
+        },
+        {
+          "title": "Create quest templates for common tasks (20 XP)",
+          "completed": false
+        },
+        {
+          "title": "Add time tracking per quest/subtask (40 XP)",
+          "completed": false
+        },
+        {
+          "title": "Create weekly/monthly progress reports (30 XP)",
+          "completed": false
+        },
+        {
+          "title": "Add quest filtering & search (20 XP)",
+          "completed": false
+        },
+        {
+          "title": "Build quest sharing feature (share with friends) (30 XP)",
+          "completed": false
+        },
+        {
+          "title": "Add dark mode toggle (20 XP)",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515060,
+      "title": "Anas Bitar - Audio files cleaning",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🎧",
+      "status": "active",
+      "priority": "high",
+      "notes": "Clean and process audio files for Anas Bitar",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Review all audio files",
+          "completed": false
+        },
+        {
+          "title": "Remove noise and artifacts",
+          "completed": false
+        },
+        {
+          "title": "Normalize audio levels",
+          "completed": false
+        },
+        {
+          "title": "Export final files",
+          "completed": false
+        },
+        {
+          "title": "Deliver to client",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515062,
+      "title": "Setup Zoho CRM & Meeting with Reseller",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "📊",
+      "status": "active",
+      "priority": "high",
+      "notes": "Configure Zoho CRM for business management and meet with reseller",
+      "project": "business-tools",
+      "subtasks": [
+        {
+          "title": "Research Zoho CRM features needed",
+          "completed": false
+        },
+        {
+          "title": "Schedule meeting with Zoho reseller",
+          "completed": false
+        },
+        {
+          "title": "Attend meeting and take notes",
+          "completed": false
+        },
+        {
+          "title": "Set up Zoho account",
+          "completed": false
+        },
+        {
+          "title": "Configure initial settings",
+          "completed": false
+        },
+        {
+          "title": "Import existing contacts",
+          "completed": false
+        },
+        {
+          "title": "Train Nour on Zoho usage",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515063,
+      "title": "Contacts Management System with Nour",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "👥",
+      "status": "active",
+      "priority": "high",
+      "notes": "Set up comprehensive contacts management system with assistant Nour",
+      "project": "business-operations",
+      "subtasks": [
+        {
+          "title": "Audit all existing contacts",
+          "completed": false
+        },
+        {
+          "title": "Define contact categories",
+          "completed": false
+        },
+        {
+          "title": "Set up shared contact database",
+          "completed": false
+        },
+        {
+          "title": "Create contact management workflow",
+          "completed": false
+        },
+        {
+          "title": "Train Nour on system",
+          "completed": false
+        },
+        {
+          "title": "Test system for 1 week",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515069,
+      "title": "Smart Herbal Farms - DECISION: Send Mentorship Letter",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🌿",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "40,000+ words analysis complete. Time to decide and act.",
+      "project": "smart-herbal-farms",
+      "subtasks": [
+        {
+          "title": "Make final decision (Yes/No/Pass)",
+          "completed": false
+        },
+        {
+          "title": "If YES: Send mentorship-response-arabic.html",
+          "completed": false
+        },
+        {
+          "title": "Wait 1-2 weeks for response",
+          "completed": false
+        },
+        {
+          "title": "If positive: Schedule Month 1 call",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515070,
+      "title": "Syria Media Proposal - DECISION: Submit to Ministry",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "📄",
+      "status": "planning",
+      "priority": "urgent",
+      "notes": "Professional proposal complete. Ready to submit.",
+      "project": "syria-media-proposal",
+      "subtasks": [
+        {
+          "title": "Generate final PDF with background graphics",
+          "completed": false
+        },
+        {
+          "title": "Prepare cover letter",
+          "completed": false
+        },
+        {
+          "title": "Research ministry contact information",
+          "completed": false
+        },
+        {
+          "title": "Send via official channels",
+          "completed": false
+        },
+        {
+          "title": "Follow up after 2-3 weeks",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515071,
+      "title": "Umayyad Mosque Report - DECISION: Submit to Client",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "🕌",
+      "status": "planning",
+      "priority": "high",
+      "notes": "Comprehensive 10MB+ report complete. Ready for submission.",
+      "project": "ummayad",
+      "subtasks": [
+        {
+          "title": "Prepare executive presentation slides",
+          "completed": false
+        },
+        {
+          "title": "Create cost breakdown spreadsheet",
+          "completed": false
+        },
+        {
+          "title": "Schedule client presentation meeting",
+          "completed": false
+        },
+        {
+          "title": "Submit report",
+          "completed": false
+        },
+        {
+          "title": "Follow up after submission",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515072,
+      "title": "Rakan's Song Project - Finish Production",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🎵",
+      "status": "active",
+      "priority": "high",
+      "notes": "High priority music project - finish production",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Complete recording",
+          "completed": false
+        },
+        {
+          "title": "Mix",
+          "completed": false
+        },
+        {
+          "title": "Master",
+          "completed": false
+        },
+        {
+          "title": "Deliver to client",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515073,
+      "title": "Tamim and Tasnim Song 7",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "👥",
+      "status": "awaiting_client",
+      "priority": "high",
+      "notes": "25% complete - Recording done, awaiting client for animation & mixing",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Recording",
+          "completed": true
+        },
+        {
+          "title": "Animation",
+          "completed": false
+        },
+        {
+          "title": "Mixing",
+          "completed": false
+        },
+        {
+          "title": "Deliver to client",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515074,
+      "title": "Facebook Ad Campaigns - Studio Client Acquisition",
+      "category": "work",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "📱",
+      "status": "active",
+      "priority": "high",
+      "notes": "Set up ad campaigns to acquire studio clients",
+      "project": "marketing",
+      "subtasks": [
+        {
+          "title": "Define target audience",
+          "completed": false
+        },
+        {
+          "title": "Create ad creatives",
+          "completed": false
+        },
+        {
+          "title": "Set up Facebook Business Manager",
+          "completed": false
+        },
+        {
+          "title": "Launch campaigns",
+          "completed": false
+        },
+        {
+          "title": "Monitor and optimize",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515075,
+      "title": "ADHD Quest Coach - Backend API & Cloud Sync",
+      "category": "health",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "🎮",
+      "status": "planning",
+      "priority": "high",
+      "notes": "Enable sync across devices for Quest Coach system",
+      "project": "adhd-quest-coach",
+      "subtasks": [
+        {
+          "title": "Design database schema",
+          "completed": false
+        },
+        {
+          "title": "Set up Node.js + Express backend",
+          "completed": false
+        },
+        {
+          "title": "Implement user authentication",
+          "completed": false
+        },
+        {
+          "title": "Create API endpoints for quests",
+          "completed": false
+        },
+        {
+          "title": "Add sync logic to frontend",
+          "completed": false
+        },
+        {
+          "title": "Test multi-device sync",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515076,
+      "title": "AI Courses - Complete n8n + Canva Automation",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "🎓",
+      "status": "active",
+      "priority": "high",
+      "notes": "30% complete. ChatGPT done, automation pending.",
+      "project": "ai-courses",
+      "subtasks": [
+        {
+          "title": "Set up n8n (cloud or self-hosted)",
+          "completed": false
+        },
+        {
+          "title": "Apply for Canva API access",
+          "completed": false
+        },
+        {
+          "title": "Create master Canva template",
+          "completed": false
+        },
+        {
+          "title": "Import n8n workflow from JSON",
+          "completed": false
+        },
+        {
+          "title": "Configure API credentials",
+          "completed": false
+        },
+        {
+          "title": "Test end-to-end with dummy data",
+          "completed": false
+        },
+        {
+          "title": "Deploy first automated post",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515077,
+      "title": "Path of Heroes - Phase 2: Character-Specific Content",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 300,
+      "icon": "⚔️",
+      "status": "active",
+      "priority": "high",
+      "notes": "60% complete. Add character-specific encounters and rewards.",
+      "project": "p-o-h",
+      "subtasks": [
+        {
+          "title": "Implement preferredEnemyTypes system",
+          "completed": false
+        },
+        {
+          "title": "Create character-specific encounters",
+          "completed": false
+        },
+        {
+          "title": "Add uniqueRewards system",
+          "completed": false
+        },
+        {
+          "title": "Implement auto-save on floor advancement",
+          "completed": false
+        },
+        {
+          "title": "Test all 3 characters thoroughly",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515078,
+      "title": "Personal Website - SEO Optimization & Better CTAs",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "🌐",
+      "status": "active",
+      "priority": "high",
+      "notes": "Improve SEO, add compelling CTAs for better conversion",
+      "project": "website",
+      "subtasks": [
+        {
+          "title": "Audit current SEO (meta tags, schema.org)",
+          "completed": false
+        },
+        {
+          "title": "Add comprehensive meta tags",
+          "completed": false
+        },
+        {
+          "title": "Implement structured data (Person, Organization)",
+          "completed": false
+        },
+        {
+          "title": "Optimize page load speed",
+          "completed": false
+        },
+        {
+          "title": "Design compelling CTAs above fold",
+          "completed": false
+        },
+        {
+          "title": "Add multiple CTA touchpoints",
+          "completed": false
+        },
+        {
+          "title": "Implement social proof section",
+          "completed": false
+        },
+        {
+          "title": "Add urgency/scarcity elements",
+          "completed": false
+        },
+        {
+          "title": "Mobile CTA optimization",
+          "completed": false
+        },
+        {
+          "title": "Set up Formspree for contact form",
+          "completed": false
+        },
+        {
+          "title": "Add Google Analytics tracking",
+          "completed": false
+        },
+        {
+          "title": "Deploy and test",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515079,
+      "title": "Karazah Website - Enhanced Features & SEO",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "🎮",
+      "status": "active",
+      "priority": "high",
+      "notes": "Improve Karazah website with better SEO and features",
+      "project": "Karazah",
+      "subtasks": [
+        {
+          "title": "SEO audit and optimization",
+          "completed": false
+        },
+        {
+          "title": "Add meta tags for all pages",
+          "completed": false
+        },
+        {
+          "title": "Implement schema.org for educational content",
+          "completed": false
+        },
+        {
+          "title": "Add compelling CTAs for user registration",
+          "completed": false
+        },
+        {
+          "title": "Optimize images and assets",
+          "completed": false
+        },
+        {
+          "title": "Mobile responsiveness improvements",
+          "completed": false
+        },
+        {
+          "title": "Add more interactive elements",
+          "completed": false
+        },
+        {
+          "title": "Deploy updates",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515080,
+      "title": "Ministry of Child Affairs Syria - Proposal",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "👶",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Not urgent but needs attention - draft proposal",
+      "project": "syria-ministry-child",
+      "subtasks": [
+        {
+          "title": "Understand project scope",
+          "completed": false
+        },
+        {
+          "title": "Draft initial proposal",
+          "completed": false
+        },
+        {
+          "title": "Review and finalize",
+          "completed": false
+        },
+        {
+          "title": "Submit to ministry",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515081,
+      "title": "Reels from Syria Lecture",
+      "category": "work",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "📹",
+      "status": "active",
+      "priority": "medium",
+      "notes": "Create social media content from Syria lecture",
+      "project": "media-content",
+      "subtasks": [
+        {
+          "title": "Review lecture footage",
+          "completed": false
+        },
+        {
+          "title": "Select best clips",
+          "completed": false
+        },
+        {
+          "title": "Edit reels",
+          "completed": false
+        },
+        {
+          "title": "Post to social media",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515082,
+      "title": "Nasheed Watani",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🎵",
+      "status": "awaiting_client",
+      "priority": "medium",
+      "notes": "33% complete - Music done, awaiting client feedback",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Music production",
+          "completed": true
+        },
+        {
+          "title": "Awaiting client feedback",
+          "completed": false
+        },
+        {
+          "title": "Revisions if needed",
+          "completed": false
+        },
+        {
+          "title": "Final delivery",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515083,
+      "title": "Email Management System",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "📧",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Set up efficient email workflow and management system",
+      "project": "business-operations",
+      "subtasks": [
+        {
+          "title": "Audit current email workflow",
+          "completed": false
+        },
+        {
+          "title": "Choose email management tool",
+          "completed": false
+        },
+        {
+          "title": "Set up folders and filters",
+          "completed": false
+        },
+        {
+          "title": "Create templates",
+          "completed": false
+        },
+        {
+          "title": "Train on new system",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515084,
+      "title": "Karazah Mobile App Development",
+      "category": "work",
+      "completed": false,
+      "xpValue": 500,
+      "icon": "📱",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Develop native mobile app for Karazah (iOS/Android)",
+      "project": "Karazah-app",
+      "subtasks": [
+        {
+          "title": "Define app feature set",
+          "completed": false
+        },
+        {
+          "title": "Choose development approach (React Native/Flutter)",
+          "completed": false
+        },
+        {
+          "title": "Design app UI/UX",
+          "completed": false
+        },
+        {
+          "title": "Set up development environment",
+          "completed": false
+        },
+        {
+          "title": "Build MVP features",
+          "completed": false
+        },
+        {
+          "title": "Implement offline functionality",
+          "completed": false
+        },
+        {
+          "title": "Add push notifications",
+          "completed": false
+        },
+        {
+          "title": "Test on iOS and Android",
+          "completed": false
+        },
+        {
+          "title": "Submit to App Store",
+          "completed": false
+        },
+        {
+          "title": "Submit to Google Play",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515085,
+      "title": "Karazah v1.1.0 - User Registration System",
+      "category": "work",
+      "completed": false,
+      "xpValue": 200,
+      "icon": "👥",
+      "status": "planning",
+      "priority": "high",
+      "notes": "85% complete. v1.0 live, time for v1.1 features.",
+      "project": "Karazah",
+      "subtasks": [
+        {
+          "title": "Design user database schema",
+          "completed": false
+        },
+        {
+          "title": "Implement registration form",
+          "completed": false
+        },
+        {
+          "title": "Add login/logout functionality",
+          "completed": false
+        },
+        {
+          "title": "Create user profile page",
+          "completed": false
+        },
+        {
+          "title": "Test authentication flow",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515086,
+      "title": "Arabian Sweets Empire - Phase 4: Meta-Progression",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 400,
+      "icon": "🍰",
+      "status": "active",
+      "priority": "medium",
+      "notes": "60% complete. Core gameplay done, add upgrades and prestige.",
+      "project": "arabian-sweets-empire",
+      "subtasks": [
+        {
+          "title": "Create upgrades panel UI",
+          "completed": false
+        },
+        {
+          "title": "Implement upgrade system logic",
+          "completed": false
+        },
+        {
+          "title": "Add offline progress calculation",
+          "completed": false
+        },
+        {
+          "title": "Design prestige system (Barakah)",
+          "completed": false
+        },
+        {
+          "title": "Implement save/load with localStorage",
+          "completed": false
+        },
+        {
+          "title": "Add animations and juice effects",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515087,
+      "title": "Syrian Memory Game - Global Leaderboard",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "🎲",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "80% complete. Game live, add competitive features.",
+      "project": "syrian-memory-game",
+      "subtasks": [
+        {
+          "title": "Set up backend for leaderboard",
+          "completed": false
+        },
+        {
+          "title": "Create leaderboard UI",
+          "completed": false
+        },
+        {
+          "title": "Add username registration",
+          "completed": false
+        },
+        {
+          "title": "Implement score submission",
+          "completed": false
+        },
+        {
+          "title": "Test and deploy",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515088,
+      "title": "Tarboush - Power-ups and Shop System",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "🎩",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "70% complete. Basic game done, add monetization features.",
+      "project": "Tarboush",
+      "subtasks": [
+        {
+          "title": "Design power-up types",
+          "completed": false
+        },
+        {
+          "title": "Implement power-up logic",
+          "completed": false
+        },
+        {
+          "title": "Create shop UI",
+          "completed": false
+        },
+        {
+          "title": "Add currency/points system",
+          "completed": false
+        },
+        {
+          "title": "Test shop purchases",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515089,
+      "title": "Update All Resumes (Arafa, Maya, Taha)",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "📄",
+      "status": "active",
+      "priority": "medium",
+      "notes": "Update resumes with latest experience and generate PDFs.",
+      "project": "resumes",
+      "subtasks": [
+        {
+          "title": "Update Arafa's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Maya's resume",
+          "completed": false
+        },
+        {
+          "title": "Update Taha's resume",
+          "completed": false
+        },
+        {
+          "title": "Create ATS-optimized versions",
+          "completed": false
+        },
+        {
+          "title": "Generate PDF versions",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515090,
+      "title": "Website 2.0 - Consolidate & Deploy",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🌐",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "60% complete. Multiple versions exist, need to pick best one.",
+      "project": "website2.0",
+      "subtasks": [
+        {
+          "title": "Review all versions",
+          "completed": false
+        },
+        {
+          "title": "Test animations",
+          "completed": false
+        },
+        {
+          "title": "Select primary version",
+          "completed": false
+        },
+        {
+          "title": "Mobile responsiveness check",
+          "completed": false
+        },
+        {
+          "title": "Deploy selected version",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515091,
+      "title": "Syria's Tale Song",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🎵",
+      "status": "awaiting_client",
+      "priority": "low",
+      "notes": "Project with Rima - awaiting client feedback",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Wait for client feedback",
+          "completed": false
+        },
+        {
+          "title": "Implement revisions if needed",
+          "completed": false
+        },
+        {
+          "title": "Final delivery",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515092,
+      "title": "Space Song Aljazeera",
+      "category": "work",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "🌌",
+      "status": "planning",
+      "priority": "low",
+      "notes": "New project - needs scoping and planning",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Discuss project scope with client",
+          "completed": false
+        },
+        {
+          "title": "Review requirements",
+          "completed": false
+        },
+        {
+          "title": "Create project timeline",
+          "completed": false
+        },
+        {
+          "title": "Begin production",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515093,
+      "title": "ADHD Posts & Reels Plan",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "📱",
+      "status": "planning",
+      "priority": "low",
+      "notes": "Ongoing content creation for ADHD awareness. Not urgent.",
+      "project": "social-media",
+      "subtasks": [
+        {
+          "title": "Brainstorm content ideas",
+          "completed": false
+        },
+        {
+          "title": "Create content calendar",
+          "completed": false
+        },
+        {
+          "title": "Design templates",
+          "completed": false
+        },
+        {
+          "title": "Film first batch of reels",
+          "completed": false
+        },
+        {
+          "title": "Schedule posts",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515094,
+      "title": "Entertainment Hub - Investigate & Document",
+      "category": "work",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "🎬",
+      "status": "planning",
+      "priority": "low",
+      "notes": "Project exists but needs documentation.",
+      "project": "Entertainment-Hub",
+      "subtasks": [
+        {
+          "title": "Explore project structure",
+          "completed": false
+        },
+        {
+          "title": "Test functionality",
+          "completed": false
+        },
+        {
+          "title": "Create README",
+          "completed": false
+        },
+        {
+          "title": "Define TODO list",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515095,
+      "title": "Studio Emulator - Review & Test",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "🎙️",
+      "status": "planning",
+      "priority": "low",
+      "notes": "Needs code review and testing.",
+      "project": "studio-emulator",
+      "subtasks": [
+        {
+          "title": "Review QUICKSTART.md",
+          "completed": false
+        },
+        {
+          "title": "Install dependencies",
+          "completed": false
+        },
+        {
+          "title": "Test all features",
+          "completed": false
+        },
+        {
+          "title": "Document bugs/features",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515096,
+      "title": "Syria Ministry PA System - DECISION: Submit Proposal",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🔊",
+      "status": "planning",
+      "priority": "low",
+      "notes": "Proposal ready. Decide whether to submit.",
+      "project": "syria-ministry-pa-system",
+      "subtasks": [
+        {
+          "title": "Finalize budget/package selection",
+          "completed": false
+        },
+        {
+          "title": "Prepare formal quote",
+          "completed": false
+        },
+        {
+          "title": "Research suppliers",
+          "completed": false
+        },
+        {
+          "title": "Submit proposal",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515097,
+      "title": "MSU Oct2025 Event - Extract Templates",
+      "category": "work",
+      "completed": true,
+      "xpValue": 25,
+      "icon": "📚",
+      "status": "completed",
+      "priority": "low",
+      "notes": "Event complete. Extract reusable templates.",
+      "project": "MSU-Oct2025",
+      "subtasks": [
+        {
+          "title": "Create event retrospective",
+          "completed": false
+        },
+        {
+          "title": "Extract reusable templates",
+          "completed": false
+        },
+        {
+          "title": "Archive project",
+          "completed": true
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515098,
+      "title": "Path of Heroes - Phase 3: Enemy Variety & Equipment",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 500,
+      "icon": "⚔️",
+      "status": "planning",
+      "priority": "medium",
+      "notes": "Phase 3: Add enemy affixes and equipment system.",
+      "project": "p-o-h",
+      "subtasks": [
+        {
+          "title": "Design enemy affix system (Vicious, Swift, Armored)",
+          "completed": false
+        },
+        {
+          "title": "Implement enhanced elite encounters",
+          "completed": false
+        },
+        {
+          "title": "Create equipment system",
+          "completed": false
+        },
+        {
+          "title": "Add character-appropriate gear drops",
+          "completed": false
+        },
+        {
+          "title": "Test build variety",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763131515099,
+      "title": "Path of Heroes - Phase 4: Story & 30-Floor Campaign",
+      "category": "personal",
+      "completed": false,
+      "xpValue": 800,
+      "icon": "⚔️",
+      "status": "planning",
+      "priority": "low",
+      "notes": "Phase 4: Complete 30-floor Kickstarter demo with story.",
+      "project": "p-o-h",
+      "subtasks": [
+        {
+          "title": "Write character-specific narrative",
+          "completed": false
+        },
+        {
+          "title": "Build advanced Soul Forge upgrade trees",
+          "completed": false
+        },
+        {
+          "title": "Create Act 1: The Outer Ruins (Floors 1-10)",
+          "completed": false
+        },
+        {
+          "title": "Create Act 2: The Royal Crypts (Floors 11-20)",
+          "completed": false
+        },
+        {
+          "title": "Create Act 3: The Sanctum (Floors 21-30)",
+          "completed": false
+        },
+        {
+          "title": "Test full 30-floor campaign",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    }
+  ]
 }

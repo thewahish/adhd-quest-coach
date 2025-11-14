@@ -445,6 +445,12 @@
         "level": 3,
         "xp": 225,
         "activeQuests": 8
+      },
+      {
+        "startTime": "2025-11-14T15:00:24.801Z",
+        "level": 3,
+        "xp": 225,
+        "activeQuests": 12
       }
     ]
   },
@@ -1822,6 +1828,496 @@
       "completed": false,
       "xpValue": 50,
       "icon": "🤝"
+    },
+    {
+      "id": 1763132427510,
+      "title": "Uber driver app paperwork submit",
+      "category": "urgent",
+      "completed": true,
+      "xpValue": 100,
+      "icon": "🚗",
+      "status": "completed",
+      "priority": "urgent",
+      "notes": "✅ COMPLETED Nov 13! Submit Uber driver application paperwork",
+      "project": "personal-urgent",
+      "subtasks": [
+        {
+          "title": "Gather required documents",
+          "completed": true
+        },
+        {
+          "title": "Fill out application form",
+          "completed": true
+        },
+        {
+          "title": "Submit online application",
+          "completed": true
+        },
+        {
+          "title": "Follow up on status",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427512,
+      "title": "Abdulwareth Lahham - Money request & Invoice",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 75,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "Request payment and create invoice for Abdulwareth Lahham project",
+      "project": "personal-finance",
+      "subtasks": [
+        {
+          "title": "Calculate total amount owed",
+          "completed": false
+        },
+        {
+          "title": "Create professional invoice",
+          "completed": false
+        },
+        {
+          "title": "Send invoice to client",
+          "completed": false
+        },
+        {
+          "title": "Follow up on payment",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427514,
+      "title": "Apply for Medicaid - Health Insurance Coverage",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "🏥",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "CRITICAL: Apply for Medicaid now (no job). 2 phases: Start application, then submit tax returns when ready",
+      "project": "personal-health-insurance",
+      "subtasks": [
+        {
+          "title": "📋 PHASE 1: START APPLICATION (Do Now)",
+          "completed": false
+        },
+        {
+          "title": "Research Medicaid eligibility requirements in your state (15 min)",
+          "completed": false
+        },
+        {
+          "title": "Gather required documents (ID, proof of residency, SSN) (30 min)",
+          "completed": false
+        },
+        {
+          "title": "Go to Healthcare.gov or state Medicaid website (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Create account on Medicaid application portal (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Start Medicaid application form (45 min)",
+          "completed": false
+        },
+        {
+          "title": "Fill out personal information section (20 min)",
+          "completed": false
+        },
+        {
+          "title": "Fill out household/income section (20 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload initial documents (ID, residency proof) (15 min)",
+          "completed": false
+        },
+        {
+          "title": "Submit initial application (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Save confirmation number and application ID (5 min)",
+          "completed": false
+        },
+        {
+          "title": "🎉 MILESTONE: Initial Application Submitted!",
+          "completed": false
+        },
+        {
+          "title": "📋 PHASE 2: SUBMIT TAX RETURNS (When Ready)",
+          "completed": false
+        },
+        {
+          "title": "⏸️ Wait for 2023 tax return to be filed",
+          "completed": false
+        },
+        {
+          "title": "⏸️ Wait for 2024 tax return to be filed",
+          "completed": false
+        },
+        {
+          "title": "Download tax return PDFs from TurboTax (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Log back into Medicaid application portal (5 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload 2023 tax return as income verification (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Upload 2024 tax return as income verification (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Submit updated application with tax documents (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Receive Medicaid eligibility determination (wait 30-45 days)",
+          "completed": false
+        },
+        {
+          "title": "Review Medicaid approval letter (10 min)",
+          "completed": false
+        },
+        {
+          "title": "Activate Medicaid coverage (10 min)",
+          "completed": false
+        },
+        {
+          "title": "🎉 COMPLETE: Medicaid Coverage Active!",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427515,
+      "title": "Anas Bitar - Audio files cleaning",
+      "category": "work",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "🎧",
+      "status": "active",
+      "priority": "high",
+      "notes": "Clean and process audio files for Anas Bitar",
+      "project": "audio-work",
+      "subtasks": [
+        {
+          "title": "Review all audio files",
+          "completed": false
+        },
+        {
+          "title": "Remove noise and artifacts",
+          "completed": false
+        },
+        {
+          "title": "Normalize audio levels",
+          "completed": false
+        },
+        {
+          "title": "Export final files",
+          "completed": false
+        },
+        {
+          "title": "Deliver to client",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427516,
+      "title": "Mawlid Songs - 10 Songs (20 min) - DUE NOV 18!",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 1000,
+      "icon": "🕌",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "CRITICAL DEADLINE: Event Nov 23rd, need done by Nov 18th (5 days left!). 10 songs, 20 minutes total.",
+      "project": "mawlid-songs",
+      "subtasks": [
+        {
+          "title": "Planning: Select 10 songs for Mawlid",
+          "completed": false
+        },
+        {
+          "title": "Planning: Finalize all lyrics and arrangements",
+          "completed": false
+        },
+        {
+          "title": "Song 1: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 2: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 3: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 4: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 5: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 6: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 7: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 8: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 9: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Song 10: Record, mix, master (2 min)",
+          "completed": false
+        },
+        {
+          "title": "Final: Compile all songs into sequence",
+          "completed": false
+        },
+        {
+          "title": "Final: Quality check all 20 minutes",
+          "completed": false
+        },
+        {
+          "title": "Final: Prepare video/visual content if needed",
+          "completed": false
+        },
+        {
+          "title": "Final: Deliver to event organizers by Nov 18",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427519,
+      "title": "File 2023 Tax Return (CRITICAL FIRST)",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 150,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "MUST file 2023 taxes BEFORE 2024 taxes. Estimated $14,300 payment",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review 2023 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit via TurboTax e-file",
+          "completed": false
+        },
+        {
+          "title": "Wait for IRS confirmation (24-48 hrs)",
+          "completed": false
+        },
+        {
+          "title": "Set up payment plan if needed",
+          "completed": false
+        },
+        {
+          "title": "Request penalty abatement letter",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
+    },
+    {
+      "id": 1763132427520,
+      "title": "Request K-1 from CPA for Taxes",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 50,
+      "icon": "📋",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 1 of 3: Get K-1 from CPA before you can file taxes. Complete this first!",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Email CPA for K-1",
+          "completed": false
+        },
+        {
+          "title": "Follow up if no response in 3 days",
+          "completed": false
+        },
+        {
+          "title": "Review K-1 when received",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-k1-2023",
+      "requiresQuest": null,
+      "questChain": [
+        {
+          "title": "File 2023 & 2024 Tax Returns (After K-1)",
+          "xpValue": 250,
+          "completed": false,
+          "notes": "STEP 2: File taxes after receiving K-1"
+        },
+        {
+          "title": "Set Up Payment Plan or Pay Taxes",
+          "xpValue": 100,
+          "completed": false,
+          "notes": "STEP 3: Handle tax payment after filing"
+        }
+      ]
+    },
+    {
+      "id": 1763132427521,
+      "title": "File 2023 & 2024 Tax Returns (After K-1)",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "💰",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 2 of 3: File taxes AFTER receiving K-1. This quest is locked until you complete the K-1 request.",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review 2023 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit 2023 via TurboTax e-file",
+          "completed": false
+        },
+        {
+          "title": "Wait for 2023 IRS confirmation",
+          "completed": false
+        },
+        {
+          "title": "Review 2024 return with Claude",
+          "completed": false
+        },
+        {
+          "title": "Submit 2024 via TurboTax e-file",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-filing-2023-2024",
+      "requiresQuest": "quest-tax-k1-2023",
+      "questChain": [
+        {
+          "title": "Set Up Payment Plan or Pay Taxes",
+          "xpValue": 100,
+          "completed": false,
+          "notes": "STEP 3: Handle tax payment after filing"
+        }
+      ]
+    },
+    {
+      "id": 1763132427522,
+      "title": "Set Up Payment Plan or Pay Taxes",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 100,
+      "icon": "💳",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "STEP 3 of 3: Handle tax payment AFTER filing. This quest is locked until you file taxes.",
+      "project": "personal-finance-management",
+      "subtasks": [
+        {
+          "title": "Review total amount owed",
+          "completed": false
+        },
+        {
+          "title": "Set up IRS payment plan if needed",
+          "completed": false
+        },
+        {
+          "title": "Request penalty abatement letter",
+          "completed": false
+        },
+        {
+          "title": "Make first payment",
+          "completed": false
+        }
+      ],
+      "questId": "quest-tax-payment-2023-2024",
+      "requiresQuest": "quest-tax-filing-2023-2024",
+      "questChain": []
+    },
+    {
+      "id": 1763132427523,
+      "title": "Apply to 5 High-Priority IT Director Jobs",
+      "category": "urgent",
+      "completed": false,
+      "xpValue": 250,
+      "icon": "💼",
+      "status": "active",
+      "priority": "urgent",
+      "notes": "Focus on Director-level IT positions",
+      "project": "job-applications",
+      "subtasks": [
+        {
+          "title": "Adyen Head Technical Support Americas",
+          "completed": false
+        },
+        {
+          "title": "BWE Director IT Security",
+          "completed": false
+        },
+        {
+          "title": "Business Wire Director IT",
+          "completed": false
+        },
+        {
+          "title": "CW Zumbiel Director IT",
+          "completed": false
+        },
+        {
+          "title": "Cedar Integration Support Manager",
+          "completed": false
+        }
+      ],
+      "questId": null,
+      "requiresQuest": null,
+      "questChain": []
     }
   ]
 }

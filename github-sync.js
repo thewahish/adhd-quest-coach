@@ -258,11 +258,29 @@ function showSyncSettings() {
     const modal = document.getElementById('sync-settings-modal');
     const tokenInput = document.getElementById('github-token-input');
     const autoSyncCheckbox = document.getElementById('auto-sync-checkbox');
+    const tokenStatus = document.getElementById('token-status');
 
     tokenInput.value = window.githubSync.token || '';
     autoSyncCheckbox.checked = window.githubSync.autoSyncEnabled;
 
+    // Show status if token exists
+    if (window.githubSync.token) {
+        tokenStatus.style.display = 'block';
+    } else {
+        tokenStatus.style.display = 'none';
+    }
+
     modal.style.display = 'flex';
+}
+
+// Toggle token visibility
+function showTokenMask() {
+    const tokenInput = document.getElementById('github-token-input');
+    if (tokenInput.type === 'password') {
+        tokenInput.type = 'text';
+    } else {
+        tokenInput.type = 'password';
+    }
 }
 
 // Close sync settings modal

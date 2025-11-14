@@ -539,7 +539,14 @@
             <div style="margin-bottom: 20px;">
                 <label style="display: block; color: #333; font-weight: bold; margin-bottom: 8px;">GitHub Personal Access Token:</label>
                 <input type="password" id="github-token-input" placeholder="ghp_xxxxxxxxxxxx" style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.95em;">
-                <p style="color: #888; font-size: 0.85em; margin-top: 8px;">🔒 Stored securely in your browser's localStorage</p>
+                <div style="display: flex; gap: 10px; margin-top: 8px; align-items: center;">
+                    <p style="color: #888; font-size: 0.85em; margin: 0;">🔒 Stored securely in your browser's localStorage</p>
+                    <button type="button" onclick="showTokenMask()" style="background: #6c757d; padding: 5px 10px; font-size: 0.8em;">👁️ Show Token</button>
+                </div>
+                <p id="token-status" style="color: #28a745; font-size: 0.85em; margin-top: 5px; display: none;">✅ Token already saved for this browser</p>
+                <p style="color: #ff9800; font-size: 0.85em; margin-top: 8px; background: #fff3cd; padding: 8px; border-radius: 5px;">
+                    ⚠️ <strong>Important:</strong> Each browser/domain has separate storage. If you use both local file (file:///) and web (https://), you need to configure each separately.
+                </p>
             </div>
 
             <div style="margin-bottom: 25px;">
@@ -899,9 +906,14 @@
             // Update quest list
             renderQuests();
 
-            // Check for level up
-            if (appState.xp >= xpForNextLevel) {
-                levelUp();
+            // Check for level up (prevent repeated calls)
+            const currentLevelThreshold = appState.level * 100;
+            if (appState.xp >= currentLevelThreshold) {
+                // Calculate what level we should be at
+                const calculatedLevel = Math.floor(appState.xp / 100) + 1;
+                if (calculatedLevel > appState.level) {
+                    levelUp();
+                }
             }
         }
 
@@ -973,8 +985,28 @@
 
         // Level up
         function levelUp() {
-            appState.level++;
-            showNotification(`🎊 LEVEL UP! You're now level ${appState.level}!`);
+            const xpForNextLevel = appState.level * 100;
+
+            // Only level up if we have enough XP and haven't already leveled up
+            if (appState.xp >= xpForNextLevel) {
+                appState.level++;
+                saveState(); // 🔧 FIX: Save the level increase!
+
+                // Show level up notification
+                showNotification(`🎊 LEVEL UP! You're now level ${appState.level}!`);
+
+                // Play success sound
+                const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBCx+zPLTgjMGHm7A7+OZURE');
+                audio.volume = 0.5;
+                audio.play().catch(() => {});
+
+                // Check if there's another level to gain
+                const newXpForNextLevel = appState.level * 100;
+                if (appState.xp >= newXpForNextLevel) {
+                    // Recursive level up for multiple levels at once
+                    setTimeout(() => levelUp(), 500);
+                }
+            }
         }
 
         // Show notification

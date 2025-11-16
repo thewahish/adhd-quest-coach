@@ -876,6 +876,98 @@ const allProjectQuests = [
             { title: "Conduct touchbase call", completed: false },
             { title: "Follow up on action items", completed: false }
         ]
+    },
+
+    // =====================================================
+    // AI CERTIFICATION PATH - Career Development
+    // =====================================================
+    {
+        name: "Azure AI Engineer Associate (AI-102)",
+        category: "work",
+        priority: "high",
+        status: "active",
+        xpValue: 1000,
+        icon: "🎓",
+        notes: "Most in-demand AI cert. ADHD-friendly: 10-30 min modules. Use Claude Code to help study!",
+        project: "ai-courses",
+        questId: "azure-ai-102",
+        questChain: ["aws-ml-specialty", "google-ml-engineer"],
+        subtasks: [
+            { title: "Sign up for Microsoft Learn (free)", completed: false },
+            { title: "Complete Azure AI Fundamentals path (2-3 hours)", completed: false },
+            { title: "Study Cognitive Services modules (5 hours)", completed: false },
+            { title: "Study Computer Vision modules (3 hours)", completed: false },
+            { title: "Study NLP/Language modules (4 hours)", completed: false },
+            { title: "Study Knowledge Mining modules (3 hours)", completed: false },
+            { title: "Build practice project with Azure AI", completed: false },
+            { title: "Take 3 practice tests (score 80%+)", completed: false },
+            { title: "Schedule exam ($165)", completed: false },
+            { title: "Pass AI-102 exam!", completed: false }
+        ]
+    },
+    {
+        name: "AWS ML Specialty Certification",
+        category: "work",
+        priority: "medium",
+        status: "active",
+        xpValue: 1200,
+        icon: "🏆",
+        notes: "High salary potential. Start after Azure AI-102. Takes 4-6 weeks focused study.",
+        project: "ai-courses",
+        questId: "aws-ml-specialty",
+        requiresQuest: "azure-ai-102",
+        questChain: ["google-ml-engineer"],
+        subtasks: [
+            { title: "Sign up for AWS Skill Builder (free tier)", completed: false },
+            { title: "Complete ML Foundations (6 hours)", completed: false },
+            { title: "Study Data Engineering on AWS (8 hours)", completed: false },
+            { title: "Study Exploratory Data Analysis (6 hours)", completed: false },
+            { title: "Study ML Modeling (10 hours)", completed: false },
+            { title: "Study ML Implementation (8 hours)", completed: false },
+            { title: "Build SageMaker project", completed: false },
+            { title: "Take 3 practice tests (score 75%+)", completed: false },
+            { title: "Schedule exam ($300)", completed: false },
+            { title: "Pass AWS ML Specialty exam!", completed: false }
+        ]
+    },
+    {
+        name: "Google Professional ML Engineer",
+        category: "work",
+        priority: "low",
+        status: "active",
+        xpValue: 1500,
+        icon: "🌟",
+        notes: "Big tech credential. Start after AWS cert. The final boss of AI certs!",
+        project: "ai-courses",
+        questId: "google-ml-engineer",
+        requiresQuest: "aws-ml-specialty",
+        subtasks: [
+            { title: "Sign up for Google Cloud Skills Boost", completed: false },
+            { title: "Complete ML on Google Cloud path (10 hours)", completed: false },
+            { title: "Study TensorFlow on GCP (8 hours)", completed: false },
+            { title: "Study Feature Engineering (6 hours)", completed: false },
+            { title: "Study ML Pipeline on GCP (8 hours)", completed: false },
+            { title: "Study MLOps (8 hours)", completed: false },
+            { title: "Build Vertex AI project", completed: false },
+            { title: "Take 3 practice tests (score 80%+)", completed: false },
+            { title: "Schedule exam ($200)", completed: false },
+            { title: "Pass Google ML Engineer exam!", completed: false }
+        ]
+    },
+    {
+        name: "Daily AI Study - Just 10 Minutes",
+        category: "personal",
+        priority: "high",
+        status: "active",
+        xpValue: 10,
+        icon: "📚",
+        notes: "REPEATABLE DAILY! Even 10 minutes counts. Builds momentum. No guilt if you miss a day.",
+        project: "ai-courses",
+        subtasks: [
+            { title: "Open Microsoft Learn or AWS Skill Builder", completed: false },
+            { title: "Complete ONE module (any length)", completed: false },
+            { title: "Write 1 sentence about what you learned", completed: false }
+        ]
     }
 ];
 

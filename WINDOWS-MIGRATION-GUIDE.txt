@@ -1,0 +1,336 @@
+================================================================================
+                    CLAUDE CODE WINDOWS MIGRATION GUIDE
+                    Replicate /Volumes/Ai to D:\ Drive
+================================================================================
+
+INSTRUCTIONS FOR CLAUDE CODE ON WINDOWS PC:
+Copy this entire guide and paste it to Claude Code on the new PC.
+Say: "Please set up my D: drive exactly as described in this guide"
+
+================================================================================
+STEP 1: CREATE FOLDER STRUCTURE
+================================================================================
+
+Run these commands in PowerShell or CMD:
+
+mkdir D:\Projects
+mkdir D:\Documentation
+mkdir D:\chat-transcripts
+mkdir D:\.Master
+mkdir D:\.Master\scripts
+mkdir D:\.Master\templates
+mkdir D:\.claude
+
+================================================================================
+STEP 2: CLONE ALL 23 GITHUB REPOSITORIES
+================================================================================
+
+Run these commands in D:\Projects\:
+
+cd D:\Projects
+
+git clone https://github.com/thewahish/adhd-quest-coach.git
+git clone https://github.com/thewahish/ai-courses.git
+git clone https://github.com/thewahish/arabian-sweets-empire.git
+git clone https://github.com/thewahish/auto-agent.git AutoAgent
+git clone https://github.com/thewahish/Entertainment-Hub.git
+git clone https://github.com/thewahish/invoice-generator.git
+git clone https://github.com/thewahish/job-applications.git
+git clone https://github.com/thewahish/Karazah.git
+git clone https://github.com/thewahish/mawlid-songs.git
+git clone https://github.com/thewahish/MSU-Oct2025.git
+git clone https://github.com/thewahish/p-o-h.git
+git clone https://github.com/thewahish/personal-finance-management.git
+git clone https://github.com/thewahish/personal-urgent.git
+git clone https://github.com/thewahish/resumes.git
+git clone https://github.com/thewahish/smart-herbal-farms.git
+git clone https://github.com/thewahish/studio-emulator.git
+git clone https://github.com/thewahish/syria-media-proposal.git
+git clone https://github.com/thewahish/syria-ministry-pa-system.git
+git clone https://github.com/thewahish/syrian-memory-game.git
+git clone https://github.com/thewahish/Tarboush.git
+git clone https://github.com/thewahish/ummayad.git
+git clone https://github.com/thewahish/obaisukar-website.git website
+git clone https://github.com/thewahish/obaisukar-website-v2.git website2.0
+
+================================================================================
+STEP 3: CREATE CLAUDE.md FOR WINDOWS
+================================================================================
+
+Create file: D:\CLAUDE.md
+
+Content:
+--------------------------------------------------------------------------------
+# Claude Code Instructions for D:\ Drive (Windows)
+
+## Core Rules (ALWAYS FOLLOW)
+
+### 1. Chat Transcript Generation
+**MANDATORY:** At the end of every significant Claude Code session, generate a chat summary transcript.
+
+- **Location:** `D:\chat-transcripts\`
+- **Naming:** `YYYY-MM-DD_topic-description.txt` (plain text, NOT markdown)
+- **Content:**
+  - Date and session topic
+  - Summary of accomplishments
+  - Technical details (code changes, file paths with line numbers)
+  - User requests addressed
+  - Recommendations for next session
+  - Important notes and follow-ups
+
+**Why:** This allows the user to review chat results at any time, maintains history of work done, and provides continuity across sessions.
+
+---
+
+### 2. Project Structure Awareness
+
+**Remember this structure:**
+
+```
+D:\
+├── .Master\              # Master scripts and templates
+│   ├── scripts\          # Automation scripts
+│   └── templates\        # Project templates
+├── Projects\             # All active projects (23 repos)
+│   ├── adhd-quest-coach\ # ADHD Quest Coach app
+│   ├── ai-courses\       # AI learning materials
+│   ├── AutoAgent\        # Multi-agent system
+│   ├── Karazah\          # Syrian cuisine platform
+│   ├── mawlid-songs\     # Mawlid songs project
+│   ├── p-o-h\            # Pillars of Health
+│   ├── ummayad\          # Umayyad Mosque Sound System
+│   ├── ... (16 more)
+│   └── website2.0\       # Personal website v2
+├── Documentation\        # Central docs
+├── chat-transcripts\     # Session transcripts
+└── *.txt files          # Various docs at root
+```
+
+**Key Points:**
+- All projects have GitHub remotes under `github.com/thewahish/`
+- Use `git pull origin main && git push origin main` to sync
+- Most projects are on `main` branch
+
+---
+
+### 3. Knowledgebase & Documentation
+
+**Always check these locations:**
+- `D:\Documentation\` - Central documentation
+- `D:\chat-transcripts\` - Session transcripts
+- `D:\.Master\` - Master scripts and templates
+- Individual project READMEs
+
+**When starting a session:**
+1. Understand which project(s) are involved
+2. Check for existing documentation
+3. Reference previous chat transcripts if available
+
+---
+
+### 4. GitHub Sync Commands (Windows)
+
+**Quick sync for any project:**
+```cmd
+cd D:\Projects\<project-name>
+git add -A
+git commit -m "Sync from Windows PC"
+git pull --rebase origin main
+git push origin main
+```
+
+**Sync all projects (PowerShell):**
+```powershell
+Get-ChildItem -Directory D:\Projects | ForEach-Object {
+    if (Test-Path "$($_.FullName)\.git") {
+        Write-Host "Syncing $($_.Name)..."
+        Set-Location $_.FullName
+        git pull --rebase origin main
+        git push origin main
+    }
+}
+```
+
+---
+
+### 5. User Preferences
+
+- **Console logging:** Comprehensive logging for debugging
+- **Priority system:** Urgent > High > Medium > Low
+- **GitHub:** Keep all projects synced both ways (Mac <-> Windows)
+- **Documentation:** Generate transcripts as .txt files
+- **Chat transcripts:** Always create at end of session
+
+---
+
+*Synchronized from Mac /Volumes/Ai - Last updated: 2025-11-16*
+--------------------------------------------------------------------------------
+
+================================================================================
+STEP 4: CREATE SYNC SCRIPT FOR WINDOWS
+================================================================================
+
+Create file: D:\.Master\scripts\sync-all-projects.ps1
+
+Content:
+--------------------------------------------------------------------------------
+# PowerShell script to sync all projects with GitHub
+Write-Host "Syncing all projects to GitHub..." -ForegroundColor Cyan
+
+Get-ChildItem -Directory D:\Projects | ForEach-Object {
+    if (Test-Path "$($_.FullName)\.git") {
+        Write-Host "=== $($_.Name) ===" -ForegroundColor Yellow
+        Set-Location $_.FullName
+
+        # Check for uncommitted changes
+        $status = git status -s
+        if ($status) {
+            Write-Host "  Committing local changes..." -ForegroundColor Green
+            git add -A
+            git commit -m "Auto-sync from Windows - $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+        }
+
+        # Pull and push
+        git pull --rebase origin main 2>&1 | Out-Null
+        git push origin main 2>&1 | Out-Null
+        Write-Host "  Done!" -ForegroundColor Green
+    }
+}
+
+Set-Location D:\
+Write-Host "All projects synced!" -ForegroundColor Cyan
+--------------------------------------------------------------------------------
+
+================================================================================
+STEP 5: CREATE CLAUDE CODE SETTINGS
+================================================================================
+
+Create file: D:\.claude\settings.local.json
+
+Content:
+--------------------------------------------------------------------------------
+{
+  "permissions": {
+    "allow": [
+      "Bash(git push)",
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git stash:*)",
+      "Bash(mkdir:*)",
+      "Bash(git rebase:*)",
+      "Bash(git remote:*)",
+      "Bash(git init:*)",
+      "Read(D:\\**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
+--------------------------------------------------------------------------------
+
+================================================================================
+STEP 6: VERIFY SETUP
+================================================================================
+
+After running all the above, verify:
+
+1. Check all projects cloned:
+   dir D:\Projects
+
+   Should show 23 folders:
+   - adhd-quest-coach
+   - ai-courses
+   - arabian-sweets-empire
+   - AutoAgent
+   - Entertainment-Hub
+   - invoice-generator
+   - job-applications
+   - Karazah
+   - mawlid-songs
+   - MSU-Oct2025
+   - p-o-h
+   - personal-finance-management
+   - personal-urgent
+   - resumes
+   - smart-herbal-farms
+   - studio-emulator
+   - syria-media-proposal
+   - syria-ministry-pa-system
+   - syrian-memory-game
+   - Tarboush
+   - ummayad
+   - website
+   - website2.0
+
+2. Check CLAUDE.md exists:
+   type D:\CLAUDE.md
+
+3. Check chat-transcripts folder:
+   dir D:\chat-transcripts
+
+4. Test sync one project:
+   cd D:\Projects\adhd-quest-coach
+   git pull origin main
+   git status
+
+================================================================================
+STEP 7: INITIAL TRANSCRIPT
+================================================================================
+
+Create: D:\chat-transcripts\2025-11-16_initial-windows-setup.txt
+
+With content showing:
+- Date and time of setup
+- All 23 repos cloned
+- Folder structure created
+- CLAUDE.md rules established
+- Sync scripts created
+
+================================================================================
+IMPORTANT NOTES FOR CLAUDE CODE ON WINDOWS
+================================================================================
+
+1. **Git must be installed** on Windows PC
+   - Download from: https://git-scm.com/download/win
+   - Make sure to add to PATH during installation
+
+2. **GitHub authentication** must be configured
+   - Run: git config --global user.name "thewahish"
+   - Run: git config --global user.email "your-email@example.com"
+   - Use GitHub CLI (gh) or HTTPS with token
+
+3. **PowerShell execution policy** may need adjustment
+   - Run as Admin: Set-ExecutionPolicy RemoteSigned
+
+4. **Path differences from Mac:**
+   - Mac: /Volumes/Ai/Projects/
+   - Windows: D:\Projects\
+   - Use backslashes on Windows
+
+5. **Keep both systems in sync:**
+   - After working on Mac: sync all to GitHub
+   - Before working on Windows: pull all from GitHub
+   - After working on Windows: sync all to GitHub
+   - Before working on Mac: pull all from GitHub
+
+================================================================================
+WORKFLOW: MAC <-> WINDOWS SYNC
+================================================================================
+
+BEFORE switching to Windows:
+  [On Mac] Run: sync all projects to GitHub (push)
+
+WHEN starting on Windows:
+  [On Windows] Run: git pull origin main (on each project)
+
+AFTER finishing on Windows:
+  [On Windows] Run: sync all projects to GitHub (push)
+
+WHEN switching back to Mac:
+  [On Mac] Run: git pull origin main (on each project)
+
+================================================================================
+END OF MIGRATION GUIDE
+================================================================================

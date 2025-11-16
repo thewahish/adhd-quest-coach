@@ -1,0 +1,27 @@
+{
+  "projectName": "ADHD Quest Coach",
+  "description": "RPG-style gamified task management system for ADHD-friendly productivity",
+  "status": "active",
+  "priority": "high",
+  "lastUpdated": "2025-11-16T00:00:00Z",
+  "progressPercent": 95,
+  "currentFocus": "Daily gentle check-in and AI certification tracking",
+  "blockers": [],
+  "completedTasks": [
+    "Core quest system with 42+ quests",
+    "GitHub sync integration",
+    "XP, levels, streaks tracking",
+    "Mood check-ins and history",
+    "Brain dump with voice input",
+    "Priority-based sorting",
+    "Comprehensive console logging",
+    "Sync and activity log viewers",
+    "Daily gentle check-in for AI study"
+  ],
+  "upcomingTasks": [
+    "Mobile responsive optimization",
+    "Push notifications",
+    "Import/export state to file"
+  ],
+  "notes": "Core app for tracking all other projects. Now includes AI certification quest chain."
+}

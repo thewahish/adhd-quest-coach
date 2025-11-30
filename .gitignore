@@ -1,0 +1,8 @@
+﻿# Cross-Platform Files
+.DS_Store
+Thumbs.db
+*.swp
+node_modules/
+__pycache__/
+.env
+*.log
